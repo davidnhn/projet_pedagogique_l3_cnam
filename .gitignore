@@ -1,0 +1,60 @@
+# Fichiers sensibles
+.env
+secrets/
+
+# Fichiers Godot générés
+.godot/
+.import/
+export.cfg
+export_presets.cfg
+*.translation
+.mono/
+data_*/
+mono_crash.*
+
+# Fichiers de compilation C#
+bin/
+obj/
+*.o
+*.os
+*.so
+*.dll
+*.pdb
+*.user
+*.aps
+*.exe
+*.res
+
+# Logs et dumps
+*.log
+*.stackdump
+crash_handler_log.txt
+
+# Fichiers spécifiques à l'OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Docker
+postgres-data/
+pgadmin-data/
+
+# Cache et fichiers temporaires
+*.tmp
+*.bak
+*.swp
+*~
+
+# Fichiers IDE
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# Godot 4+ specific ignores
+/android/

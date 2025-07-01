@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://di8sqbbhrw0bo"]
+
+[ext_resource type="Script" uid="uid://bykdbq32hjxfj" path="res://Scripts/Data/Database/Tests/JoueurRepositoryTest.cs" id="1_cl0xd"]
+
+[node name="TestJoueurRepository" type="Node"]
+script = ExtResource("1_cl0xd")

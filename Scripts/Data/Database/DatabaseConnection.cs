@@ -15,9 +15,9 @@ namespace JeuVideo.Data.Database
             // Récupération des variables d'environnement
             string host = System.Environment.GetEnvironmentVariable("DB_HOST") ?? "localhost";
             string port = System.Environment.GetEnvironmentVariable("DB_PORT") ?? "5432";
-            string database = System.Environment.GetEnvironmentVariable("DB_NAME") ?? "jeuvideo";
+            string database = System.Environment.GetEnvironmentVariable("DB_NAME") ?? "game_db";
             string username = System.Environment.GetEnvironmentVariable("DB_USER") ?? "postgres";
-            string password = System.Environment.GetEnvironmentVariable("DB_PASSWORD") ?? "postgres";
+            string password = System.Environment.GetEnvironmentVariable("DB_PASSWORD") ?? "example_password";
 
             _connectionString = $"Host={host};Port={port};Database={database};Username={username};Password={password}";
         }

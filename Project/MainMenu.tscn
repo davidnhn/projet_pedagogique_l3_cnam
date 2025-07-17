@@ -1,11 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://1pafntcc3og8"]
+[gd_scene load_steps=10 format=3 uid="uid://cf1dg235kltc6"]
 
-[ext_resource type="Script" uid="uid://0aoitu3hneb7" path="res://scripts/MainMenu.cs" id="1_fu7sn"]
-[ext_resource type="Texture2D" uid="uid://ea66kuxk7j0v" path="res://assets/images/background.png" id="2_bqqt6"]
-[ext_resource type="FontFile" uid="uid://76033bjs1xhf" path="res://assets/fonts/Valorant Font.ttf" id="2_fu7sn"]
+[ext_resource type="Script" uid="uid://0aoitu3hneb7" path="res://Scripts/MainMenuManager.cs" id="1_qoqlk"]
+[ext_resource type="Texture2D" uid="uid://ea66kuxk7j0v" path="res://assets/images/background.png" id="2_iwfq2"]
+[ext_resource type="FontFile" uid="uid://76033bjs1xhf" path="res://assets/fonts/Valorant Font.ttf" id="3_7r1g0"]
+[ext_resource type="FontFile" uid="uid://b42spf2nlovg6" path="res://assets/fonts/BLOODFONT/Blood Thirst.ttf" id="4_cqjrg"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jix8l"]
-texture = ExtResource("2_bqqt6")
+texture = ExtResource("2_iwfq2")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7vrkn"]
 
@@ -46,7 +47,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_fu7sn")
+script = ExtResource("1_qoqlk")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -73,7 +74,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0.0846899, 0.0846899, 0.0846899, 1)
 theme_override_colors/font_shadow_color = Color(0.864675, 0.864675, 0.864675, 1)
 theme_override_constants/shadow_offset_y = -10
-theme_override_fonts/font = ExtResource("2_fu7sn")
+theme_override_fonts/font = ExtResource("3_7r1g0")
 theme_override_font_sizes/font_size = 70
 text = "Attack On Cnam 2 !"
 horizontal_alignment = 1
@@ -98,9 +99,10 @@ theme_override_constants/separation = 25
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.686275, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_cqjrg")
 theme_override_font_sizes/font_size = 25
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7vrkn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_glbon")
@@ -112,9 +114,10 @@ text = "Start"
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.686275, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_cqjrg")
 theme_override_font_sizes/font_size = 25
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7vrkn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_glbon")
@@ -126,9 +129,10 @@ text = "Continue"
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.686275, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_cqjrg")
 theme_override_font_sizes/font_size = 25
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7vrkn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_glbon")
@@ -140,9 +144,10 @@ text = "Options"
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.686275, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_cqjrg")
 theme_override_font_sizes/font_size = 25
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7vrkn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_glbon")

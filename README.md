@@ -20,7 +20,7 @@ Ce projet est un jeu développé avec Godot et utilisant une base de données Po
 2. Configurez les variables d'environnement presente dans Project/BaseDeDonnees/.env (Par defaut-> user/passwd = postgres/example_password):
 
    ```bash
-   nano Docker/.env
+   nano Project/Base_De_Donnees/.env
    ```
    
    Modifiez le fichier `.env` avec vos propres valeurs (mots de passe, etc.)
@@ -54,3 +54,31 @@ Ce projet est un jeu développé avec Godot et utilisant une base de données Po
 
 
 Pour plus de détails, consultez la [documentation complète](./docs/README.md). 
+
+6. Pour se connecter avec pgadmin, se connecter avec le navigateur a l'adresse : http://localhost:5050/browser/
+user: admin@example.com
+password: admin_password
+
+## Let's connect to the server
+
+| Champ                 | Valeur               |
+|-----------------------|----------------------|
+| Existing Server       | `db` *(optionnel)*   |
+| Server Name           | `db`                 |
+| Host name/address     | `jeuvideo_postgres`  |
+| Port                  | `5432`               |
+| Database              | `game_db`            |
+| User                  | `postgres`           |
+| Password              | example_password|
+| Role                  | *(vide)*             |
+| Service               | *(vide)*             |
+
+### Connection Parameters
+
+| Name                | Keyword         | Value     |
+|---------------------|------------------|-----------|
+| SSL mode            | `sslmode`        | `prefer`  |
+| Connection timeout  | `connect_timeout`| `10`      |
+
+[Connect & Open Query Tool] (bouton)
+

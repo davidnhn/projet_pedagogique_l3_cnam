@@ -2,83 +2,83 @@
 -- Ce script insère des données de test dans les tables
 
 -- Insertion dans Joueur
-INSERT INTO Joueur (idJoueur, pseudoJoueur) VALUES
-    (1, 'Alice'),
-    (2, 'Bob');
+INSERT INTO Joueur (pseudoJoueur) VALUES
+    ('Alice'),
+    ('Bob');
 
 -- Insertion dans TypePersonnage
-INSERT INTO TypePersonnage (idTypePersonnage, nomTypePersonnage, descriptionTypePersonnage) VALUES
-    (1, 'Prof de Maths', 'Spécialiste des équations et des calculs complexes'),
-    (2, 'Militaire', 'Expert en tactique de combat et survie'),
-    (3, 'Geek', 'Maîtrise des technologies et des références obscures'),
-    (4, 'Bollywood', 'Charisme exceptionnel et mouvements de danse légendaires'),
-    (5, 'Capuche', 'Discrétion et furtivité, expert en infiltration'),
-    (6, 'Serdaigle', 'Intelligence et sagesse, spécialiste des énigmes');
+INSERT INTO TypePersonnage (nomTypePersonnage, descriptionTypePersonnage) VALUES
+    ('Prof de Maths', 'Spécialiste des équations et des calculs complexes'),
+    ('Militaire', 'Expert en tactique de combat et survie'),
+    ('Geek', 'Maîtrise des technologies et des références obscures'),
+    ('Bollywood', 'Charisme exceptionnel et mouvements de danse légendaires'),
+    ('Capuche', 'Discrétion et furtivité, expert en infiltration'),
+    ('Serdaigle', 'Intelligence et sagesse, spécialiste des énigmes');
 
 -- Insertion dans Bot
-INSERT INTO Bot (idBot, niveauBot, dialogueBot, antagonisteBot, nomBot) VALUES
-    (1, 'Intermédiaire', 'Bienvenue dans mon royaume aride !', 'Oui', 'Gardien de la Cafet'),
-    (2, 'Expert', 'Cette équation sera ta perte !', 'Oui', 'Professeur Tangente'),
-    (3, 'Expert', 'Probabilité de survie: 0.01%', 'Oui', 'IA Commando'),
-    (4, 'Expert', 'Intrus détecté, élimination en cours', 'Oui', 'Titan Overclock'),
-    (5, 'Débutant', 'Bzzt... Je suis un rat snack !', 'Oui', 'Rat Snack'),
-    (6, 'Intermédiaire', 'x² + 2x - 4 = 0, résous ou meurs !', 'Oui', 'Dragon Dérivé'),
-    (7, 'Intermédiaire', '01001101 01000101 01010101 01010010 01010011', 'Oui', 'Débogueur Spectral'),
-    (8, 'Débutant', 'Je peux t''aider, si tu survis...', 'Non', 'Mister B');
+INSERT INTO Bot (niveauBot, dialogueBot, antagonisteBot, nomBot) VALUES
+    ('Intermédiaire', 'Bienvenue dans mon royaume aride !', 'Oui', 'Gardien de la Cafet'),
+    ('Expert', 'Cette équation sera ta perte !', 'Oui', 'Professeur Tangente'),
+    ('Expert', 'Probabilité de survie: 0.01%', 'Oui', 'IA Commando'),
+    ('Expert', 'Intrus détecté, élimination en cours', 'Oui', 'Titan Overclock'),
+    ('Débutant', 'Bzzt... Je suis un rat snack !', 'Oui', 'Rat Snack'),
+    ('Intermédiaire', 'x² + 2x - 4 = 0, résous ou meurs !', 'Oui', 'Dragon Dérivé'),
+    ('Intermédiaire', '01001101 01000101 01010101 01010010 01010011', 'Oui', 'Débogueur Spectral'),
+    ('Débutant', 'Je peux t''aider, si tu survis...', 'Non', 'Mister B');
 
 -- Insertion dans Objet
-INSERT INTO Objet (idObjet, nomObjet, descriptionNomObjet, effet) VALUES
-    (1, 'Boisson Énergétique', 'Restaure l''énergie vitale', 'Restaure 50 points de vie'),
-    (2, 'Clavier Magique', 'Une arme redoutable contre les ennemis', 'Augmente les dégâts de 10'),
-    (3, 'Anti-virus Légendaire', 'Protège contre les attaques informatiques', 'Réduit les dégâts subis de 15%'),
-    (4, 'Code Source', 'Fragment de code permettant de pirater les systèmes ennemis', 'Révèle les faiblesses des adversaires'),
-    (5, 'Craie Enchantée', 'Permet d''effacer les équations maléfiques', 'Paralyse les ennemis mathématiques pendant 5 secondes');
+INSERT INTO Objet (nomObjet, descriptionNomObjet, effet) VALUES
+    ('Boisson Énergétique', 'Restaure l''énergie vitale', 'Restaure 50 points de vie'),
+    ('Clavier Magique', 'Une arme redoutable contre les ennemis', 'Augmente les dégâts de 10'),
+    ('Anti-virus Légendaire', 'Protège contre les attaques informatiques', 'Réduit les dégâts subis de 15%'),
+    ('Code Source', 'Fragment de code permettant de pirater les systèmes ennemis', 'Révèle les faiblesses des adversaires'),
+    ('Craie Enchantée', 'Permet d''effacer les équations maléfiques', 'Paralyse les ennemis mathématiques pendant 5 secondes');
 
 -- Insertion dans Inventaire
-INSERT INTO Inventaire (idInventaire, tailleMaxInventaire) VALUES
-    (1, 20);
+INSERT INTO Inventaire (tailleMaxInventaire) VALUES
+    (20);
 
 -- Insertion dans Quete
-INSERT INTO Quete (idQuete, nomQuete, descriptionQuete, etatQuete) VALUES
-    (1, 'L''Énigme Légendaire du Menu', 'Résoudre les commandes laissées par le Gardien de la Cafet', 'Non commencé'),
-    (2, 'L''Équation Ultime', 'Résoudre l''équation gardée par le Dragon Dérivé', 'Non commencé'),
-    (3, 'Infiltration du Centre de Commande', 'Désactiver le noyau énergétique de l''IA Commando', 'Non commencé'),
-    (4, 'La Formule Magique', 'Vaincre le Titan Overclock et récupérer la formule des Proffus', 'Non commencé'),
-    (5, 'L''Oasis de Boissons Énergétiques', 'Combattre les Rats Snacks pour atteindre l''oasis', 'Non commencé');
+INSERT INTO Quete (nomQuete, descriptionQuete, etatQuete) VALUES
+    ('L''Énigme Légendaire du Menu', 'Résoudre les commandes laissées par le Gardien de la Cafet', 'Non commencé'),
+    ('L''Équation Ultime', 'Résoudre l''équation gardée par le Dragon Dérivé', 'Non commencé'),
+    ('Infiltration du Centre de Commande', 'Désactiver le noyau énergétique de l''IA Commando', 'Non commencé'),
+    ('La Formule Magique', 'Vaincre le Titan Overclock et récupérer la formule des Proffus', 'Non commencé'),
+    ('L''Oasis de Boissons Énergétiques', 'Combattre les Rats Snacks pour atteindre l''oasis', 'Non commencé');
 
 -- Insertion dans Zone
-INSERT INTO Zone (idZone, nomZone, descriptionZone) VALUES
-    (1, 'Le Désert de la Cafet', 'Un désert brûlant où la cafétéria est hostile'),
-    (2, 'L''Enfer du Tableau Mathématique', 'Un monde fait de tableaux noirs infinis'),
-    (3, 'Le Parc Commando', 'Un parcours d''obstacles plein de pièges'),
-    (4, 'La Salle Informatique', 'Une salle obscure avec des serveurs labyrinthiques');
+INSERT INTO Zone (nomZone, descriptionZone) VALUES
+    ('Le Désert de la Cafet', 'Un désert brûlant où la cafétéria est hostile'),
+    ('L''Enfer du Tableau Mathématique', 'Un monde fait de tableaux noirs infinis'),
+    ('Le Parc Commando', 'Un parcours d''obstacles plein de pièges'),
+    ('La Salle Informatique', 'Une salle obscure avec des serveurs labyrinthiques');
 
 -- Insertion dans Combat (dépend de Zone)
-INSERT INTO Combat (idCombat, resultatCombat, idZone) VALUES
-    (1, 'Victoire', 1),
-    (2, 'Défaite', 2),
-    (3, 'Défaite', 3),
-    (4, 'Victoire', 4);
+INSERT INTO Combat (resultatCombat, idZone) VALUES
+    ('Victoire', 1),
+    ('Défaite', 2),
+    ('Défaite', 3),
+    ('Victoire', 4);
 
 -- Insertion dans Action
-INSERT INTO Action (idAction, nomAction, descriptionAction) VALUES
-    (1, 'Attaquer', 'Infliger des dégâts'),
-    (2, 'Défendre', 'Réduire les dégâts subis'),
-    (3, 'Pirater', 'Manipuler les systèmes informatiques'),
-    (4, 'Résoudre', 'Trouver la solution à une énigme');
+INSERT INTO Action (nomAction, descriptionAction) VALUES
+    ('Attaquer', 'Infliger des dégâts'),
+    ('Défendre', 'Réduire les dégâts subis'),
+    ('Pirater', 'Manipuler les systèmes informatiques'),
+    ('Résoudre', 'Trouver la solution à une énigme');
 
 -- Insertion dans Sauvegarde (dépend de Joueur et Zone)
-INSERT INTO Sauvegarde (idSauvegarde, dateSauvegarde, positionXJoueur, positionYJoueur, idJoueur, idZone) VALUES
-    (1, '2025-03-29 10:00:00', 100, 150, 1, 1);
+INSERT INTO Sauvegarde (dateSauvegarde, positionXJoueur, positionYJoueur, idJoueur, idZone) VALUES
+    ('2025-03-29 10:00:00', 100, 150, 1, 1);
 
 -- Insertion dans Personnage (dépend de Joueur et TypePersonnage)
-INSERT INTO Personnage (idPersonnage, vie, experience, nomPersonnage, etatPersonnage, idJoueur, idTypePersonnage) VALUES
-    (1, 100, 0, 'Antoine', 'Actif', 1, 1),
-    (2, 90, 0, 'Paola', 'Actif', 1, 2),
-    (3, 100, 0, 'Yael', 'Actif', 1, 3),
-    (4, 85, 10, 'Deluxan', 'Actif', 2, 4),
-    (5, 95, 15, 'David', 'Actif', 2, 5),
-    (6, 80, 20, 'Meriem', 'Actif', 2, 6);
+INSERT INTO Personnage (vie, experience, nomPersonnage, etatPersonnage, idJoueur, idTypePersonnage) VALUES
+    (100, 0, 'Antoine', 'Actif', 1, 1),
+    (90, 0, 'Paola', 'Actif', 1, 2),
+    (100, 0, 'Yael', 'Actif', 1, 3),
+    (85, 10, 'Deluxan', 'Actif', 2, 4),
+    (95, 15, 'David', 'Actif', 2, 5),
+    (80, 20, 'Meriem', 'Actif', 2, 6);
 
 -- Insertion dans affronter (relation entre Personnage et Bot)
 INSERT INTO affronter (idPersonnage, idBot) VALUES
@@ -152,3 +152,16 @@ INSERT INTO utiliser (idPersonnage, idObjet) VALUES
     (4, 2),
     (5, 4),
     (6, 5);
+
+-- Mettre à jour les séquences après les insertions manuelles
+SELECT setval(pg_get_serial_sequence('joueur', 'idjoueur'), coalesce(max(idjoueur), 1)) FROM joueur;
+SELECT setval(pg_get_serial_sequence('typepersonnage', 'idtypepersonnage'), coalesce(max(idtypepersonnage), 1)) FROM typepersonnage;
+SELECT setval(pg_get_serial_sequence('bot', 'idbot'), coalesce(max(idbot), 1)) FROM bot;
+SELECT setval(pg_get_serial_sequence('objet', 'idobjet'), coalesce(max(idobjet), 1)) FROM objet;
+SELECT setval(pg_get_serial_sequence('inventaire', 'idinventaire'), coalesce(max(idinventaire), 1)) FROM inventaire;
+SELECT setval(pg_get_serial_sequence('quete', 'idquete'), coalesce(max(idquete), 1)) FROM quete;
+SELECT setval(pg_get_serial_sequence('zone', 'idzone'), coalesce(max(idzone), 1)) FROM zone;
+SELECT setval(pg_get_serial_sequence('combat', 'idcombat'), coalesce(max(idcombat), 1)) FROM combat;
+SELECT setval(pg_get_serial_sequence('action', 'idaction'), coalesce(max(idaction), 1)) FROM action;
+SELECT setval(pg_get_serial_sequence('sauvegarde', 'idsauvegarde'), coalesce(max(idsauvegarde), 1)) FROM sauvegarde;
+SELECT setval(pg_get_serial_sequence('personnage', 'idpersonnage'), coalesce(max(idpersonnage), 1)) FROM personnage;

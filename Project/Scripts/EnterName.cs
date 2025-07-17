@@ -61,7 +61,15 @@ public partial class EnterName : Control
         
         // Stocke le nom dans le singleton GameData
         GameData.Instance.PlayerName = playerName;
-        GameData.Instance.PlayerId = DatabaseManager.Instance.CreatePlayer(playerName);
+        
+        int playerId = DatabaseManager.Instance.GetPlayerByName(playerName);
+        if (playerId == -1)
+        {
+            // Player does not exist, create a new one
+            playerId = DatabaseManager.Instance.CreatePlayer(playerName);
+        }
+
+        GameData.Instance.PlayerId = playerId;
         GD.Print($"Name stored: {playerName} with ID: {GameData.Instance.PlayerId}"); // Debug log
         
         // Arrêter la musique du menu si elle existe

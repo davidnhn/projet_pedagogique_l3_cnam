@@ -28,6 +28,10 @@ Ce projet est un jeu développé avec Godot et utilisant une base de données Po
    ```bash
    docker compose up -d
    ```
+   pour verifier que les conteneurs sont bien lances:
+   ```bash
+   docker ps
+   ```
    pour arreter les conteneurs:
    ```bash
    docker compose down -v

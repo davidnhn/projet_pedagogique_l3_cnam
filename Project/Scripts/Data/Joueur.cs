@@ -7,7 +7,7 @@ namespace JeuVideo.Data
     /// <summary>
     /// Représente un joueur du jeu.
     /// </summary>
-    public class Joueur : Node
+    public partial class Joueur : Node
     {
         public int IdJoueur { get; private set; }
         public string PseudoJoueur { get; private set; }

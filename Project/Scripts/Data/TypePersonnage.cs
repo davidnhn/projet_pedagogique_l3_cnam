@@ -5,7 +5,7 @@ namespace JeuVideo.Data
     /// <summary>
     /// Représente un type de personnage dans le jeu.
     /// </summary>
-    public class TypePersonnage : Resource
+    public partial class TypePersonnage : Resource
     {
         public int IdTypePersonnage { get; set; }
         public string NomTypePersonnage { get; set; }

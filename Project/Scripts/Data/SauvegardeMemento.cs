@@ -6,7 +6,7 @@ namespace JeuVideo.Data
     /// <summary>
     /// Classe représentant un memento de sauvegarde (pattern Memento).
     /// </summary>
-    public class SauvegardeMemento : Resource
+    public partial class SauvegardeMemento : Resource
     {
         // État interne du memento (privé)
         private readonly DateTime _date;

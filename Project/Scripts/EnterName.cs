@@ -51,10 +51,26 @@ public partial class EnterName : Control
             messageLabel.Modulate = new Color(1, 0, 0); // Rouge pour l'erreur
             return;
         }
+
+        if (DatabaseManager.Instance.PlayerExists(playerName))
+        {
+            messageLabel.Text = "Ce nom est déjà pris !";
+            messageLabel.Modulate = new Color(1, 0, 0); // Rouge pour l'erreur
+            return;
+        }
         
         // Stocke le nom dans le singleton GameData
         GameData.Instance.PlayerName = playerName;
-        GD.Print($"Name stored: {playerName}"); // Debug log
+        
+        int playerId = DatabaseManager.Instance.GetPlayerByName(playerName);
+        if (playerId == -1)
+        {
+            // Player does not exist, create a new one
+            playerId = DatabaseManager.Instance.CreatePlayer(playerName);
+        }
+
+        GameData.Instance.PlayerId = playerId;
+        GD.Print($"Name stored: {playerName} with ID: {GameData.Instance.PlayerId}"); // Debug log
         
         // Arrêter la musique du menu si elle existe
         var musicManager = GetTree().Root.GetNode<MusicManager>("MusicManager");

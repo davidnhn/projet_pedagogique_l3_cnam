@@ -6,7 +6,7 @@ namespace JeuVideo.Data
     /// <summary>
     /// Représente une zone de jeu.
     /// </summary>
-    public class Zone : Node2D
+    public partial class Zone : Node2D
     {
         public int IdZone { get; set; }
         public string NomZone { get; set; }

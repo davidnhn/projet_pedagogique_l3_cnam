@@ -17,16 +17,27 @@ Ce projet est un jeu développé avec Godot et utilisant une base de données Po
    cd projet_pedagogique_l3_cnam
    ```
 
-2. Configurez les variables d'environnement presente dans .env (Par defaut-> user/passwd = postgres/example_password):
+2. Configurez les variables d'environnement presente dans Project/BaseDeDonnees/.env (Par defaut-> user/passwd = postgres/example_password):
+
    ```bash
    nano Docker/.env
    ```
    
    Modifiez le fichier `.env` avec vos propres valeurs (mots de passe, etc.)
 
-3. Se placer dans Docker Lancez les conteneurs Docker :
+
+3. Se placer dans le repertoire BaseDeDonnees et lancez les conteneurs Docker :
+
    ```bash
    docker compose up -d
+   ```
+   pour verifier que les conteneurs sont bien lances:
+   ```bash
+   docker ps
+   ```
+   pour arreter les conteneurs:
+   ```bash
+   docker compose down -v
    ```
 
 4. Ouvrez le projet dans Godot :

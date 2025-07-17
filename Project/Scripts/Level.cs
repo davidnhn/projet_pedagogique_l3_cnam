@@ -6,7 +6,7 @@ public partial class Level : Node2D
 	private Character _player;
 	private Enemy _enemy;
 
-	public void _Ready()
+	public override void _Ready()
 	{
 		// Récupérer les références au joueur et à l'ennemi
 		_player = GetNode<Character>("Player");
@@ -18,7 +18,7 @@ public partial class Level : Node2D
 		}
 	}
 
-	public void _Process(float delta)
+	public override void _Process(double delta)
 	{
 		if (_player != null && _enemy != null)
 		{

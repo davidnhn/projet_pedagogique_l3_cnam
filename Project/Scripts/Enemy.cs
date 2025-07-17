@@ -52,7 +52,7 @@ public partial class Enemy : Character
 	}
 
 	// Surcharge de la méthode TakeDamage pour ajouter des comportements spécifiques
-	public virtual void TakeDamage(int damage)
+	public override void TakeDamage(int damage)
 	{
 		base.TakeDamage(damage);
 		

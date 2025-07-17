@@ -6,7 +6,7 @@ namespace JeuVideo.Data
     /// <summary>
     /// Représente un combat entre un personnage et un bot.
     /// </summary>
-    public class Combat : Node
+    public partial class Combat : Node
     {
         public int IdCombat { get; set; }
         public string ResultatCombat { get; set; } // "En cours", "Victoire", "Défaite"

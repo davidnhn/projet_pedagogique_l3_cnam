@@ -6,19 +6,8 @@ namespace JeuVideo.Data
     /// <summary>
     /// Représente l'inventaire d'un personnage (implémenté en Singleton).
     /// </summary>
-    public class Inventaire : Resource
+    public partial class Inventaire : Resource
     {
-        // Implémentation du Singleton
-        private static Inventaire _instance;
-        public static Inventaire GetInstance()
-        {
-            if (_instance == null)
-            {
-                _instance = new Inventaire();
-            }
-            return _instance;
-        }
-
         // Propriétés
         public int IdInventaire { get; set; }
         public int TailleMaxInventaire { get; set; } = 20;
@@ -26,8 +15,8 @@ namespace JeuVideo.Data
         // Stockage des objets avec leur quantité
         private Dictionary<Objet, int> _objets = new Dictionary<Objet, int>();
 
-        // Constructeur privé pour empêcher l'instanciation directe
-        private Inventaire() 
+        // Constructeur
+        public Inventaire() 
         {
             IdInventaire = 1; // Par défaut
         }

@@ -5,7 +5,7 @@ namespace JeuVideo.Data
     /// <summary>
     /// Représente un équipement dans le jeu.
     /// </summary>
-    public class Equipement : Resource
+    public partial class Equipement : Resource
     {
         public int IdEquipement { get; set; }
         public string NomEquipement { get; set; }

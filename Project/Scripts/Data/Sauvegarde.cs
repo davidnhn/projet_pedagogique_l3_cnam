@@ -6,7 +6,7 @@ namespace JeuVideo.Data
     /// <summary>
     /// Classe représentant une sauvegarde de jeu (Originator dans le pattern Memento).
     /// </summary>
-    public class Sauvegarde : Resource
+    public partial class Sauvegarde : Resource
     {
         public int IdSauvegarde { get; set; }
         public DateTime DateSauvegarde { get; set; }

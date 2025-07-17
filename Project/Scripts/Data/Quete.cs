@@ -6,7 +6,7 @@ namespace JeuVideo.Data
     /// <summary>
     /// Représente une quête dans le jeu.
     /// </summary>
-    public class Quete : Resource
+    public partial class Quete : Resource
     {
         public int IdQuete { get; set; }
         public string NomQuete { get; set; }

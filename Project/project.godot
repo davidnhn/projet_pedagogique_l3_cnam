@@ -12,8 +12,12 @@ config_version=5
 
 config/name="projet_pedagogique_L3_CNAM"
 run/main_scene="uid://1pafntcc3og8"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+DatabaseManager="*res://Scripts/Managers/DatabaseManager.cs"
 
 [dotnet]
 

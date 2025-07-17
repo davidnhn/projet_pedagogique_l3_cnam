@@ -8,6 +8,8 @@ public partial class GameData : Node
     
     // Données du joueur
     private string _playerName = "";
+    private int _playerId = -1;
+    private string _characterGender = "";
     
     public static GameData Instance
     {
@@ -31,7 +33,27 @@ public partial class GameData : Node
             GD.Print($"Player name set to: {_playerName}");
         }
     }
-    
+
+    public int PlayerId
+    {
+        get => _playerId;
+        set
+        {
+            _playerId = value;
+            GD.Print($"Player ID set to: {_playerId}");
+        }
+    }
+
+    public string CharacterGender
+    {
+        get => _characterGender;
+        set
+        {
+            _characterGender = value;
+            GD.Print($"Character gender set to: {_characterGender}");
+        }
+    }
+
     public override void _Ready()
     {
         if (_instance == null)

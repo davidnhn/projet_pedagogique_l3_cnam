@@ -25,7 +25,16 @@ DROP TABLE IF EXISTS Joueur CASCADE;
 -- Table Joueur
 CREATE TABLE Joueur (
    idJoueur SERIAL PRIMARY KEY,
-   pseudoJoueur VARCHAR(100) NOT NULL
+   pseudoJoueur VARCHAR(100) NOT NULL,
+   nomPropre1 VARCHAR(100),
+   nomPropre2 VARCHAR(100),
+   nomPropre3 VARCHAR(100),
+   nomMetier VARCHAR(100),
+   nomObjetInsolite VARCHAR(100),
+   nomLieu VARCHAR(100),
+   extraNom1 VARCHAR(100),
+   extraNom2 VARCHAR(100),
+   extraNom3 VARCHAR(100)
 );
 
 -- Table TypePersonnage

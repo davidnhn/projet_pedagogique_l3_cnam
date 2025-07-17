@@ -54,6 +54,19 @@ public partial class GameData : Node
         }
     }
 
+    // Custom names for world generation
+    public string PersonalName1 { get; set; }
+    public string PersonalName2 { get; set; }
+    public string PersonalName3 { get; set; }
+    public string ProfessionName { get; set; }
+    public string UnusualObjectName { get; set; }
+    public string PlaceName { get; set; }
+
+    // Three extra custom names
+    public string ExtraName1 { get; set; }
+    public string ExtraName2 { get; set; }
+    public string ExtraName3 { get; set; }
+
     public override void _Ready()
     {
         if (_instance == null)

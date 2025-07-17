@@ -7,7 +7,7 @@ namespace JeuVideo.Data
     /// <summary>
     /// Représente un bot (PNJ) dans le jeu.
     /// </summary>
-    public class Bot : CharacterBody2D, IInteractable, ICombatable
+    public partial class Bot : CharacterBody2D, IInteractable, ICombatable
     {
         public int IdBot { get; set; }
         public string NiveauBot { get; set; }

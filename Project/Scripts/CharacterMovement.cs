@@ -6,7 +6,7 @@ public partial class CharacterMovement : Node2D
 	private Character _character;
 
 	private Vector2 _position;
-	public Vector2 Position
+	public new Vector2 Position
 	{
 		get => _position;
 		set
@@ -36,8 +36,6 @@ public partial class CharacterMovement : Node2D
 		IsMoving = false;
 		_isColliding = false;
 		SetupCollisionArea();
-
-		SetProcess(true);
 	}
 
 	private void SetupCollisionArea()
@@ -58,7 +56,7 @@ public partial class CharacterMovement : Node2D
 
 	}
 
-	public void _Process(double delta)
+	public override void _Process(double delta)
 	{
 		if (_character == null || !_character.IsAlive)
 			return;

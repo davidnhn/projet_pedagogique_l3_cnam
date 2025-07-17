@@ -5,7 +5,7 @@ namespace JeuVideo.Data
     /// <summary>
     /// Représente une position dans le jeu.
     /// </summary>
-    public class Position : Resource
+    public partial class Position : Resource
     {
         public int X { get; set; }
         public int Y { get; set; }

@@ -3,7 +3,7 @@ using System;
 
 // Cette classe gère le menu principal du jeu
 // Elle hérite de Control, qui est une classe de base pour les interfaces utilisateur dans Godot
-public partial class MainMenu : Control
+public partial class MainMenuManager : Control
 {
 	// Variable pour stocker la référence au bouton de sortie
 	private Button exitButton;

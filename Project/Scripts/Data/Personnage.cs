@@ -7,7 +7,7 @@ namespace JeuVideo.Data
     /// <summary>
     /// Représente un personnage dans le jeu.
     /// </summary>
-    public class Personnage : CharacterBody2D, IInteractable, ICombatable
+    public partial class Personnage : CharacterBody2D, IInteractable, ICombatable
     {
         // Propriétés de base
         public int IdPersonnage { get; set; }
@@ -45,7 +45,7 @@ namespace JeuVideo.Data
             // Initialiser l'inventaire si nécessaire
             if (Inventaire == null)
             {
-                Inventaire = Inventaire.GetInstance();
+                Inventaire = new Inventaire();
             }
             
             // Appliquer les bonus du type de personnage

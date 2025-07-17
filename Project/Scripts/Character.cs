@@ -4,7 +4,7 @@ using System;
 public partial class Character : Node2D
 {
 	// Propriétés de base du personnage
-	public string Name { get; set; }
+	public new string Name { get; set; }
 	public int Health { get; set; }
 	public int MaxHealth { get; set; }
 	public int Attack { get; set; }
@@ -24,7 +24,6 @@ public partial class Character : Node2D
 	public override void _Ready()
 	{
 		// Initialisation des propriétés du personnage
-		Name = "Hero";
 		MaxHealth = 100;
 		Health = MaxHealth;
 		Attack = 10;
@@ -69,7 +68,7 @@ public partial class Character : Node2D
 	}
 
 	// Méthodes de base
-	public void TakeDamage(int damage)
+	public virtual void TakeDamage(int damage)
 	{
 		int actualDamage = Math.Max(1, damage - Defense);
 		Health = Math.Max(0, Health - actualDamage);

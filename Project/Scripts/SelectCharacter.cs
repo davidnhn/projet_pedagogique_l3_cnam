@@ -31,12 +31,18 @@ public partial class SelectCharacter : Node2D
     private void OnBoyButtonPressed()
     {
         GD.Print("Boy button pressed!");
+        GameData.Instance.CharacterGender = "Boy";
+        int characterId = DatabaseManager.Instance.CreateCharacter(GameData.Instance.PlayerId, GameData.Instance.PlayerName + "'s character", 1);
+        GD.Print($"Created character with ID: {characterId}");
         ChangeToGameScene();
     }
 
     private void OnGirlButtonPressed()
     {
         GD.Print("Girl button pressed!");
+        GameData.Instance.CharacterGender = "Girl";
+        int characterId = DatabaseManager.Instance.CreateCharacter(GameData.Instance.PlayerId, GameData.Instance.PlayerName + "'s character", 2);
+        GD.Print($"Created character with ID: {characterId}");
         ChangeToGameScene();
     }
 

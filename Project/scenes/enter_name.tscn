@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://upnl2qx0hclq"]
 
-[ext_resource type="Script" uid="uid://cv0rqqiu7ws3y" path="res://scripts/EnterName.cs" id="1_khsjy"]
+[ext_resource type="Script" uid="uid://d4l2uc8knvd86" path="res://scenes/EnterName.cs" id="1_khsjy"]
 [ext_resource type="Texture2D" uid="uid://ea66kuxk7j0v" path="res://assets/images/background.png" id="2_khsjy"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_khsjy"]

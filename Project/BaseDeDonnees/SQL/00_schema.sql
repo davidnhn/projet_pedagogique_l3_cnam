@@ -24,20 +24,20 @@ DROP TABLE IF EXISTS Joueur CASCADE;
 
 -- Table Joueur
 CREATE TABLE Joueur (
-   idJoueur INT PRIMARY KEY,
+   idJoueur SERIAL PRIMARY KEY,
    pseudoJoueur VARCHAR(100) NOT NULL
 );
 
 -- Table TypePersonnage
 CREATE TABLE TypePersonnage (
-   idTypePersonnage INT PRIMARY KEY,
+   idTypePersonnage SERIAL PRIMARY KEY,
    nomTypePersonnage VARCHAR(100) NOT NULL,
    descriptionTypePersonnage TEXT
 );
 
 -- Table Bot
 CREATE TABLE Bot (
-   idBot INT PRIMARY KEY,
+   idBot SERIAL PRIMARY KEY,
    niveauBot VARCHAR(100),
    dialogueBot TEXT,
    antagonisteBot VARCHAR(50),
@@ -46,7 +46,7 @@ CREATE TABLE Bot (
 
 -- Table Objet
 CREATE TABLE Objet (
-   idObjet INT PRIMARY KEY,
+   idObjet SERIAL PRIMARY KEY,
    nomObjet VARCHAR(100) NOT NULL,
    descriptionNomObjet TEXT,
    effet VARCHAR(200)
@@ -54,13 +54,13 @@ CREATE TABLE Objet (
 
 -- Table Inventaire
 CREATE TABLE Inventaire (
-   idInventaire INT PRIMARY KEY,
+   idInventaire SERIAL PRIMARY KEY,
    tailleMaxInventaire INT
 );
 
 -- Table Quete
 CREATE TABLE Quete (
-   idQuete INT PRIMARY KEY,
+   idQuete SERIAL PRIMARY KEY,
    nomQuete VARCHAR(100) NOT NULL,
    descriptionQuete TEXT,
    etatQuete VARCHAR(50)
@@ -68,14 +68,14 @@ CREATE TABLE Quete (
 
 -- Table Zone
 CREATE TABLE Zone (
-   idZone INT PRIMARY KEY,
+   idZone SERIAL PRIMARY KEY,
    nomZone VARCHAR(100) NOT NULL,
    descriptionZone TEXT
 );
 
 -- Table Combat (dépend de Zone)
 CREATE TABLE Combat (
-   idCombat INT PRIMARY KEY,
+   idCombat SERIAL PRIMARY KEY,
    resultatCombat VARCHAR(50),
    idZone INT NOT NULL,
    FOREIGN KEY (idZone) REFERENCES Zone(idZone)
@@ -83,14 +83,14 @@ CREATE TABLE Combat (
 
 -- Table Action
 CREATE TABLE Action (
-   idAction INT PRIMARY KEY,
+   idAction SERIAL PRIMARY KEY,
    nomAction VARCHAR(100) NOT NULL,
    descriptionAction TEXT
 );
 
 -- Table Sauvegarde (dépend de Joueur et Zone)
 CREATE TABLE Sauvegarde (
-   idSauvegarde INT PRIMARY KEY,
+   idSauvegarde SERIAL PRIMARY KEY,
    dateSauvegarde TIMESTAMP,
    positionXJoueur INT,
    positionYJoueur INT,
@@ -102,7 +102,7 @@ CREATE TABLE Sauvegarde (
 
 -- Table Personnage (dépend de Joueur et TypePersonnage)
 CREATE TABLE Personnage (
-   idPersonnage INT PRIMARY KEY,
+   idPersonnage SERIAL PRIMARY KEY,
    vie INT,
    experience INT,
    nomPersonnage VARCHAR(100) NOT NULL,

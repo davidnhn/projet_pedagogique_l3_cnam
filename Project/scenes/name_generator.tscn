@@ -74,7 +74,7 @@ text = "Customize ton jeu"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Valider" type="Button" parent="Panel"]
+[node name="ValidateButton" type="Button" parent="Panel"]
 custom_minimum_size = Vector2(180, 50)
 layout_mode = 2
 offset_left = 438.0

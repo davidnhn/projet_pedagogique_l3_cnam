@@ -194,3 +194,11 @@ CREATE TABLE utiliser (
    FOREIGN KEY (idPersonnage) REFERENCES Personnage(idPersonnage),
    FOREIGN KEY (idObjet) REFERENCES Objet(idObjet)
 );
+
+-- Table Lexique
+CREATE TABLE Lexique (
+    idMot SERIAL PRIMARY KEY,
+    mot VARCHAR(100) NOT NULL,
+    categorie VARCHAR(100) NOT NULL,
+    UNIQUE(mot, categorie)
+);

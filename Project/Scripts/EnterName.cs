@@ -72,19 +72,7 @@ public partial class EnterName : Control
 		GameData.Instance.PlayerId = playerId;
 		GD.Print($"Name stored: {playerName} with ID: {GameData.Instance.PlayerId}"); // Debug log
 		
-		// Arrêter la musique du menu si elle existe
-		var musicManager = GetTree().Root.GetNodeOrNull<MusicManager>("MusicManager");
-		if (musicManager != null && musicManager.Playing)
-		{
-			musicManager.Stop();
-			musicManager.QueueFree(); // Supprime le node singleton
-		}
-		
-		// Change directement la scène vers select_character.tscn
-		Error err = GetTree().ChangeSceneToFile("res://scenes/select_character.tscn");
-		if (err != Error.Ok)
-		{
-			GD.PrintErr($"Failed to change scene. Error: {err}");
-		}
+		// Change la scène vers select_character.tscn
+		GetTree().ChangeSceneToFile("res://scenes/select_character.tscn");
 	}
 } 

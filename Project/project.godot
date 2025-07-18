@@ -11,14 +11,25 @@ config_version=5
 [application]
 
 config/name="projet_pedagogique_L3_CNAM"
-run/main_scene="uid://cf1dg235kltc6"
+run/main_scene="res://scenes/MainMenu.tscn"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
+GameData="*res://Scripts/GameData.cs"
 DatabaseManager="*res://Scripts/Managers/DatabaseManager.cs"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/stretch/mode="viewport"
 
 [dotnet]
 
 project/assembly_name="projet_pedagogique_L3_CNAM"
+
+[rendering]
+
+textures/vram_compression/import_etc2_astc=true

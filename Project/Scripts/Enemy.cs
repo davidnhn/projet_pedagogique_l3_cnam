@@ -7,6 +7,7 @@ public partial class Enemy : Character
 	public int ExperienceValue { get; private set; }
 	public float DetectionRange { get; private set; }
 	public bool IsAggressive { get; private set; }
+	public Character Target { get; set; }
 
 	public override void _Ready()
 	{
@@ -24,31 +25,29 @@ public partial class Enemy : Character
 		ExperienceValue = 100;
 		DetectionRange = 200.0f;
 		IsAggressive = true;
-
-		// Initialisation du composant de mouvement
-		var movement = GetNode<CharacterMovement>("CharacterMovement");
-		if (movement == null)
-		{
-			GD.PrintErr("CharacterMovement component not found!");
-		}
 	}
 
-	// Méthode pour suivre le joueur
-	public void FollowPlayer(Character player)
+	public override void _PhysicsProcess(double delta)
 	{
-		if (!IsAlive || player == null || !player.IsAlive) return;
+		if (!IsAlive || Target == null || !Target.IsAlive)
+		{
+			Velocity = Vector2.Zero;
+			MoveAndSlide();
+			return;
+		}
 
-		var distance = GlobalPosition.DistanceTo(player.GlobalPosition);
+		var distance = GlobalPosition.DistanceTo(Target.GlobalPosition);
 		if (distance <= DetectionRange)
 		{
-			var direction = (player.GlobalPosition - GlobalPosition).Normalized();
-			var movement = GetNode<CharacterMovement>("CharacterMovement");
-			if (movement != null)
-			{
-				// Déplacer l'ennemi vers le joueur
-				movement.Position += direction * Speed * (float)GetProcessDeltaTime();
-			}
+			var direction = (Target.GlobalPosition - GlobalPosition).Normalized();
+			Velocity = direction * Speed;
 		}
+		else
+		{
+			Velocity = Vector2.Zero;
+		}
+		
+		MoveAndSlide();
 	}
 
 	// Surcharge de la méthode TakeDamage pour ajouter des comportements spécifiques

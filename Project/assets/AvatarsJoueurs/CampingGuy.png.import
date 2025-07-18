@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bkpu1exlpvft0"
-path="res://.godot/imported/CampingGuy.png-b7867add04202e59e1c0a057e377a214.ctex"
+path="res://.godot/imported/CampingGuy.png-58e16c1bcb2d4911af227e5b3f852217.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://backupRessources/assets/images/Avatars/CampingGuy.png"
-dest_files=["res://.godot/imported/CampingGuy.png-b7867add04202e59e1c0a057e377a214.ctex"]
+source_file="res://assets/AvatarsJoueurs/CampingGuy.png"
+dest_files=["res://.godot/imported/CampingGuy.png-58e16c1bcb2d4911af227e5b3f852217.ctex"]
 
 [params]
 

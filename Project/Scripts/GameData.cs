@@ -4,24 +4,13 @@ using System;
 public partial class GameData : Node
 {
     // Instance unique du singleton
-    private static GameData _instance;
+    public static GameData Instance { get; private set; }
     
     // Données du joueur
     private string _playerName = "";
     private int _playerId = -1;
     private string _characterGender = "";
-    
-    public static GameData Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = new GameData();
-            }
-            return _instance;
-        }
-    }
+    private Classe _characterClass;
     
     // Propriété pour accéder au nom du joueur
     public string PlayerName
@@ -41,6 +30,16 @@ public partial class GameData : Node
         {
             _playerId = value;
             GD.Print($"Player ID set to: {_playerId}");
+        }
+    }
+
+    public Classe CharacterClass
+    {
+        get => _characterClass;
+        set
+        {
+            _characterClass = value;
+            GD.Print($"Character class set to: {_characterClass}");
         }
     }
 
@@ -69,12 +68,6 @@ public partial class GameData : Node
 
     public override void _Ready()
     {
-        if (_instance == null)
-        {
-            _instance = this;
-        }
-        
-        // S'assure que le node persiste entre les scènes
-        ProcessMode = ProcessModeEnum.Always;
+        Instance = this;
     }
 } 

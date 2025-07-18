@@ -1,0 +1,162 @@
+[gd_scene load_steps=21 format=3 uid="uid://b05xrytp25n4g"]
+
+[ext_resource type="Texture2D" uid="uid://gpm21fe0lwub" path="res://assets/images/mallaksprite2d_.png" id="1_yq62l"]
+
+[sub_resource type="Animation" id="Animation_1ipam"]
+resource_name = "animation_mallak"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.533333, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_fqjka"]
+resource_name = "Deplacement_cotedroit_Mallak"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.533333, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_5sgwi"]
+resource_name = "Deplacement_cotegauche_Mallak"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.533333, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15]
+}
+
+[sub_resource type="Animation" id="Animation_3t05r"]
+resource_name = "Deplacement_dos_Mallak"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.533333, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_r2l8q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4nmg1"]
+_data = {
+&"Deplacement_Face_Mallak": SubResource("Animation_1ipam"),
+&"Deplacement_cotedroit_Mallak": SubResource("Animation_fqjka"),
+&"Deplacement_cotegauche_Mallak": SubResource("Animation_5sgwi"),
+&"Deplacement_dos_Mallak": SubResource("Animation_3t05r"),
+&"RESET": SubResource("Animation_r2l8q")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yq62l"]
+radius = 33.0606
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yq62l"]
+animation = &"Deplacement_Face_Mallak"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_r2l8q"]
+animation = &"Deplacement_cotedroit_Mallak"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1ipam"]
+animation = &"Deplacement_cotegauche_Mallak"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3t05r"]
+animation = &"Deplacement_dos_Mallak"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fqjka"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fqjka"]
+switch_mode = 1
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5sgwi"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4nmg1"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ug3m5"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0273b"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_iehg5"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_yq62l"]
+states/Deplacement_Face_Mallak/node = SubResource("AnimationNodeAnimation_yq62l")
+states/Deplacement_Face_Mallak/position = Vector2(414, 37)
+states/Deplacement_cotedroit_Mallak/node = SubResource("AnimationNodeAnimation_r2l8q")
+states/Deplacement_cotedroit_Mallak/position = Vector2(701, 176)
+states/Deplacement_cotegauche_Mallak/node = SubResource("AnimationNodeAnimation_1ipam")
+states/Deplacement_cotegauche_Mallak/position = Vector2(392, 176)
+states/Deplacement_dos_Mallak/node = SubResource("AnimationNodeAnimation_3t05r")
+states/Deplacement_dos_Mallak/position = Vector2(662, 32)
+states/RESET/node = SubResource("AnimationNodeAnimation_fqjka")
+states/RESET/position = Vector2(938, 194)
+transitions = ["Start", "Deplacement_Face_Mallak", SubResource("AnimationNodeStateMachineTransition_fqjka"), "Deplacement_Face_Mallak", "Deplacement_dos_Mallak", SubResource("AnimationNodeStateMachineTransition_5sgwi"), "Deplacement_dos_Mallak", "Deplacement_cotegauche_Mallak", SubResource("AnimationNodeStateMachineTransition_4nmg1"), "Deplacement_cotegauche_Mallak", "Deplacement_cotedroit_Mallak", SubResource("AnimationNodeStateMachineTransition_ug3m5"), "Deplacement_cotedroit_Mallak", "RESET", SubResource("AnimationNodeStateMachineTransition_0273b"), "RESET", "End", SubResource("AnimationNodeStateMachineTransition_iehg5")]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_yq62l")
+hframes = 4
+vframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_4nmg1")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_yq62l")
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../Sprite2D")
+tree_root = SubResource("AnimationNodeStateMachine_yq62l")
+anim_player = NodePath("../Sprite2D/AnimationPlayer")

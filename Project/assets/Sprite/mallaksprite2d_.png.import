@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhyasie1etjyj"
-path="res://.godot/imported/BollywoodActor.png-888561c5bf532baf4c9d61370b000935.ctex"
+uid="uid://gpm21fe0lwub"
+path="res://.godot/imported/mallaksprite2d_.png-fda0886576b182eb5077d2441c271d59.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/AvatarsJoueurs/BollywoodActor.png"
-dest_files=["res://.godot/imported/BollywoodActor.png-888561c5bf532baf4c9d61370b000935.ctex"]
+source_file="res://assets/Sprite/mallaksprite2d_.png"
+dest_files=["res://.godot/imported/mallaksprite2d_.png-fda0886576b182eb5077d2441c271d59.ctex"]
 
 [params]
 

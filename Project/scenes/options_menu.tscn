@@ -47,24 +47,20 @@ corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_binsn"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 100
-corner_radius_top_right = 100
-corner_radius_bottom_right = 100
-corner_radius_bottom_left = 100
+bg_color = Color(0.517647, 0.517647, 0.517647, 0.733333)
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_2f1bn"]
-thickness = 50
+grow_end = 65.0
+thickness = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k61yy"]
 
 [node name="OptionsMenu" type="Control"]
+custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 2688.0
-offset_bottom = 1512.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -72,6 +68,7 @@ size_flags_vertical = 3
 script = ExtResource("1_liyum")
 
 [node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -82,10 +79,10 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_hm4m4")
 
 [node name="Return_Button" type="Button" parent="Panel"]
 layout_mode = 0
-offset_left = 1539.0
-offset_top = 1530.0
-offset_right = 2127.0
-offset_bottom = 1739.0
+offset_left = 594.0
+offset_top = 810.0
+offset_right = 1173.0
+offset_bottom = 992.0
 size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0.686275, 0, 0, 1)
@@ -102,10 +99,10 @@ text = "Return"
 [node name="Label" type="Label" parent="Panel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 1.31015
-anchor_top = 0.790034
-anchor_right = 1.31015
-anchor_bottom = 0.790034
+anchor_left = 2.18905
+anchor_top = 1.21432
+anchor_right = 2.18905
+anchor_bottom = 1.21432
 offset_left = -4158.98
 offset_top = -1232.47
 offset_right = -2351.98
@@ -126,10 +123,10 @@ metadata/_edit_use_anchors_ = true
 
 [node name="CheckBox" type="CheckBox" parent="Panel"]
 layout_mode = 2
-offset_left = 1428.0
-offset_top = 1160.0
-offset_right = 2235.0
-offset_bottom = 1333.0
+offset_left = 620.0
+offset_top = 565.0
+offset_right = 1194.0
+offset_bottom = 670.0
 theme_override_colors/font_color = Color(0.560784, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_hm4m4")
 theme_override_font_sizes/font_size = 80
@@ -139,23 +136,22 @@ alignment = 1
 icon_alignment = 1
 
 [node name="CenterContainer" type="PanelContainer" parent="Panel"]
-custom_minimum_size = Vector2(200, 80)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.466
 anchor_top = 0.456
 anchor_right = 0.466
 anchor_bottom = 0.456
-offset_left = -637.44
-offset_top = -262.96
-offset_right = 656.56
-offset_bottom = 96.04
+offset_left = -263.72
+offset_top = -40.48
+offset_right = 290.28
+offset_bottom = 71.52
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_binsn")
 
 [node name="Volume" type="HSlider" parent="Panel/CenterContainer"]
-custom_minimum_size = Vector2(500, 0)
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4

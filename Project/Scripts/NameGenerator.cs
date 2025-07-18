@@ -94,6 +94,24 @@ public partial class NameGenerator : Control
 		_validateButton = GetNode<Button>("Panel/ValidateButton");
 
 		_validateButton.Pressed += OnValidateButtonPressed;
+		LoadPlayerGeneratedTheme();
+	}
+
+	private void LoadPlayerGeneratedTheme()
+	{
+		var lexique = DatabaseManager.Instance.GetLexiqueThemes();
+		if (lexique.Any())
+		{
+			var playerTheme = new WordTheme
+			{
+				PersonalNames = lexique.ContainsKey("PersonalName") ? lexique["PersonalName"] : new List<string>(),
+				Professions = lexique.ContainsKey("Profession") ? lexique["Profession"] : new List<string>(),
+				UnusualObjects = lexique.ContainsKey("UnusualObject") ? lexique["UnusualObject"] : new List<string>(),
+				PlaceNames = lexique.ContainsKey("PlaceName") ? lexique["PlaceName"] : new List<string>(),
+				ExtraNames = lexique.ContainsKey("ExtraName") ? lexique["ExtraName"] : new List<string>()
+			};
+			_themes["Joueur"] = playerTheme;
+		}
 	}
 
 	private void OnValidateButtonPressed()
@@ -103,16 +121,29 @@ public partial class NameGenerator : Control
 		var selectedTheme = _themes[randomThemeKey];
 		GD.Print($"Thème choisi : {randomThemeKey}");
 
+		var usedPersonalNames = new HashSet<string>();
+		var usedExtraNames = new HashSet<string>();
+
 		// Récupérer le texte ou générer un nom si le champ est vide
-		var personalName1 = GetOrCreateText(_personalNameInput1, selectedTheme.PersonalNames);
-		var personalName2 = GetOrCreateText(_personalNameInput2, selectedTheme.PersonalNames);
-		var personalName3 = GetOrCreateText(_personalNameInput3, selectedTheme.PersonalNames);
+		var personalName1 = GetOrCreateText(_personalNameInput1, selectedTheme.PersonalNames, usedPersonalNames);
+		var personalName2 = GetOrCreateText(_personalNameInput2, selectedTheme.PersonalNames, usedPersonalNames);
+		var personalName3 = GetOrCreateText(_personalNameInput3, selectedTheme.PersonalNames, usedPersonalNames);
 		var professionName = GetOrCreateText(_professionNameInput, selectedTheme.Professions);
 		var unusualObjectName = GetOrCreateText(_unusualObjectInput, selectedTheme.UnusualObjects);
 		var placeName = GetOrCreateText(_placeNameInput, selectedTheme.PlaceNames);
-		var extraName1 = GetOrCreateText(_extraNameInput1, selectedTheme.ExtraNames);
-		var extraName2 = GetOrCreateText(_extraNameInput2, selectedTheme.ExtraNames);
-		var extraName3 = GetOrCreateText(_extraNameInput3, selectedTheme.ExtraNames);
+		var extraName1 = GetOrCreateText(_extraNameInput1, selectedTheme.ExtraNames, usedExtraNames);
+		var extraName2 = GetOrCreateText(_extraNameInput2, selectedTheme.ExtraNames, usedExtraNames);
+		var extraName3 = GetOrCreateText(_extraNameInput3, selectedTheme.ExtraNames, usedExtraNames);
+
+		SaveIfNew(personalName1, "PersonalName");
+		SaveIfNew(personalName2, "PersonalName");
+		SaveIfNew(personalName3, "PersonalName");
+		SaveIfNew(professionName, "Profession");
+		SaveIfNew(unusualObjectName, "UnusualObject");
+		SaveIfNew(placeName, "PlaceName");
+		SaveIfNew(extraName1, "ExtraName");
+		SaveIfNew(extraName2, "ExtraName");
+		SaveIfNew(extraName3, "ExtraName");
 
 		// Stocker les valeurs dans GameData
 		GameData.Instance.PersonalName1 = personalName1;
@@ -144,13 +175,37 @@ public partial class NameGenerator : Control
 		GD.Print("Noms sauvegardés dans la base de données.");
 
 		// Changer de scène pour commencer l'aventure
-		GetTree().ChangeSceneToFile("res://scenes/start_adventure.tscn");
+		GetTree().ChangeSceneToFile("res://scenes/Stage1School.tscn");
+	}
+
+	private void SaveIfNew(string word, string category)
+	{
+		// A simple check to see if the word is from the original themes.
+		// This could be improved for more robustness.
+		bool isOriginal = false;
+		foreach (var theme in _themes.Values)
+		{
+			if ( (category == "PersonalName" && theme.PersonalNames.Contains(word)) ||
+				 (category == "Profession" && theme.Professions.Contains(word)) ||
+				 (category == "UnusualObject" && theme.UnusualObjects.Contains(word)) ||
+				 (category == "PlaceName" && theme.PlaceNames.Contains(word)) ||
+				 (category == "ExtraName" && theme.ExtraNames.Contains(word)) )
+			{
+				isOriginal = true;
+				break;
+			}
+		}
+
+		if (!isOriginal)
+		{
+			DatabaseManager.Instance.AddWordToLexique(word, category);
+		}
 	}
 
 	/// <summary>
 	/// Récupère le texte d'un LineEdit. S'il est vide, choisit un mot au hasard dans la liste fournie.
 	/// </summary>
-	private string GetOrCreateText(LineEdit input, List<string> wordList)
+	private string GetOrCreateText(LineEdit input, List<string> wordList, HashSet<string> usedWords = null)
 	{
 		if (!string.IsNullOrWhiteSpace(input.Text))
 		{
@@ -158,6 +213,22 @@ public partial class NameGenerator : Control
 		}
 		else
 		{
+			if (usedWords != null)
+			{
+				var availableWords = wordList.Except(usedWords).ToList();
+				if (availableWords.Any())
+				{
+					string uniqueRandomWord = availableWords[_random.Next(availableWords.Count)];
+					usedWords.Add(uniqueRandomWord);
+					input.Text = uniqueRandomWord; // Met à jour l'interface pour que le joueur voie le nom généré
+					return uniqueRandomWord;
+				}
+				else
+				{
+					// Fallback if all words are used (should not happen with current setup)
+					return "FallbackName"; 
+				}
+			}
 			string randomWord = wordList[_random.Next(wordList.Count)];
 			input.Text = randomWord; // Met à jour l'interface pour que le joueur voie le nom généré
 			return randomWord;

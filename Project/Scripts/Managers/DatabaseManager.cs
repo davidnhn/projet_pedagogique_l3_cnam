@@ -23,7 +23,13 @@ public partial class DatabaseManager : Node
 
     private void ConnectToDatabase()
     {
-        var connectionString = "Host=localhost;Port=5432;Username=postgres;Password=example_password;Database=game_db;";
+        var dbHost = "localhost";
+        var dbPort = "5432";
+        var dbUsername = "postgres";
+        var dbPassword = "example_password";
+        var dbName = "game_db";
+
+        var connectionString = $"Host={dbHost};Port={dbPort};Username={dbUsername};Password={dbPassword};Database={dbName};";
 
         try
         {
@@ -204,6 +210,67 @@ public partial class DatabaseManager : Node
             GD.PrintErr($"Error creating character: {ex.Message}");
             return -1;
         }
+    }
+
+    public void AddWordToLexique(string word, string category)
+    {
+        if (_connection == null)
+        {
+            GD.PrintErr("Database connection is not available.");
+            return;
+        }
+
+        try
+        {
+            var query = "INSERT INTO Lexique (mot, categorie) VALUES (@mot, @categorie) ON CONFLICT (mot, categorie) DO NOTHING;";
+            using (var cmd = new NpgsqlCommand(query, _connection))
+            {
+                cmd.Parameters.AddWithValue("mot", word);
+                cmd.Parameters.AddWithValue("categorie", category);
+                cmd.ExecuteNonQuery();
+            }
+        }
+        catch (Exception ex)
+        {
+            GD.PrintErr($"Error adding word to lexique: {ex.Message}");
+        }
+    }
+
+    public System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> GetLexiqueThemes()
+    {
+        var lexiqueThemes = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>>();
+        if (_connection == null)
+        {
+            GD.PrintErr("Database connection is not available.");
+            return lexiqueThemes;
+        }
+
+        try
+        {
+            var query = "SELECT mot, categorie FROM Lexique;";
+            using (var cmd = new NpgsqlCommand(query, _connection))
+            {
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var mot = reader.GetString(0);
+                        var categorie = reader.GetString(1);
+                        if (!lexiqueThemes.ContainsKey(categorie))
+                        {
+                            lexiqueThemes[categorie] = new System.Collections.Generic.List<string>();
+                        }
+                        lexiqueThemes[categorie].Add(mot);
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            GD.PrintErr($"Error getting lexique themes: {ex.Message}");
+        }
+
+        return lexiqueThemes;
     }
 
     public override void _ExitTree()

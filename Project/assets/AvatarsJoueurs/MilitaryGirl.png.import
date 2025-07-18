@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://sevuimvrmkia"
-path="res://.godot/imported/MilitaryGirl.png-9dae97ceefed1468a6715c9cc21f8e12.ctex"
+path="res://.godot/imported/MilitaryGirl.png-c78ffe097e9ca33d733f0b20f7644c4b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://backupRessources/assets/images/Avatars/MilitaryGirl.png"
-dest_files=["res://.godot/imported/MilitaryGirl.png-9dae97ceefed1468a6715c9cc21f8e12.ctex"]
+source_file="res://assets/AvatarsJoueurs/MilitaryGirl.png"
+dest_files=["res://.godot/imported/MilitaryGirl.png-c78ffe097e9ca33d733f0b20f7644c4b.ctex"]
 
 [params]
 

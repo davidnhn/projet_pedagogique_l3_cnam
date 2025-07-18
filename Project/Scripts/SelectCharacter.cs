@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class SelectCharacter : Node2D
+public partial class SelectCharacter : Control
 {
 	private TextureButton boyButton;
 	private TextureButton girlButton;
@@ -13,8 +13,8 @@ public partial class SelectCharacter : Node2D
 		try
 		{
 			// Get buttons through TextureRect path
-			boyButton = GetNode<TextureButton>("TextureRect/Boy_Button");
-			girlButton = GetNode<TextureButton>("TextureRect/Girl_Button");
+			boyButton = GetNode<TextureButton>("Panel/TextureRect/Boy_Button");
+			girlButton = GetNode<TextureButton>("Panel/TextureRect/Girl_Button");
 			GD.Print("Found buttons successfully!");
 		}
 		catch (Exception e)

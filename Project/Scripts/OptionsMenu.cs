@@ -3,7 +3,7 @@ using System;
 
 public partial class OptionsMenu : Control
 {
-    private Slider volumeSlider;
+    private HSlider volumeSlider;
     private CheckBox muteCheckBox;
     private float lastVolumeDb = 0;
     private Button returnButton;
@@ -11,7 +11,7 @@ public partial class OptionsMenu : Control
     public override void _Ready()
     {
         // Récupère le slider Volume
-        volumeSlider = GetNode<Slider>("MarginContainer/VBoxContainer/Volume");
+        volumeSlider = GetNode<HSlider>("Panel/CenterContainer/Volume");
         if (volumeSlider != null)
         {
             volumeSlider.ValueChanged += OnVolumeValueChanged;
@@ -26,7 +26,7 @@ public partial class OptionsMenu : Control
             volumeSlider.Value = sliderValue;
 
             // Récupère la CheckBox Mute
-            muteCheckBox = GetNode<CheckBox>("MarginContainer/VBoxContainer/CheckBox");
+            muteCheckBox = GetNode<CheckBox>("Panel/CheckBox");
             if (muteCheckBox != null)
             {
                 muteCheckBox.Toggled += OnMuteToggled;
@@ -43,12 +43,10 @@ public partial class OptionsMenu : Control
             GD.PrintErr("Volume slider not found!");
         }
 
-        returnButton = GetNode<Button>("MarginContainer/VBoxContainer/Return_Button");
+        returnButton = GetNode<Button>("Panel/Return_Button");
         if (returnButton != null)
         {
             returnButton.Pressed += OnReturnButtonPressed;
-            // Définit une taille minimale personnalisée pour le bouton Return
-            returnButton.CustomMinimumSize = new Vector2(200, 40);
         }
         else
         {
@@ -84,6 +82,6 @@ public partial class OptionsMenu : Control
 
     private void OnReturnButtonPressed()
     {
-        GetTree().ChangeSceneToFile("res://scenes/main_menu.tscn");
+        GetTree().ChangeSceneToFile("res://scenes/MainMenu.tscn");
     }
 }

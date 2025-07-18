@@ -82,16 +82,16 @@ public partial class NameGenerator : Control
 	public override void _Ready()
 	{
 		// Récupérer les références aux nœuds
-		_personalNameInput1 = GetNode<LineEdit>("PersonalNameInput1");
-		_personalNameInput2 = GetNode<LineEdit>("PersonalNameInput2");
-		_personalNameInput3 = GetNode<LineEdit>("PersonalNameInput3");
-		_professionNameInput = GetNode<LineEdit>("ProfessionNameInput");
-		_unusualObjectInput = GetNode<LineEdit>("UnusualObjectInput");
-		_placeNameInput = GetNode<LineEdit>("PlaceNameInput");
-		_extraNameInput1 = GetNode<LineEdit>("ExtraNameInput1");
-		_extraNameInput2 = GetNode<LineEdit>("ExtraNameInput2");
-		_extraNameInput3 = GetNode<LineEdit>("ExtraNameInput3");
-		_validateButton = GetNode<Button>("ValidateButton");
+		_personalNameInput1 = GetNode<LineEdit>("Panel/GridContainer/PersonalNameInput1");
+		_personalNameInput2 = GetNode<LineEdit>("Panel/GridContainer/PersonalNameInput2");
+		_personalNameInput3 = GetNode<LineEdit>("Panel/GridContainer/PersonalNameInput3");
+		_professionNameInput = GetNode<LineEdit>("Panel/GridContainer/ProfessionNameInput");
+		_unusualObjectInput = GetNode<LineEdit>("Panel/GridContainer/UnusualObjectInput");
+		_placeNameInput = GetNode<LineEdit>("Panel/GridContainer/PlaceNameInput");
+		_extraNameInput1 = GetNode<LineEdit>("Panel/GridContainer/ExtraNameInput1");
+		_extraNameInput2 = GetNode<LineEdit>("Panel/GridContainer/ExtraNameInput2");
+		_extraNameInput3 = GetNode<LineEdit>("Panel/GridContainer/ExtraNameInput3");
+		_validateButton = GetNode<Button>("Panel/ValidateButton");
 
 		_validateButton.Pressed += OnValidateButtonPressed;
 	}

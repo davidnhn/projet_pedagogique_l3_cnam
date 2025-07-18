@@ -1,0 +1,242 @@
+[gd_scene load_steps=11 format=3 uid="uid://c8w16r5j3qkf"]
+
+[ext_resource type="Script" uid="uid://bvwysp40n5j5g" path="res://Scripts/NameGenerator.cs" id="1_3j464"]
+[ext_resource type="Texture2D" uid="uid://ea66kuxk7j0v" path="res://assets/images/background.png" id="1_i47tt"]
+[ext_resource type="FontFile" uid="uid://b42spf2nlovg6" path="res://assets/fonts/BLOODFONT/Blood Thirst.ttf" id="3_3j464"]
+[ext_resource type="AudioStream" uid="uid://d25ypu3bip7qr" path="res://Music/Music_2.mp3" id="4_e6f3a"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e6f3a"]
+texture = ExtResource("1_i47tt")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3j464"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_on7id"]
+bg_color = Color(0.451388, 0.749439, 0.915179, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.203922)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.41)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i3bvr"]
+bg_color = Color(0.493861, 0.700086, 0.960709, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.203922)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.41)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uy5dn"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 281
+corner_radius_top_right = 281
+corner_radius_bottom_right = 281
+corner_radius_bottom_left = 281
+shadow_color = Color(0, 0, 0, 0.203922)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.41)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e6f3a"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[node name="name_generator" type="Control"]
+custom_minimum_size = Vector2(3840, 2160)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+script = ExtResource("1_3j464")
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(3840, 2160)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_e6f3a")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.711317
+anchor_top = 0.363881
+anchor_right = 0.711317
+anchor_bottom = 0.363881
+offset_left = -2054.46
+offset_top = -547.984
+offset_right = -247.456
+offset_bottom = -198.984
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.30039, 1.37302)
+theme_override_colors/font_color = Color(0.415686, 0.0588235, 0.0431373, 1)
+theme_override_colors/font_shadow_color = Color(0.889113, 0.17515, 0.128462, 1)
+theme_override_colors/font_outline_color = Color(0.462745, 0, 0, 1)
+theme_override_constants/shadow_offset_y = -10
+theme_override_fonts/font = ExtResource("3_3j464")
+theme_override_font_sizes/font_size = 196
+text = "Customize ton jeu"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ValidateButton" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 1474.0
+offset_top = 1636.0
+offset_right = 2065.0
+offset_bottom = 1909.0
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.686275, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_3j464")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3j464")
+theme_override_styles/hover = SubResource("StyleBoxFlat_on7id")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_i3bvr")
+theme_override_styles/normal = SubResource("StyleBoxFlat_uy5dn")
+text = "Valider"
+
+[node name="GridContainer" type="GridContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.483
+anchor_top = 0.502
+anchor_right = 0.483
+anchor_bottom = 0.502
+offset_left = -902.72
+offset_top = -398.32
+offset_right = 997.28
+offset_bottom = 415.68
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.86977, 0.970996)
+theme_override_constants/h_separation = 50
+theme_override_constants/v_separation = 50
+columns = 3
+
+[node name="PersonalNameInput1" type="LineEdit" parent="Panel/GridContainer"]
+custom_minimum_size = Vector2(600, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_placeholder_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_e6f3a")
+placeholder_text = "Nom Propre 1"
+alignment = 1
+
+[node name="PersonalNameInput2" type="LineEdit" parent="Panel/GridContainer"]
+custom_minimum_size = Vector2(600, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_placeholder_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_e6f3a")
+placeholder_text = "Nom Propre 2"
+alignment = 1
+
+[node name="PersonalNameInput3" type="LineEdit" parent="Panel/GridContainer"]
+custom_minimum_size = Vector2(600, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_placeholder_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_e6f3a")
+placeholder_text = "Nom Propre 3"
+alignment = 1
+
+[node name="ProfessionNameInput" type="LineEdit" parent="Panel/GridContainer"]
+custom_minimum_size = Vector2(600, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_placeholder_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_e6f3a")
+placeholder_text = "Metier"
+alignment = 1
+
+[node name="UnusualObjectInput" type="LineEdit" parent="Panel/GridContainer"]
+custom_minimum_size = Vector2(600, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_placeholder_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_e6f3a")
+placeholder_text = "Objet Insolite"
+alignment = 1
+
+[node name="PlaceNameInput" type="LineEdit" parent="Panel/GridContainer"]
+custom_minimum_size = Vector2(600, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_placeholder_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_e6f3a")
+placeholder_text = "Lieu"
+alignment = 1
+
+[node name="ExtraNameInput1" type="LineEdit" parent="Panel/GridContainer"]
+custom_minimum_size = Vector2(600, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_placeholder_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_e6f3a")
+placeholder_text = "Objet "
+alignment = 1
+
+[node name="ExtraNameInput2" type="LineEdit" parent="Panel/GridContainer"]
+custom_minimum_size = Vector2(600, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_placeholder_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_e6f3a")
+placeholder_text = "Objet "
+alignment = 1
+
+[node name="ExtraNameInput3" type="LineEdit" parent="Panel/GridContainer"]
+custom_minimum_size = Vector2(600, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_placeholder_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_e6f3a")
+placeholder_text = "Objet "
+alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_e6f3a")
+autoplay = true

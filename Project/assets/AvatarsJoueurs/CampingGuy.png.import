@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ds5jyd6dxovqg"
-path="res://.godot/imported/FemaleCharacter.png-756ca22a14cdb4583377da76f221738e.ctex"
+uid="uid://bkpu1exlpvft0"
+path="res://.godot/imported/CampingGuy.png-b7867add04202e59e1c0a057e377a214.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://backupRessources/assets/images/FemaleCharacter.png"
-dest_files=["res://.godot/imported/FemaleCharacter.png-756ca22a14cdb4583377da76f221738e.ctex"]
+source_file="res://backupRessources/assets/images/Avatars/CampingGuy.png"
+dest_files=["res://.godot/imported/CampingGuy.png-b7867add04202e59e1c0a057e377a214.ctex"]
 
 [params]
 

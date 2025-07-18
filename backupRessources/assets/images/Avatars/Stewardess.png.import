@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ds5jyd6dxovqg"
-path="res://.godot/imported/FemaleCharacter.png-756ca22a14cdb4583377da76f221738e.ctex"
+uid="uid://bnvygl7tsgsxu"
+path="res://.godot/imported/Stewardess.png-b5f9a5a9dae7f0b7940bacb920b6299d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://backupRessources/assets/images/FemaleCharacter.png"
-dest_files=["res://.godot/imported/FemaleCharacter.png-756ca22a14cdb4583377da76f221738e.ctex"]
+source_file="res://backupRessources/assets/images/Avatars/Stewardess.png"
+dest_files=["res://.godot/imported/Stewardess.png-b5f9a5a9dae7f0b7940bacb920b6299d.ctex"]
 
 [params]
 

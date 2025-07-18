@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ck76kmlyl2377"
-path="res://.godot/imported/coolschool_tileset.png-d127a02be9a6aca02ed2fdf6656f32e7.ctex"
+path="res://.godot/imported/coolschool_tileset.png-8013bcd9a9c8909ff95b97f976e9405f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/coolschool_tileset.png"
-dest_files=["res://.godot/imported/coolschool_tileset.png-d127a02be9a6aca02ed2fdf6656f32e7.ctex"]
+source_file="res://backupRessources/assets/images/coolschool_tileset.png"
+dest_files=["res://.godot/imported/coolschool_tileset.png-8013bcd9a9c8909ff95b97f976e9405f.ctex"]
 
 [params]
 

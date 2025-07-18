@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ds5jyd6dxovqg"
-path="res://.godot/imported/FemaleCharacter.png-756ca22a14cdb4583377da76f221738e.ctex"
+uid="uid://dhyasie1etjyj"
+path="res://.godot/imported/BollywoodActor.png-c733a8e27e92d108005a6951ffba399f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://backupRessources/assets/images/FemaleCharacter.png"
-dest_files=["res://.godot/imported/FemaleCharacter.png-756ca22a14cdb4583377da76f221738e.ctex"]
+source_file="res://backupRessources/assets/images/Avatars/BollywoodActor.png"
+dest_files=["res://.godot/imported/BollywoodActor.png-c733a8e27e92d108005a6951ffba399f.ctex"]
 
 [params]
 

@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://cbdnmdr5jx6wp"
-path="res://.godot/imported/Kenney Rocket.ttf-34ef6f26ca2bd25adf58ebc34e0ce607.fontdata"
+path="res://.godot/imported/Kenney Rocket.ttf-c6906a9e7c88363d3bf11d3efb603110.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/Kenney Rocket.ttf"
-dest_files=["res://.godot/imported/Kenney Rocket.ttf-34ef6f26ca2bd25adf58ebc34e0ce607.fontdata"]
+source_file="res://backupRessources/assets/fonts/Kenney Rocket.ttf"
+dest_files=["res://.godot/imported/Kenney Rocket.ttf-c6906a9e7c88363d3bf11d3efb603110.fontdata"]
 
 [params]
 

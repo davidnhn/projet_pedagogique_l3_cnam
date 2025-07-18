@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://b42spf2nlovg6"
-path="res://.godot/imported/Blood Thirst.ttf-13ec8cff59df5bf45c27cda248c90fbf.fontdata"
+path="res://.godot/imported/Blood Thirst.ttf-8d5fb3ad70fa12206b98a296df9246bd.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/BLOODFONT/Blood Thirst.ttf"
-dest_files=["res://.godot/imported/Blood Thirst.ttf-13ec8cff59df5bf45c27cda248c90fbf.fontdata"]
+source_file="res://backupRessources/assets/fonts/BLOODFONT/Blood Thirst.ttf"
+dest_files=["res://.godot/imported/Blood Thirst.ttf-8d5fb3ad70fa12206b98a296df9246bd.fontdata"]
 
 [params]
 

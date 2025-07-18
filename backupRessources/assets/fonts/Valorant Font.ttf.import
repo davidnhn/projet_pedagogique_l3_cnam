@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://76033bjs1xhf"
-path="res://.godot/imported/Valorant Font.ttf-bbaa422dd4d9cb5090b5c4a48394f84b.fontdata"
+path="res://.godot/imported/Valorant Font.ttf-99031553496ae8f2002019c7f8cc01b4.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/Valorant Font.ttf"
-dest_files=["res://.godot/imported/Valorant Font.ttf-bbaa422dd4d9cb5090b5c4a48394f84b.fontdata"]
+source_file="res://backupRessources/assets/fonts/Valorant Font.ttf"
+dest_files=["res://.godot/imported/Valorant Font.ttf-99031553496ae8f2002019c7f8cc01b4.fontdata"]
 
 [params]
 

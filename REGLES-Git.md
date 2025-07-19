@@ -139,11 +139,28 @@ git push origin --delete feature/contact-page         # à distance
 
 ## 🔄 Cas particulier : mise à jour de sa branche locale
 
-Avant de commencer à travailler :
+Avant de commencer à travailler, check sur CLICKUP qui travaille sur la feature que tu souhaites faire:
+```bash
+git pull
+git fetch origin develop
+git checkout develop
+git pull
+```
+puis recuperer une branche existante (voir sur github, toutes les branches feature/truc  )
 ```bash
 git checkout develop
-git pull origin develop
+git checkout branch_sur_github
 ```
+ou sinon cree ta propre branche: `feature/NouvelleSuperGenialeFonctionnalite` a partir de develop et SURTOUT si tu ne veux pas recevoir un `COUP DE FOUET` ---> INDIQUE SUR `CLICKUP` CE QUE TU FAIS
+```bash
+git checkout develop
+git checkout -b feature/NouvelleSuperGenialeFonctionnalite
+```
+si t'es tout seul a bosser sur la fonctionnalite, tu te casses pas la tete 
+```
+git push
+```
+SI VOUS ETES PLUSIEURS SUR LA MEME FEATURE/TRUC---> DEMANDER DE L' AIDE POUR GIT A DAVID !!!!
 
 Pour mettre à jour une branche en cours :
 ```bash

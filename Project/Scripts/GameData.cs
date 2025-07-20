@@ -12,6 +12,9 @@ public partial class GameData : Node
     private string _characterGender = "";
     private Classe _characterClass;
     
+    // Position du joueur pour le chargement de sauvegarde
+    public Vector2 PlayerPosition { get; set; } = Vector2.Zero;
+    
     // Propriété pour accéder au nom du joueur
     public string PlayerName
     {

@@ -353,4 +353,94 @@ public partial class DatabaseManager : Node
             return -1;
         }
     }
+
+    public Godot.Collections.Dictionary LoadMostRecentSave(int idJoueur)
+    {
+        if (_connection == null)
+        {
+            GD.PrintErr("Database connection is not available.");
+            return null;
+        }
+
+        try
+        {
+            var query = @"
+                SELECT s.positionXJoueur, s.positionYJoueur, z.nomZone 
+                FROM Sauvegarde s
+                JOIN Zone z ON s.idZone = z.idZone
+                WHERE s.idJoueur = @idJoueur 
+                ORDER BY s.dateSauvegarde DESC 
+                LIMIT 1;";
+
+            using (var cmd = new NpgsqlCommand(query, _connection))
+            {
+                cmd.Parameters.AddWithValue("idJoueur", idJoueur);
+                using (var reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        var saveData = new Godot.Collections.Dictionary();
+                        
+                        var posX = reader.GetInt32(0);
+                        var posY = reader.GetInt32(1);
+                        saveData["position"] = new Vector2(posX, posY);
+                        saveData["scene_name"] = reader.GetString(2);
+                        
+                        GD.Print($"Loaded save data: Position=({posX}, {posY}), Scene={reader.GetString(2)}");
+                        return saveData;
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            GD.PrintErr($"Error loading most recent save: {ex.Message}");
+        }
+
+        return null;
+    }
+
+    public Godot.Collections.Dictionary LoadMostRecentSaveFromAnyPlayer()
+    {
+        if (_connection == null)
+        {
+            GD.PrintErr("Database connection is not available.");
+            return null;
+        }
+
+        try
+        {
+            var query = @"
+                SELECT s.positionXJoueur, s.positionYJoueur, z.nomZone 
+                FROM Sauvegarde s
+                JOIN Zone z ON s.idZone = z.idZone
+                ORDER BY s.dateSauvegarde DESC 
+                LIMIT 1;";
+
+            using (var cmd = new NpgsqlCommand(query, _connection))
+            {
+                using (var reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        var saveData = new Godot.Collections.Dictionary();
+                        
+                        var posX = reader.GetInt32(0);
+                        var posY = reader.GetInt32(1);
+                        saveData["position"] = new Vector2(posX, posY);
+                        saveData["scene_name"] = reader.GetString(2);
+                        
+                        GD.Print($"Loaded save data from any player: Position=({posX}, {posY}), Scene={reader.GetString(2)}");
+                        return saveData;
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            GD.PrintErr($"Error loading most recent save from any player: {ex.Message}");
+        }
+
+        return null;
+    }
 } 

@@ -162,8 +162,8 @@ public partial class Stage1SchoolManager : Node2D
                     SaveGame();
                     break;
                 case "exit":
-                    GD.Print("Closing menu...");
-                    ToggleOptionsMenu();
+                    GD.Print("Returning to main menu...");
+                    ReturnToMainMenu();
                     break;
             }
         }
@@ -237,5 +237,14 @@ public partial class Stage1SchoolManager : Node2D
         };
         AddChild(timer);
         timer.Start();
+    }
+
+    private void ReturnToMainMenu()
+    {
+        // Remettre le jeu en mode normal (pas en pause)
+        GetTree().Paused = false;
+        
+        // Changer vers la scène du menu principal
+        GetTree().ChangeSceneToFile("res://scenes/MainMenu.tscn");
     }
 } 

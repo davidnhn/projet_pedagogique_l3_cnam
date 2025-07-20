@@ -34,6 +34,28 @@ public partial class Stage1SchoolManager : Node2D
         _optionsMenu.Visible = false;
         
         GD.Print("Stage1SchoolManager initialized successfully!");
+        
+        // Appeler la méthode de positionnement après l'initialisation
+        CallDeferred(nameof(HandleSavedPosition));
+    }
+
+    private void HandleSavedPosition()
+    {
+        // Vérifier si on vient d'un chargement de sauvegarde
+        if (GameData.Instance.PlayerPosition != Vector2.Zero)
+        {
+            GD.Print($"Loading saved position: {GameData.Instance.PlayerPosition}");
+            if (_player != null)
+            {
+                _player.GlobalPosition = GameData.Instance.PlayerPosition;
+            }
+            // Réinitialiser la position pour éviter de la réutiliser lors du prochain démarrage
+            GameData.Instance.PlayerPosition = Vector2.Zero;
+        }
+        else
+        {
+            GD.Print("Starting new game - using default player position");
+        }
     }
 
     public override void _Input(InputEvent @event)
@@ -189,8 +211,9 @@ public partial class Stage1SchoolManager : Node2D
             return;
         }
 
-        // Déterminer la zone actuelle (Stage1School = Zone 1)
-        var zoneId = DatabaseManager.Instance.GetZoneIdByName("Stage1School");
+        // Déterminer la zone actuelle - utiliser le vrai nom de zone de la base de données
+        // Stage1School correspond à "Le Désert de la Cafet" dans la base de données
+        var zoneId = DatabaseManager.Instance.GetZoneIdByName("Le Désert de la Cafet");
         if (zoneId == -1)
         {
             // Si la zone n'existe pas, utiliser l'ID 1 par défaut

@@ -114,9 +114,31 @@ public partial class MainMenuManager : Control
 			// Stocker les données de chargement pour que la nouvelle scène puisse les utiliser
 			GameData.Instance.PlayerPosition = (Vector2)saveData["position"];
 			
-			// Le nom de la scène est stocké dans la base, par exemple "Stage1School"
-			string sceneName = (string)saveData["scene_name"];
-			GetTree().ChangeSceneToFile($"res://scenes/{sceneName}.tscn");
+			// Le nom de la scène est stocké dans la base, par exemple "Le Désert de la Cafet"
+			string zoneName = (string)saveData["scene_name"];
+			string sceneFileName = MapZoneNameToSceneFile(zoneName);
+			
+			GD.Print($"Mapping zone '{zoneName}' to scene file '{sceneFileName}'");
+			GetTree().ChangeSceneToFile($"res://scenes/{sceneFileName}");
+		}
+	}
+	
+	// Mappe les noms de zones de la base de données vers les vrais fichiers de scènes
+	private string MapZoneNameToSceneFile(string zoneName)
+	{
+		switch (zoneName)
+		{
+			case "Le Désert de la Cafet":
+				return "Stage1School.tscn";
+			case "L'Enfer du Tableau Mathématique":
+				return "Stage2Laboratory.tscn";
+			case "Le Parc Commando":
+				return "Stage1School.tscn"; // ou une autre scène si elle existe
+			case "La Salle Informatique":
+				return "Stage2Laboratory.tscn"; // ou une autre scène si elle existe
+			default:
+				GD.PrintErr($"Unknown zone name: {zoneName}. Defaulting to Stage1School.tscn");
+				return "Stage1School.tscn";
 		}
 	}
 }

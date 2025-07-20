@@ -1,5 +1,0 @@
-[33m3d83118[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mfeature/in_game_save_menu[m[33m)[m feat: Ajout boutons Continue et Exit - Continue charge la sauvegarde la plus recente - Exit retourne au menu principal
-[33mefee64f[m feat: Boutons Continue et Exit fonctionnels
-[33m91eeb7d[m[33m ([m[1;31morigin/feature/in_game_save_menu[m[33m)[m save menu in game
-[33m0644c3a[m[33m ([m[1;31morigin/feature/sauvegarde[m[33m, [m[1;31morigin/feature/quitterJeu[m[33m, [m[1;31morigin/feature/menustart[m[33m, [m[1;31morigin/feature/menuJoueur[m[33m, [m[1;31morigin/feature/interactionEnvironnement[m[33m, [m[1;31morigin/feature/gestionsCharacteristiquesPersonnages[m[33m, [m[1;31morigin/feature/evenementJeu[m[33m, [m[1;31morigin/feature/combat[m[33m, [m[1;31morigin/feature/animationPNJ-BOSS[m[33m, [m[1;31morigin/feature/animationJoueur[m[33m, [m[1;31morigin/develop[m[33m, [m[1;32mfeature/mettreEnPause[m[33m, [m[1;32mdevelop[m[33m)[m maj(master): backup, derniere version
-[33m1f3d8d4[m Maj Globale

@@ -106,7 +106,11 @@ public partial class DatabaseManager : Node
             {
                 cmd.Parameters.AddWithValue("pseudo", pseudo);
                 var result = cmd.ExecuteScalar();
-                return result != null ? (int)result : -1;
+                if (result != null && int.TryParse(result.ToString(), out int playerId))
+                {
+                    return playerId;
+                }
+                return -1;
             }
         }
         catch (Exception ex)
@@ -279,7 +283,74 @@ public partial class DatabaseManager : Node
         {
             _connection.Close();
             _connection.Dispose();
-            GD.Print("Database connection closed.");
+        }
+    }
+
+    // Méthodes de sauvegarde
+    public int SaveGame(int idJoueur, Vector2 position, int idZone)
+    {
+        if (_connection == null)
+        {
+            GD.PrintErr("Database connection is not available.");
+            return -1;
+        }
+
+        try
+        {
+            var query = @"
+                INSERT INTO Sauvegarde (idJoueur, positionXJoueur, positionYJoueur, idZone, dateSauvegarde) 
+                VALUES (@idJoueur, @posX, @posY, @idZone, @date) 
+                RETURNING idSauvegarde;";
+            
+            using (var cmd = new NpgsqlCommand(query, _connection))
+            {
+                cmd.Parameters.AddWithValue("idJoueur", idJoueur);
+                cmd.Parameters.AddWithValue("posX", (int)position.X);
+                cmd.Parameters.AddWithValue("posY", (int)position.Y);
+                cmd.Parameters.AddWithValue("idZone", idZone);
+                cmd.Parameters.AddWithValue("date", DateTime.Now);
+                
+                var result = cmd.ExecuteScalar();
+                if (result != null && int.TryParse(result.ToString(), out int saveId))
+                {
+                    return saveId;
+                }
+                return -1;
+            }
+        }
+        catch (Exception ex)
+        {
+            GD.PrintErr($"Error saving game: {ex.Message}");
+            return -1;
+        }
+    }
+
+    public int GetZoneIdByName(string zoneName)
+    {
+        if (_connection == null)
+        {
+            GD.PrintErr("Database connection is not available.");
+            return -1;
+        }
+
+        try
+        {
+            var query = "SELECT idZone FROM Zone WHERE nomZone = @zoneName;";
+            using (var cmd = new NpgsqlCommand(query, _connection))
+            {
+                cmd.Parameters.AddWithValue("zoneName", zoneName);
+                var result = cmd.ExecuteScalar();
+                if (result != null && int.TryParse(result.ToString(), out int zoneId))
+                {
+                    return zoneId;
+                }
+                return -1;
+            }
+        }
+        catch (Exception ex)
+        {
+            GD.PrintErr($"Error getting zone ID: {ex.Message}");
+            return -1;
         }
     }
 } 

@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bgheglwupl5jf"]
+[gd_scene load_steps=11 format=3 uid="uid://bgheglwupl5jf"]
 
 [ext_resource type="Texture2D" uid="uid://ck76kmlyl2377" path="res://assets/images/coolschool_tileset.png" id="1_nk0k0"]
 [ext_resource type="PackedScene" uid="uid://bdbavhsj47ndl" path="res://scenes/mallakcharacter2d.tscn" id="2_player"]
+[ext_resource type="Script" uid="uid://wawc7slrt374" path="res://Scripts/Stage1SchoolManager.cs" id="3_stage_manager"]
+[ext_resource type="PackedScene" uid="uid://ys2g0j34fufr" path="res://scenes/menu_options_in_game.tscn" id="4_options_menu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nk0k0"]
 texture = ExtResource("1_nk0k0")
@@ -1903,6 +1905,7 @@ texture = ExtResource("1_nk0k0")
 sources/0 = SubResource("TileSetAtlasSource_r6k7x")
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("3_stage_manager")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_ojua5")
@@ -1924,3 +1927,6 @@ position = Vector2(500, 300)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(2, 2)
+
+[node name="OptionsMenuInGame" parent="." instance=ExtResource("4_options_menu")]
+visible = false

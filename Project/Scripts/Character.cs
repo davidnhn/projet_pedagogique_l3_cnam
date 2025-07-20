@@ -31,6 +31,14 @@ public partial class Character : CharacterBody2D
             return;
         }
         
+        // Ne pas traiter les touches si le jeu est en pause
+        if (GetTree().Paused)
+        {
+            Velocity = Vector2.Zero;
+            MoveAndSlide();
+            return;
+        }
+        
         Vector2 inputDirection = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
         Velocity = inputDirection.Normalized() * Speed;
         

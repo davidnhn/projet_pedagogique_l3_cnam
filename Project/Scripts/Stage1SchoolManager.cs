@@ -60,6 +60,10 @@ public partial class Stage1SchoolManager : Node2D
 
     public override void _Input(InputEvent @event)
     {
+        // Si l'inventaire est ouvert, ignorer la touche X
+        if (GetNodeOrNull<Control>("UIInventory") != null)
+            return;
+
         // Détecter la touche X pour ouvrir/fermer le menu
         if (@event is InputEventKey keyEvent && keyEvent.Pressed && keyEvent.Keycode == Key.X)
         {
@@ -177,7 +181,7 @@ public partial class Stage1SchoolManager : Node2D
             {
                 case "items":
                     GD.Print("Opening inventory...");
-                    // Ici vous pouvez ajouter le code pour ouvrir l'inventaire
+                    OpenInventoryOverlay();
                     break;
                 case "save":
                     GD.Print("Saving game...");
@@ -196,7 +200,6 @@ public partial class Stage1SchoolManager : Node2D
         if (_player == null)
         {
             GD.PrintErr("Player not found for saving!");
-            ShowSaveMessage("Erreur: Personnage non trouvé!", true);
             return;
         }
 
@@ -207,7 +210,6 @@ public partial class Stage1SchoolManager : Node2D
         if (playerId == -1)
         {
             GD.PrintErr("Player not found in database!");
-            ShowSaveMessage("Erreur: Joueur non trouvé dans la base de données!", true);
             return;
         }
 
@@ -230,36 +232,11 @@ public partial class Stage1SchoolManager : Node2D
         if (saveId > 0)
         {
             GD.Print($"Game saved successfully! Save ID: {saveId}");
-            ShowSaveMessage("Partie sauvegardée avec succès!");
         }
         else
         {
             GD.PrintErr("Failed to save game!");
-            ShowSaveMessage("Erreur lors de la sauvegarde!", true);
         }
-    }
-
-    private void ShowSaveMessage(string message, bool isError = false)
-    {
-        // Créer un label temporaire pour afficher le message
-        var label = new Label();
-        label.Text = message;
-        label.AddThemeColorOverride("font_color", isError ? new Color(1, 0, 0) : new Color(0, 1, 0)); // Rouge si erreur, vert si succès
-        label.Position = new Vector2(100, 100);
-        label.Size = new Vector2(400, 50);
-        
-        AddChild(label);
-        
-        // Supprimer le message après 3 secondes
-        var timer = new Timer();
-        timer.WaitTime = 3.0f;
-        timer.OneShot = true;
-        timer.Timeout += () => {
-            label.QueueFree();
-            timer.QueueFree();
-        };
-        AddChild(timer);
-        timer.Start();
     }
 
     private void ReturnToMainMenu()
@@ -269,5 +246,20 @@ public partial class Stage1SchoolManager : Node2D
         
         // Changer vers la scène du menu principal
         GetTree().ChangeSceneToFile("res://scenes/MainMenu.tscn");
+    }
+
+    private void OpenInventoryOverlay()
+    {
+        var inventoryScene = GD.Load<PackedScene>("res://scenes/inventory.tscn");
+        if (inventoryScene != null)
+        {
+            var inventoryInstance = inventoryScene.Instantiate();
+            var uiRoot = GetNode<CanvasLayer>("CanvasLayer");
+            uiRoot.AddChild(inventoryInstance, true);
+        }
+        else
+        {
+            GD.PrintErr("Impossible de charger la scène d'inventaire !");
+        }
     }
 } 

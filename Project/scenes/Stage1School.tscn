@@ -1930,3 +1930,5 @@ zoom = Vector2(2, 2)
 
 [node name="OptionsMenuInGame" parent="." instance=ExtResource("4_options_menu")]
 visible = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]

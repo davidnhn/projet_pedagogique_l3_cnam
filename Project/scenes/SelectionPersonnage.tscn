@@ -1,0 +1,144 @@
+[gd_scene load_steps=12 format=3 uid="uid://c8ihoo1aedt2j"]
+
+[ext_resource type="Script" uid="uid://0us76bn8ravw" path="res://SelectionPersonnage.cs" id="1_re5un"]
+[ext_resource type="Texture2D" uid="uid://biqfp01dyc304" path="res://assets/images/Campeur.png" id="2_1do6x"]
+[ext_resource type="Texture2D" uid="uid://ddqdte46lkfj7" path="res://assets/images/ProfesseurMath.png" id="3_6u3ad"]
+[ext_resource type="Texture2D" uid="uid://dv14qvh47fcaq" path="res://assets/images/Soldat.png" id="4_e8b22"]
+[ext_resource type="Texture2D" uid="uid://dsfgveh6x8spy" path="res://assets/images/HotesseAir.png" id="5_vgfwq"]
+[ext_resource type="Texture2D" uid="uid://nhrwtllifjc1" path="res://assets/images/VoleurCalculette.png" id="6_yu6yo"]
+[ext_resource type="Texture2D" uid="uid://bkao6v0fu3oy4" path="res://assets/images/Indien.png" id="7_6jbrc"]
+[ext_resource type="Texture2D" uid="uid://6ymukq4ocewv" path="res://assets/images/background.jpg" id="8_6u3ad"]
+
+[sub_resource type="Animation" id="Animation_6u3ad"]
+resource_name = "SelectCampeur"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/GridContainer/CardCampeur/TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_e8b22"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/GridContainer/CardCampeur/TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vgfwq"]
+_data = {
+&"RESET": SubResource("Animation_e8b22"),
+&"SelectCampeur": SubResource("Animation_6u3ad")
+}
+
+[node name="MarginContainer" type="MarginContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_re5un")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(700, 500)
+layout_mode = 2
+columns = 3
+
+[node name="CardCampeur" type="VBoxContainer" parent="VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(200, 300)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/GridContainer/CardCampeur"]
+layout_mode = 2
+stretch_mode = 5
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/GridContainer/CardCampeur"]
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("2_1do6x")
+stretch_mode = 6
+
+[node name="ProfesseurMath" type="VBoxContainer" parent="VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(200, 300)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/GridContainer/ProfesseurMath"]
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/GridContainer/ProfesseurMath"]
+layout_mode = 2
+texture_normal = ExtResource("3_6u3ad")
+
+[node name="Soldat" type="VBoxContainer" parent="VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(200, 300)
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/GridContainer/Soldat"]
+layout_mode = 2
+texture_normal = ExtResource("4_e8b22")
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/GridContainer/Soldat"]
+layout_mode = 2
+
+[node name="HotesseAir" type="VBoxContainer" parent="VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(200, 300)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/GridContainer/HotesseAir"]
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/GridContainer/HotesseAir"]
+layout_mode = 2
+texture_normal = ExtResource("5_vgfwq")
+
+[node name="VoleurCalculette" type="VBoxContainer" parent="VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(200, 300)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/GridContainer/VoleurCalculette"]
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/GridContainer/VoleurCalculette"]
+layout_mode = 2
+texture_normal = ExtResource("6_yu6yo")
+
+[node name="Indien" type="VBoxContainer" parent="VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(200, 300)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/GridContainer/Indien"]
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/GridContainer/Indien"]
+layout_mode = 2
+texture_normal = ExtResource("7_6jbrc")
+
+[node name="Valider" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("8_6u3ad")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_vgfwq")
+}

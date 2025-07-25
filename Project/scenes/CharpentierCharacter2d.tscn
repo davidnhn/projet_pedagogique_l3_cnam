@@ -91,5 +91,5 @@ libraries = {
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-9, -12)
+position = Vector2(-32, -40)
 shape = SubResource("CircleShape2D_st464")

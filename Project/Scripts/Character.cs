@@ -22,28 +22,28 @@ public partial class Character : CharacterBody2D
 		Health = MaxHealth;
 	}
 
-    public override void _PhysicsProcess(double delta)
-    {
-        if (!IsAlive)
-        {
-            Velocity = Vector2.Zero;
-            MoveAndSlide();
-            return;
-        }
-        
-        // Ne pas traiter les touches si le jeu est en pause
-        if (GetTree().Paused)
-        {
-            Velocity = Vector2.Zero;
-            MoveAndSlide();
-            return;
-        }
-        
-        Vector2 inputDirection = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
-        Velocity = inputDirection.Normalized() * Speed;
-        
-        MoveAndSlide();
-    }
+	public override void _PhysicsProcess(double delta)
+	{
+		if (!IsAlive)
+		{
+			Velocity = Vector2.Zero;
+			MoveAndSlide();
+			return;
+		}
+		
+		// Ne pas traiter les touches si le jeu est en pause
+		if (GetTree().Paused)
+		{
+			Velocity = Vector2.Zero;
+			MoveAndSlide();
+			return;
+		}
+		
+		Vector2 inputDirection = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
+		Velocity = inputDirection.Normalized() * Speed;
+		
+		MoveAndSlide();
+	}
 
 	public virtual void TakeDamage(int damage)
 	{

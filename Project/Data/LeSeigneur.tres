@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://l3oklnw1f7vb"]
+
+[ext_resource type="Script" uid="uid://dn1kj60ew2yg4" path="res://Scripts/Data/BaseEnemy.cs" id="1_enemy_script"]
+[ext_resource type="Texture2D" uid="uid://blhvcxpnn741r" path="res://assets/images/god.png" id="2_god_texture"]
+
+[resource]
+script = ExtResource("1_enemy_script")
+EnemyName = "Le Seigneur"
+EnemyTexture = ExtResource("2_god_texture")
+Health = 100
+Damage = 40

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="projet_pedagogique_L3_CNAM"
-run/main_scene="res://scenes/MainMenu.tscn"
+run/main_scene="uid://7o6s76hcyvc2"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 

@@ -88,8 +88,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_mn5y1")
 }
 
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-4, 2)
 shape = SubResource("CircleShape2D_st464")

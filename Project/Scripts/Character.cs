@@ -18,7 +18,7 @@ public partial class Character : CharacterBody2D
 	[Export] public int TileLayer { get; set; } = 0; 
 	[Export] public float InteractDistance { get; set; } = 16f;      
 	[Export] public string InteractAction { get; set; } = "interact";
-	[Export] public string InventoryScenePath { get; set; } = "res://inventory.tscn";
+	[Export] public string InventoryScenePath { get; set; } = "res://scenes/inventory.tscn";
 	[Export] public NodePath UiLayerPath { get; set; }              
 
 	private TileMap _tilemap;

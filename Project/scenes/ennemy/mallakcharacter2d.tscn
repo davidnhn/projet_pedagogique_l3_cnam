@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bdbavhsj47ndl"]
+[gd_scene load_steps=17 format=3 uid="uid://dvumkbva8xo32"]
 
 [ext_resource type="Texture2D" uid="uid://gpm21fe0lwub" path="res://assets/Sprite/mallaksprite2d_.png" id="1_yq62l"]
 [ext_resource type="Script" path="res://Scripts/Character.cs" id="2_character"]
@@ -135,7 +135,7 @@ transitions = ["Start", "Deplacement", SubResource("AnimationNodeStateMachineTra
 radius = 22.0
 height = 44.0
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["Ennemy"]]
 script = ExtResource("2_character")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

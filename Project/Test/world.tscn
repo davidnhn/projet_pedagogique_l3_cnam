@@ -6,6 +6,11 @@
 [node name="World" type="Node"]
 
 [node name="TestGuy" parent="." instance=ExtResource("1_72vl7")]
+light_mask = 3
+visibility_layer = 5
 
 [node name="Lamp" parent="." instance=ExtResource("2_3gqqv")]
-position = Vector2(420, 245)
+light_mask = 5
+visibility_layer = 3
+position = Vector2(106, 89)
+collision_layer = 4

@@ -1,6 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://bvoj6r0f0rrtl"]
+[gd_scene load_steps=8 format=3 uid="uid://cwe3t78spnhv"]
 
-[ext_resource type="Texture2D" uid="uid://h5tw4rvtt8jt" path="res://assets/Sprite/FlightAttendantCharacter2d.png" id="1_i5pt4"]
+[ext_resource type="Texture2D" uid="uid://b8f6vjmphuekt" path="res://assets/Sprite/CamperCharacter2d.png" id="1_g1f8e"]
 
 [sub_resource type="Animation" id="Animation_ygid3"]
 resource_name = "Avancer_arriere"
@@ -90,11 +90,11 @@ _data = {
 &"RESET": SubResource("Animation_jcov1")
 }
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.546875, 0.578125)
-texture = ExtResource("1_i5pt4")
+texture = ExtResource("1_g1f8e")
 hframes = 4
 vframes = 4
 

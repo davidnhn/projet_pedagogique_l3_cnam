@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dfnaflw80viot"]
+[gd_scene load_steps=8 format=3 uid="uid://bsdafy1ytvcma"]
 
 [ext_resource type="Texture2D" uid="uid://dtvcxr0frgy1n" path="res://assets/Sprite/MathProfessorCharacter2d.png" id="1_wxd2n"]
 
@@ -90,7 +90,7 @@ _data = {
 &"RESET": SubResource("Animation_jcov1")
 }
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.546875, 0.578125)

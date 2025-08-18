@@ -1,6 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://515r3dhy80h5"]
+[gd_scene load_steps=8 format=3 uid="uid://dsycpw0whb15b"]
 
-[ext_resource type="Texture2D" uid="uid://mv4lujwdhgq4" path="res://assets/Sprite/IndianCharacter2d.png" id="1_utn23"]
+[ext_resource type="Texture2D" uid="uid://dc6qmpedrpixx" path="res://assets/Sprite/ThiefCalculatorCharacter2d.png" id="1_ygid3"]
 
 [sub_resource type="Animation" id="Animation_ygid3"]
 resource_name = "Avancer_arriere"
@@ -90,11 +90,11 @@ _data = {
 &"RESET": SubResource("Animation_jcov1")
 }
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.546875, 0.578125)
-texture = ExtResource("1_utn23")
+texture = ExtResource("1_ygid3")
 hframes = 4
 vframes = 4
 

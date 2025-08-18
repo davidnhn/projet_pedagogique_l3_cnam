@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://bmw6l7xk4ehwa"]
+[gd_scene load_steps=10 format=3 uid="uid://bmw6l7xk4ehwa"]
 
+[ext_resource type="Script" path="res://Scripts/Character.cs" id="1_3k4m2"]
 [ext_resource type="Texture2D" uid="uid://gpm21fe0lwub" path="res://assets/Sprite/mallaksprite2d_.png" id="1_o2som"]
-[ext_resource type="Script" uid="uid://v0w30ehe8nup" path="res://Test/TestGuy.cs" id="1_sptkk"]
-[ext_resource type="PackedScene" uid="uid://b52vb3iuob1fv" path="res://scenes/interactionScenes/interactionArea.tscn" id="2_soocq"]
 
 [sub_resource type="Animation" id="Animation_1ipam"]
 resource_name = "Deplacement_Face_Mallak"
@@ -99,12 +98,10 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_sptkk"]
 radius = 33.0606
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_o2som"]
-radius = 180.4
-
 [node name="TestGuy" type="CharacterBody2D" groups=["player"]]
-collision_mask = 10
-script = ExtResource("1_sptkk")
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_3k4m2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_o2som")
@@ -117,15 +114,6 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-light_mask = 0
+light_mask = 2
+visibility_layer = 4
 shape = SubResource("CircleShape2D_sptkk")
-
-[node name="InteractionArea2" parent="." groups=["player"] instance=ExtResource("2_soocq")]
-collision_layer = 1
-collision_mask = 15
-action_name = "talk"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea2"]
-light_mask = 0
-visibility_layer = 0
-shape = SubResource("CircleShape2D_o2som")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://chh3p3rjmooiv"]
+[gd_scene load_steps=8 format=3 uid="uid://bycancossmmbq"]
 
 [ext_resource type="Texture2D" uid="uid://c1fuoueu00ku2" path="res://assets/Sprite/CharpentierCharacter2d.png" id="1_st464"]
 
@@ -76,7 +76,7 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_st464"]
 radius = 73.7564
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["Ennemy"]]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_st464")

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://w6yxtf0puic3"]
+
+[ext_resource type="Script" uid="uid://c76d6eup4cmk0" path="res://Scripts/interactionScripts/InteractionArea.cs" id="1_dympj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dympj"]
+
+[node name="InteractionArea" type="Area2D" groups=["Items"]]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_dympj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_dympj")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

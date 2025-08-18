@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://de4m404jqprds"]
+[gd_scene load_steps=9 format=3 uid="uid://dwuqqvcarl6un"]
 
 [ext_resource type="Texture2D" uid="uid://mtfbc6mf06xx" path="res://assets/Sprite/Raiifsprite2d.png" id="1_66o15"]
 
@@ -97,7 +97,7 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_c0gm4"]
 radius = 85.276
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["Ennemy"]]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_66o15")

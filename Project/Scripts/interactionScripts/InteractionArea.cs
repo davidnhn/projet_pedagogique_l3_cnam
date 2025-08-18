@@ -4,6 +4,9 @@ using System;
 public partial class InteractionArea : Area2D
 {
 	[Export]
+	public bool AutoInteract { get; set; } = false;
+
+	[Export]
 	public string action_name = "interact";
 
 	[Export]
@@ -29,6 +32,10 @@ public partial class InteractionArea : Area2D
 		if (InteractionManager.Instance != null)
 		{
 			InteractionManager.Instance.RegisterArea(this);
+			if (AutoInteract)
+			{
+				_on_interact();
+			}
 		}
 	}
 

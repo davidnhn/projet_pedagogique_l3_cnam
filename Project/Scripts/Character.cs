@@ -20,11 +20,13 @@ public partial class Character : CharacterBody2D
 	[Export] public string InteractAction { get; set; } = "interact";
 	[Export] public string InventoryScenePath { get; set; } = "res://scenes/inventory.tscn";
 	[Export] public NodePath UiLayerPath { get; set; }              
+	[Export] public NodePath AnimatedSpritePath { get; set; }
 
 	private TileMap _tilemap;
 	private CanvasLayer _uiLayer;
 	private Control _inventoryInstance;
-
+	private AnimatedSprite2D _animatedSprite;
+	private RayCast2D _raycast;
 	private Vector2 _lookDir = Vector2.Down;
 
 	public override void _Ready()
@@ -36,6 +38,13 @@ public partial class Character : CharacterBody2D
 
 		if (UiLayerPath != null && !UiLayerPath.IsEmpty)
 			_uiLayer = GetNodeOrNull<CanvasLayer>(UiLayerPath);
+			
+		if (AnimatedSpritePath != null && !AnimatedSpritePath.IsEmpty)
+			_animatedSprite = GetNodeOrNull<AnimatedSprite2D>(AnimatedSpritePath);
+
+		_raycast = GetNodeOrNull<RayCast2D>("RayCast2D");
+
+		Global.Player = this;
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -43,16 +52,25 @@ public partial class Character : CharacterBody2D
 		if (!IsAlive || GetTree().Paused)
 		{
 			Velocity = Vector2.Zero;
-			MoveAndSlide();
-			return;
 		}
-
-		Vector2 inputDirection = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
-		if (inputDirection != Vector2.Zero)
-			_lookDir = inputDirection.Normalized(); 
-
-		Velocity = inputDirection.Normalized() * Speed;
+		else
+		{
+			GetInput();
+		}
+		
 		MoveAndSlide();
+		UpdateAnimation();
+	}
+
+	private void GetInput()
+	{
+		Vector2 inputDirection = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
+		Velocity = inputDirection.Normalized() * Speed;
+
+		if (Velocity != Vector2.Zero && _raycast != null)
+		{
+			_raycast.TargetPosition = Velocity.Normalized() * InteractDistance;
+		}
 	}
 
 	public override void _Input(InputEvent @event)
@@ -62,13 +80,71 @@ public partial class Character : CharacterBody2D
 	}
 
 
+	private void UpdateAnimation()
+	{
+		if (_animatedSprite == null) return;
+
+		if (Velocity == Vector2.Zero)
+		{
+			_animatedSprite.Play("idle");
+		}
+		else
+		{
+			if (Mathf.Abs(Velocity.X) > Mathf.Abs(Velocity.Y))
+			{
+				if (Velocity.X > 0)
+				{
+					_animatedSprite.Play("walk_right");
+				}
+				else
+				{
+					_animatedSprite.Play("walk_left");
+				}
+			}
+			else
+			{
+				if (Velocity.Y > 0)
+				{
+					_animatedSprite.Play("walk_down");
+				}
+				else
+				{
+					_animatedSprite.Play("walk_up");
+				}
+			}
+		}
+	}
+	
 	private void TryInteract()
 	{
+		// Raycast interaction logic
+		if (_raycast != null && _raycast.IsColliding())
+		{
+			var collider = _raycast.GetCollider();
+
+			switch (collider)
+			{
+				case Npc npc when npc.IsInGroup("NPC"):
+					GD.Print($"Interacting with an NPC: {npc.npc_name}");
+					// Future logic to start dialog can go here.
+					return;
+
+				case QuestItem questItem when questItem.IsInGroup("QuestItem"):
+					GD.Print($"Interacting with an Item: {questItem.ItemId}");
+					// Future logic to pick up item can go here.
+					return;
+
+				case Enemy enemy when enemy.IsInGroup("Enemy"):
+					GD.Print($"Interacting with an Enemy: {enemy.Name}");
+					// Future logic to start combat or talk can go here.
+					return;
+			}
+		}
+		
+		// Fallback to tile-based interaction
 		if (_tilemap != null)
 		{
-			Vector2 forward = GlobalPosition + (_lookDir == Vector2.Zero ? Vector2.Down : _lookDir) * InteractDistance;
-
-			Vector2I cell = _tilemap.LocalToMap(_tilemap.ToLocal(forward));
+			Vector2I cell = _tilemap.LocalToMap(GlobalPosition);
 			var tileData = _tilemap.GetCellTileData(TileLayer, cell);
 			if (tileData != null)
 			{

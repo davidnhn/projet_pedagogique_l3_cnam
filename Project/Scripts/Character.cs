@@ -14,27 +14,37 @@ public partial class Character : CharacterBody2D
 	public string SpritePath { get; protected set; }
 
 	// --- Ajouts pour l'interaction & UI ---
-	[Export] public NodePath TileMapPath { get; set; }
-	[Export] public int TileLayer { get; set; } = 0; 
+	[Export] public NodePath TileMapLayerPath { get; set; }
 	[Export] public float InteractDistance { get; set; } = 16f;      
 	[Export] public string InteractAction { get; set; } = "interact";
 	[Export] public string InventoryScenePath { get; set; } = "res://scenes/inventory.tscn";
 	[Export] public NodePath UiLayerPath { get; set; }              
 	[Export] public NodePath AnimatedSpritePath { get; set; }
+	[Export] public NodePath IconPath { get; set; }
+	[Export] public NodePath AmountPath { get; set; }
+	[Export] public NodePath QuestTrackerPath { get; set; }
+	[Export] public NodePath TitlePath { get; set; }
+	[Export] public NodePath ObjectivesPath { get; set; }
 
-	private TileMap _tilemap;
+	private TileMapLayer _tilemapLayer;
 	private CanvasLayer _uiLayer;
 	private Control _inventoryInstance;
 	private AnimatedSprite2D _animatedSprite;
 	private RayCast2D _raycast;
 	private Vector2 _lookDir = Vector2.Down;
+	private TextureRect _icon;
+	private Label _amount;
+	private Control _questTracker;
+	private Label _title;
+	private VBoxContainer _objectives;
+	private bool _canMove = true;
 
 	public override void _Ready()
 	{
 		Health = MaxHealth;
 
-		if (TileMapPath != null && !TileMapPath.IsEmpty)
-			_tilemap = GetNodeOrNull<TileMap>(TileMapPath);
+		if (TileMapLayerPath != null && !TileMapLayerPath.IsEmpty)
+			_tilemapLayer = GetNodeOrNull<TileMapLayer>(TileMapLayerPath);
 
 		if (UiLayerPath != null && !UiLayerPath.IsEmpty)
 			_uiLayer = GetNodeOrNull<CanvasLayer>(UiLayerPath);
@@ -44,12 +54,31 @@ public partial class Character : CharacterBody2D
 
 		_raycast = GetNodeOrNull<RayCast2D>("RayCast2D");
 
+		if (IconPath != null && !IconPath.IsEmpty)
+			_icon = GetNodeOrNull<TextureRect>(IconPath);
+
+		if (AmountPath != null && !AmountPath.IsEmpty)
+			_amount = GetNodeOrNull<Label>(AmountPath);
+
+		if (QuestTrackerPath != null && !QuestTrackerPath.IsEmpty)
+		{
+			_questTracker = GetNodeOrNull<Control>(QuestTrackerPath);
+			if (_questTracker != null)
+				_questTracker.Visible = false;
+		}
+
+		if (TitlePath != null && !TitlePath.IsEmpty)
+			_title = GetNodeOrNull<Label>(TitlePath);
+			
+		if (ObjectivesPath != null && !ObjectivesPath.IsEmpty)
+			_objectives = GetNodeOrNull<VBoxContainer>(ObjectivesPath);
+
 		Global.Player = this;
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
-		if (!IsAlive || GetTree().Paused)
+		if (!IsAlive || GetTree().Paused || !_canMove)
 		{
 			Velocity = Vector2.Zero;
 		}
@@ -142,10 +171,10 @@ public partial class Character : CharacterBody2D
 		}
 		
 		// Fallback to tile-based interaction
-		if (_tilemap != null)
+		if (_tilemapLayer != null)
 		{
-			Vector2I cell = _tilemap.LocalToMap(GlobalPosition);
-			var tileData = _tilemap.GetCellTileData(TileLayer, cell);
+			Vector2I cell = _tilemapLayer.LocalToMap(GlobalPosition);
+			var tileData = _tilemapLayer.GetCellTileData(cell);
 			if (tileData != null)
 			{
 				var interactData = tileData.GetCustomData("interact");

@@ -1,8 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://dga47m50l2a1u"]
+[gd_scene load_steps=25 format=3 uid="uid://c07lqqg4s17ko"]
 
 [ext_resource type="Script" path="res://Scripts/Character.cs" id="1_fltfo"]
 [ext_resource type="Texture2D" uid="uid://b8f6vjmphuekt" path="res://assets/Sprite/CamperCharacter2d.png" id="1_g1f8e"]
 [ext_resource type="Script" uid="uid://7birhx7blkk3" path="res://Scripts/Camera.cs" id="2_2hvah"]
+[ext_resource type="Texture2D" uid="uid://dtir5kmhydso1" path="res://Test/Assets/Icons/icon20.png" id="4_qc6gf"]
+[ext_resource type="FontFile" uid="uid://b42spf2nlovg6" path="res://assets/fonts/BLOODFONT/Blood Thirst.ttf" id="5_ow10m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qc6gf"]
 
@@ -161,7 +163,6 @@ AnimatedSpritePath = NodePath("AnimatedSprite2D")
 shape = SubResource("CircleShape2D_qc6gf")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(4, 4)
 script = ExtResource("2_2hvah")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -170,3 +171,71 @@ animation = &"walk_up"
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 collide_with_areas = true
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Coins" type="ColorRect" parent="HUD"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -200.0
+offset_bottom = 100.0
+grow_horizontal = 0
+color = Color(0, 0, 0, 1)
+
+[node name="Icon" type="TextureRect" parent="HUD/Coins"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 32.0
+grow_vertical = 2
+texture = ExtResource("4_qc6gf")
+expand_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Amount" type="Label" parent="HUD/Coins"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -29.5
+offset_bottom = 29.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_ow10m")
+theme_override_font_sizes/font_size = 69
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuestTracker" type="ColorRect" parent="HUD"]
+offset_right = 300.0
+offset_bottom = 200.0
+color = Color(0, 0, 0, 1)
+
+[node name="Details" type="VBoxContainer" parent="HUD/QuestTracker"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="HUD/QuestTracker/Details"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_ow10m")
+theme_override_font_sizes/font_size = 33
+text = "Title"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Objectives" type="VBoxContainer" parent="HUD/QuestTracker/Details"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1

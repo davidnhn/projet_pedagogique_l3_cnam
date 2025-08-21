@@ -579,7 +579,7 @@ position = Vector2(135, 71)
 
 [node name="QuestItem" parent="." groups=["QuestItem"] instance=ExtResource("8_fqw4t")]
 position = Vector2(141, 213)
-ItemId = "potion1e"
+ItemId = "potion"
 ItemIcon = ExtResource("9_mj74n")
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("6_s3ttc")]

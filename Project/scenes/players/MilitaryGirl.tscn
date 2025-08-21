@@ -1,77 +1,79 @@
-[gd_scene load_steps=23 format=3 uid="uid://b3afghhqbf04k"]
+[gd_scene load_steps=25 format=3 uid="uid://b3afghhqbf04k"]
 
-[ext_resource type="Script" path="res://Scripts/Character.cs" id="1_bcnd4"]
-[ext_resource type="Texture2D" uid="uid://najlkj5k6gno" path="res://assets/Sprite/MilitaryCharacter2d.png" id="1_u4bgy"]
-[ext_resource type="Script" uid="uid://7birhx7blkk3" path="res://Scripts/Camera.cs" id="3_5j077"]
+[ext_resource type="Script" path="res://Scripts/Character.cs" id="1_33voa"]
+[ext_resource type="Texture2D" uid="uid://najlkj5k6gno" path="res://assets/Sprite/MilitaryCharacter2d.png" id="2_7u5f5"]
+[ext_resource type="Script" uid="uid://7birhx7blkk3" path="res://Scripts/Camera.cs" id="3_1fj5x"]
+[ext_resource type="Texture2D" uid="uid://dtir5kmhydso1" path="res://Test/Assets/Icons/icon20.png" id="4_1fj5x"]
+[ext_resource type="FontFile" uid="uid://b42spf2nlovg6" path="res://assets/fonts/BLOODFONT/Blood Thirst.ttf" id="5_ojmmn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wqskt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xmtvy"]
-atlas = ExtResource("1_u4bgy")
+atlas = ExtResource("2_7u5f5")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1b30g"]
-atlas = ExtResource("1_u4bgy")
+atlas = ExtResource("2_7u5f5")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xhrfc"]
-atlas = ExtResource("1_u4bgy")
+atlas = ExtResource("2_7u5f5")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vyfvw"]
-atlas = ExtResource("1_u4bgy")
+atlas = ExtResource("2_7u5f5")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u3l22"]
-atlas = ExtResource("1_u4bgy")
+atlas = ExtResource("2_7u5f5")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j8q1d"]
-atlas = ExtResource("1_u4bgy")
+atlas = ExtResource("2_7u5f5")
 region = Rect2(0, 96, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6f6qt"]
-atlas = ExtResource("1_u4bgy")
+atlas = ExtResource("2_7u5f5")
 region = Rect2(32, 96, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y0mjf"]
-atlas = ExtResource("1_u4bgy")
+atlas = ExtResource("2_7u5f5")
 region = Rect2(64, 96, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jn1x8"]
-atlas = ExtResource("1_u4bgy")
+atlas = ExtResource("2_7u5f5")
 region = Rect2(96, 96, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2cuwm"]
-atlas = ExtResource("1_u4bgy")
+atlas = ExtResource("2_7u5f5")
 region = Rect2(0, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n5ug3"]
-atlas = ExtResource("1_u4bgy")
+atlas = ExtResource("2_7u5f5")
 region = Rect2(32, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ymopo"]
-atlas = ExtResource("1_u4bgy")
+atlas = ExtResource("2_7u5f5")
 region = Rect2(64, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u6x7i"]
-atlas = ExtResource("1_u4bgy")
+atlas = ExtResource("2_7u5f5")
 region = Rect2(96, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_flhs5"]
-atlas = ExtResource("1_u4bgy")
+atlas = ExtResource("2_7u5f5")
 region = Rect2(0, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_otrqx"]
-atlas = ExtResource("1_u4bgy")
+atlas = ExtResource("2_7u5f5")
 region = Rect2(32, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h5wts"]
-atlas = ExtResource("1_u4bgy")
+atlas = ExtResource("2_7u5f5")
 region = Rect2(64, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s5efx"]
-atlas = ExtResource("1_u4bgy")
+atlas = ExtResource("2_7u5f5")
 region = Rect2(96, 32, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_j5che"]
@@ -153,8 +155,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_bcnd4")
+[node name="MilitaryGirl" type="CharacterBody2D"]
+script = ExtResource("1_33voa")
 AnimatedSpritePath = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -165,6 +167,74 @@ sprite_frames = SubResource("SpriteFrames_j5che")
 animation = &"walk_up"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-script = ExtResource("3_5j077")
+script = ExtResource("3_1fj5x")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Coins" type="ColorRect" parent="HUD"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -200.0
+offset_bottom = 100.0
+grow_horizontal = 0
+color = Color(0, 0, 0, 1)
+
+[node name="Icon" type="TextureRect" parent="HUD/Coins"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 32.0
+grow_vertical = 2
+texture = ExtResource("4_1fj5x")
+expand_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Amount" type="Label" parent="HUD/Coins"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -29.5
+offset_bottom = 29.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_ojmmn")
+theme_override_font_sizes/font_size = 69
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuestTracker" type="ColorRect" parent="HUD"]
+offset_right = 300.0
+offset_bottom = 200.0
+color = Color(0, 0, 0, 1)
+
+[node name="Details" type="VBoxContainer" parent="HUD/QuestTracker"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="HUD/QuestTracker/Details"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_ojmmn")
+theme_override_font_sizes/font_size = 33
+text = "Title"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Objectives" type="VBoxContainer" parent="HUD/QuestTracker/Details"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1

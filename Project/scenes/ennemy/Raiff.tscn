@@ -1,7 +1,7 @@
 [gd_scene load_steps=23 format=3 uid="uid://de4m404jqprds"]
 
+[ext_resource type="Script" uid="uid://d23fyg8p3nk8f" path="res://Scripts/Npc.cs" id="1_4ty3i"]
 [ext_resource type="Texture2D" uid="uid://mtfbc6mf06xx" path="res://assets/Sprite/Raiifsprite2d.png" id="1_66o15"]
-[ext_resource type="Script" path="res://Scripts/Character.cs" id="1_qvejb"]
 [ext_resource type="Script" uid="uid://7birhx7blkk3" path="res://Scripts/Camera.cs" id="3_nlh4h"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c0gm4"]
@@ -154,15 +154,15 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_qvejb")
+[node name="Raiff" type="CharacterBody2D" groups=["Enemy", "NPC"]]
+script = ExtResource("1_4ty3i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_c0gm4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fx7ab")
-animation = &"walk_up"
+animation = &"idle"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("3_nlh4h")

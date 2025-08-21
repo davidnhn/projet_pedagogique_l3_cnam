@@ -1,58 +1,58 @@
 [gd_scene load_steps=18 format=3 uid="uid://chh3p3rjmooiv"]
 
-[ext_resource type="Script" path="res://Scripts/Character.cs" id="1_sjp0s"]
-[ext_resource type="Texture2D" uid="uid://c1fuoueu00ku2" path="res://assets/Sprite/CharpentierCharacter2d.png" id="1_st464"]
-[ext_resource type="Script" uid="uid://7birhx7blkk3" path="res://Scripts/Camera.cs" id="3_njlcu"]
+[ext_resource type="Script" uid="uid://d23fyg8p3nk8f" path="res://Scripts/Npc.cs" id="1_hp886"]
+[ext_resource type="Texture2D" uid="uid://c1fuoueu00ku2" path="res://assets/Sprite/CharpentierCharacter2d.png" id="2_4hvmc"]
+[ext_resource type="Script" uid="uid://7birhx7blkk3" path="res://Scripts/Camera.cs" id="3_b4osb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_st464"]
 radius = 73.7564
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8t16g"]
-atlas = ExtResource("1_st464")
+atlas = ExtResource("2_4hvmc")
 region = Rect2(332, 332, 166, 166)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kshjm"]
-atlas = ExtResource("1_st464")
+atlas = ExtResource("2_4hvmc")
 region = Rect2(0, 0, 166, 166)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yw5ka"]
-atlas = ExtResource("1_st464")
+atlas = ExtResource("2_4hvmc")
 region = Rect2(166, 0, 166, 166)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qklfy"]
-atlas = ExtResource("1_st464")
+atlas = ExtResource("2_4hvmc")
 region = Rect2(332, 0, 166, 166)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nvpvp"]
-atlas = ExtResource("1_st464")
+atlas = ExtResource("2_4hvmc")
 region = Rect2(0, 0, 166, 166)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n1jld"]
-atlas = ExtResource("1_st464")
+atlas = ExtResource("2_4hvmc")
 region = Rect2(166, 0, 166, 166)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gno5c"]
-atlas = ExtResource("1_st464")
+atlas = ExtResource("2_4hvmc")
 region = Rect2(332, 0, 166, 166)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bnclr"]
-atlas = ExtResource("1_st464")
+atlas = ExtResource("2_4hvmc")
 region = Rect2(0, 166, 166, 166)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_241nv"]
-atlas = ExtResource("1_st464")
+atlas = ExtResource("2_4hvmc")
 region = Rect2(166, 166, 166, 166)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vkx2s"]
-atlas = ExtResource("1_st464")
+atlas = ExtResource("2_4hvmc")
 region = Rect2(332, 166, 166, 166)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rs16f"]
-atlas = ExtResource("1_st464")
+atlas = ExtResource("2_4hvmc")
 region = Rect2(0, 332, 166, 166)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0d1ke"]
-atlas = ExtResource("1_st464")
+atlas = ExtResource("2_4hvmc")
 region = Rect2(166, 332, 166, 166)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ih2f5"]
@@ -119,9 +119,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_sjp0s")
-AnimatedSpritePath = NodePath("AnimatedSprite2D")
+[node name="Charpentier" type="CharacterBody2D" groups=["Enemy", "NPC"]]
+script = ExtResource("1_hp886")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-4, 2)
@@ -129,10 +128,10 @@ shape = SubResource("CircleShape2D_st464")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ih2f5")
-animation = &"walk_up"
+animation = &"idle"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-script = ExtResource("3_njlcu")
+script = ExtResource("3_b4osb")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 collide_with_areas = true

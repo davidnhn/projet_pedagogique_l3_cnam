@@ -2574,6 +2574,7 @@ tile_set = SubResource("TileSet_xslob")
 
 [node name="Indian" parent="." groups=["player"] instance=ExtResource("2_r52c1")]
 position = Vector2(1416, -451)
+AnimatedSpritePath = null
 
 [node name="Charpentier" parent="." instance=ExtResource("3_c580w")]
 position = Vector2(526, -469)

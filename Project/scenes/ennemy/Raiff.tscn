@@ -1,8 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://de4m404jqprds"]
+[gd_scene load_steps=24 format=3 uid="uid://de4m404jqprds"]
 
 [ext_resource type="Script" uid="uid://d23fyg8p3nk8f" path="res://Scripts/Npc.cs" id="1_4ty3i"]
 [ext_resource type="Texture2D" uid="uid://mtfbc6mf06xx" path="res://assets/Sprite/Raiifsprite2d.png" id="1_66o15"]
 [ext_resource type="Script" uid="uid://7birhx7blkk3" path="res://Scripts/Camera.cs" id="3_nlh4h"]
+[ext_resource type="PackedScene" uid="uid://dq703u538q0t2" path="res://scenes/dialog/DialogManager.tscn" id="4_6ep16"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c0gm4"]
 radius = 85.276
@@ -169,3 +170,5 @@ script = ExtResource("3_nlh4h")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 collide_with_areas = true
+
+[node name="DialogManager" parent="." instance=ExtResource("4_6ep16")]

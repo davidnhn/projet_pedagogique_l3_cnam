@@ -23,7 +23,6 @@ public partial class Character : CharacterBody2D
 	[Export] public NodePath IconPath { get; set; }
 	[Export] public NodePath AmountPath { get; set; }
 	[Export] public NodePath QuestTrackerPath { get; set; }
-	[Export] public NodePath DialogUiPath { get; set; }
 	[Export] public NodePath TitlePath { get; set; }
 	[Export] public NodePath ObjectivesPath { get; set; }
 
@@ -38,7 +37,7 @@ public partial class Character : CharacterBody2D
 	private Control _questTracker;
 	private Label _title;
 	private VBoxContainer _objectives;
-	private DialogUI _dialogUi;
+	private DialogManager _dialogManager;
 	private bool _canMove = true;
 
 	public override void _Ready()
@@ -75,13 +74,10 @@ public partial class Character : CharacterBody2D
 		if (ObjectivesPath != null && !ObjectivesPath.IsEmpty)
 			_objectives = GetNodeOrNull<VBoxContainer>(ObjectivesPath);
 
-		if (DialogUiPath != null && !DialogUiPath.IsEmpty)
+		_dialogManager = GetTree().GetFirstNodeInGroup("dialog_manager") as DialogManager;
+		if (_dialogManager != null)
 		{
-			_dialogUi = GetNodeOrNull<DialogUI>(DialogUiPath);
-			if (_dialogUi != null)
-			{
-				_dialogUi.Connect("DialogClosed", new Callable(this, nameof(OnDialogClosed)));
-			}
+			_dialogManager.Connect(DialogManager.SignalName.DialogClosed, new Callable(this, nameof(OnDialogClosed)));
 		}
 
 		Global.Player = this;
@@ -166,11 +162,8 @@ public partial class Character : CharacterBody2D
 			{
 				case Npc npc when npc.IsInGroup("NPC"):
 					GD.Print($"Interacting with an NPC: {npc.npc_name}");
-					if (_dialogUi != null)
-					{
-						_canMove = false;
-						_dialogUi.ShowDialog();
-					}
+					_canMove = false;
+					npc.StartDialog();
 					return;
 
 				case QuestItem questItem when questItem.IsInGroup("QuestItem"):

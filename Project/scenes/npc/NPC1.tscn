@@ -238,4 +238,4 @@ theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 25
 text = "!"
 
-[node name="DialogManager" parent="." instance=ExtResource("4_htqcp")]
+[node name="DialogManager" parent="." groups=["dialog_manager"] instance=ExtResource("4_htqcp")]

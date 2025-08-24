@@ -34,6 +34,7 @@ script = ExtResource("1_sdxd7")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Panel" type="Panel" parent="CanvasLayer"]
+visible = false
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -65,15 +66,14 @@ text = "NPC Name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DialogText" type="Label" parent="CanvasLayer/Panel/DialogBox"]
+[node name="DialogText" type="RichTextLabel" parent="CanvasLayer/Panel/DialogBox"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 24
 text = "DialogText"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DialogOptions" type="HBoxContainer" parent="CanvasLayer/Panel/DialogBox"]
+[node name="DialogOptions" type="VBoxContainer" parent="CanvasLayer/Panel/DialogBox"]
 layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1

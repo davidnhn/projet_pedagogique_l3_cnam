@@ -7,7 +7,7 @@ public partial class Npc : CharacterBody2D
 	[Export] public string npc_id { get; set; }
 
 	// Dialog vars
-	[Export] public DialogManager DialogManager { get; set; }
+	public DialogManager DialogManager { get; set; }
 	[Export] public Dialog DialogResource { get; set; }
 
 	public override void _Ready()
@@ -17,14 +17,11 @@ public partial class Npc : CharacterBody2D
 			DialogResource.LoadFromJson("res://resources/Dialog/dialog_data.json");
 		}
 		
-		if (DialogManager != null)
-		{
-			DialogManager.Npc = this;
-		}
+		DialogManager = GetTree().GetFirstNodeInGroup("dialog_manager") as DialogManager;
 	}
 
 	public int current_branch_index = 0;
-	public string current_state = "default";
+	public string current_state = "start";
 
 	public void StartDialog()
 	{
@@ -34,17 +31,19 @@ public partial class Npc : CharacterBody2D
 			return;
 		}
 
-		var dialogTree = DialogResource.GetNpcDialog(npc_id);
-		if (dialogTree.Count > 0)
+		var npcDialogs = DialogResource.GetNpcDialog(npc_id);
+		if (npcDialogs.Count == 0)
 		{
-			// For now, let's just print the dialog tree.
-			// You'll replace this with your actual dialog UI logic.
-			GD.Print($"Found dialog for {npc_name}:");
-			GD.Print(Json.Stringify(dialogTree));
+			return;
+		}
+
+		if (DialogManager != null)
+		{
+			DialogManager.show_dialog(this);
 		}
 		else
 		{
-			GD.Print($"No dialog found for NPC with ID: {npc_id}");
+			GD.PrintErr("DialogManager node not found in scene. Did you add it to the 'dialog_manager' group?");
 		}
 	}
 

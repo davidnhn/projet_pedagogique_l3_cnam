@@ -1,8 +1,15 @@
-[gd_scene load_steps=23 format=3 uid="uid://bdbavhsj47ndl"]
+[gd_scene load_steps=26 format=3 uid="uid://bdbavhsj47ndl"]
 
 [ext_resource type="Script" uid="uid://d23fyg8p3nk8f" path="res://Scripts/Npc.cs" id="1_ai0vx"]
 [ext_resource type="Texture2D" uid="uid://gpm21fe0lwub" path="res://assets/Sprite/mallaksprite2d_.png" id="1_yq62l"]
+[ext_resource type="Script" uid="uid://uhvmivq0grdp" path="res://resources/Dialog/Dialog.cs" id="2_v3heb"]
 [ext_resource type="Script" uid="uid://7birhx7blkk3" path="res://Scripts/Camera.cs" id="3_k3fpg"]
+[ext_resource type="PackedScene" uid="uid://dq703u538q0t2" path="res://scenes/dialog/DialogManager.tscn" id="4_0siwc"]
+
+[sub_resource type="Resource" id="Resource_v3heb"]
+script = ExtResource("2_v3heb")
+Dialogs = {}
+metadata/_custom_type_script = "uid://uhvmivq0grdp"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4nmg1"]
 radius = 22.0
@@ -157,6 +164,9 @@ animations = [{
 
 [node name="Mallak" type="CharacterBody2D" groups=["Enemy", "NPC"]]
 script = ExtResource("1_ai0vx")
+npc_name = "Mallak"
+npc_id = "npc_1"
+DialogResource = SubResource("Resource_v3heb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-11, -7)
@@ -171,3 +181,5 @@ script = ExtResource("3_k3fpg")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 collide_with_areas = true
+
+[node name="DialogManager" parent="." groups=["dialog_manager"] instance=ExtResource("4_0siwc")]

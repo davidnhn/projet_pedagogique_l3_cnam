@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=4 uid="uid://q0y4whhd4rve"]
+[gd_scene load_steps=16 format=4 uid="uid://q0y4whhd4rve"]
 
 [ext_resource type="Texture2D" uid="uid://ck76kmlyl2377" path="res://assets/images/coolschool_tileset.png" id="1_nk0k0"]
 [ext_resource type="PackedScene" uid="uid://515r3dhy80h5" path="res://scenes/players/Indian.tscn" id="2_r52c1"]
 [ext_resource type="PackedScene" uid="uid://chh3p3rjmooiv" path="res://scenes/ennemy/Charpentier.tscn" id="3_c580w"]
+[ext_resource type="Script" uid="uid://uhvmivq0grdp" path="res://resources/Dialog/Dialog.cs" id="4_5sviu"]
 [ext_resource type="PackedScene" uid="uid://bdbavhsj47ndl" path="res://scenes/ennemy/Mallak.tscn" id="4_uovxj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uacy5"]
@@ -2551,6 +2552,16 @@ sources/0 = SubResource("TileSetAtlasSource_m1y0j")
 pattern_0 = SubResource("TileMapPattern_r52c1")
 pattern_1 = SubResource("TileMapPattern_c580w")
 
+[sub_resource type="Resource" id="Resource_pcfyo"]
+script = ExtResource("4_5sviu")
+Dialogs = {}
+metadata/_custom_type_script = "uid://uhvmivq0grdp"
+
+[sub_resource type="Resource" id="Resource_galu7"]
+script = ExtResource("4_5sviu")
+Dialogs = {}
+metadata/_custom_type_script = "uid://uhvmivq0grdp"
+
 [node name="Node2D" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -2578,6 +2589,10 @@ AnimatedSpritePath = null
 
 [node name="Charpentier" parent="." instance=ExtResource("3_c580w")]
 position = Vector2(526, -469)
+npc_id = "npc_1"
+DialogResource = SubResource("Resource_pcfyo")
 
 [node name="Mallak" parent="." instance=ExtResource("4_uovxj")]
 position = Vector2(667, -462)
+npc_id = "npc_2"
+DialogResource = SubResource("Resource_galu7")

@@ -2593,5 +2593,5 @@ npc_id = "npc_1"
 DialogResource = SubResource("Resource_pcfyo")
 
 [node name="Mallak" parent="." instance=ExtResource("4_uovxj")]
-position = Vector2(666, -462)
+position = Vector2(391, -463)
 DialogResource = SubResource("Resource_galu7")

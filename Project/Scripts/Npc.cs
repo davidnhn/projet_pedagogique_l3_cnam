@@ -16,7 +16,20 @@ public partial class Npc : CharacterBody2D
 		{
 			DialogResource.LoadFromJson("res://resources/Dialog/dialog_data.json");
 		}
-		
+		if (Name == "Mallak")
+		{
+			var anim = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+			anim.Animation = "walk_right"; 
+			anim.Stop();
+			anim.Frame = 0; 
+		}
+				if (Name == "Charpentier")
+		{
+			var anim = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+			anim.Animation = "walk_left"; 
+			anim.Stop();
+			anim.Frame = 0; 
+		}
 		DialogManager = GetTree().GetFirstNodeInGroup("dialog_manager") as DialogManager;
 	}
 

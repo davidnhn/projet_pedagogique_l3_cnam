@@ -140,7 +140,9 @@ shape = SubResource("CircleShape2D_st464")
 position = Vector2(-1, 7)
 scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_ih2f5")
-animation = &"idle"
+animation = &"walk_left"
+frame = 2
+frame_progress = 0.33605
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("3_b4osb")

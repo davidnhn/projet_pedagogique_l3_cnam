@@ -1,14 +1,7 @@
-[gd_scene load_steps=33 format=3 uid="uid://bby8cb8m0uks4"]
+[gd_scene load_steps=30 format=3 uid="uid://bby8cb8m0uks4"]
 
 [ext_resource type="Script" uid="uid://d23fyg8p3nk8f" path="res://Scripts/Npc.cs" id="1_b2wi8"]
 [ext_resource type="Texture2D" uid="uid://0flrot5hrf4a" path="res://Test/Assets/person.png" id="2_ae3yy"]
-[ext_resource type="Script" uid="uid://uhvmivq0grdp" path="res://resources/Dialog/Dialog.cs" id="2_k0eak"]
-[ext_resource type="PackedScene" uid="uid://dq703u538q0t2" path="res://scenes/dialog/DialogManager.tscn" id="4_htqcp"]
-
-[sub_resource type="Resource" id="Resource_htqcp"]
-script = ExtResource("2_k0eak")
-Dialogs = {}
-metadata/_custom_type_script = "uid://uhvmivq0grdp"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r5dg5"]
 
@@ -219,7 +212,6 @@ animations = [{
 script = ExtResource("1_b2wi8")
 npc_name = "Pactrick"
 npc_id = "npc_1"
-DialogResource = SubResource("Resource_htqcp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_r5dg5")
@@ -237,5 +229,3 @@ pivot_offset = Vector2(10, 13)
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 25
 text = "!"
-
-[node name="DialogManager" parent="." groups=["dialog_manager"] instance=ExtResource("4_htqcp")]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://ck76kmlyl2377" path="res://assets/images/coolschool_tileset.png" id="1_nk0k0"]
 [ext_resource type="PackedScene" uid="uid://515r3dhy80h5" path="res://scenes/players/Indian.tscn" id="2_r52c1"]
-[ext_resource type="PackedScene" uid="uid://chh3p3rjmooiv" path="res://scenes/ennemy/Charpentier.tscn" id="3_c580w"]
+[ext_resource type="PackedScene" uid="uid://cw2s7k1i51q8c" path="res://scenes/ennemy/Charpentier.tscn" id="3_c580w"]
 [ext_resource type="Script" uid="uid://uhvmivq0grdp" path="res://resources/Dialog/Dialog.cs" id="4_5sviu"]
 [ext_resource type="PackedScene" uid="uid://bdbavhsj47ndl" path="res://scenes/ennemy/Mallak.tscn" id="4_uovxj"]
 
@@ -2585,7 +2585,7 @@ tile_set = SubResource("TileSet_xslob")
 
 [node name="Indian" parent="." groups=["player"] instance=ExtResource("2_r52c1")]
 position = Vector2(1416, -451)
-AnimatedSpritePath = null
+UiLayerPath = NodePath("")
 
 [node name="Charpentier" parent="." instance=ExtResource("3_c580w")]
 position = Vector2(526, -469)
@@ -2593,6 +2593,5 @@ npc_id = "npc_1"
 DialogResource = SubResource("Resource_pcfyo")
 
 [node name="Mallak" parent="." instance=ExtResource("4_uovxj")]
-position = Vector2(667, -462)
-npc_id = "npc_2"
+position = Vector2(666, -462)
 DialogResource = SubResource("Resource_galu7")

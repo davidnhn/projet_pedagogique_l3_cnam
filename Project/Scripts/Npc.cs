@@ -17,7 +17,7 @@ public partial class Npc : CharacterBody2D
 			DialogResource.LoadFromJson("res://resources/Dialog/dialog_data.json");
 		}
 		
-		DialogManager = GetTree().GetFirstNodeInGroup("dialog_manager") as DialogManager;
+		DialogManager = GetNode<DialogManager>("DialogManager");
 	}
 
 	public int current_branch_index = 0;

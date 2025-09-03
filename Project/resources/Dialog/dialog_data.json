@@ -6,9 +6,27 @@
 				"dialogs": [
 					{
 						"state": "start",
-						"text": "Depechez-vous, le CNAM a besoin de vous !",
+						"speaker": "Mallak",
+						"text": "Dépêchez-vous, le CNAM a besoin de vous !",
 						"options": {
-							"Que se passe-t-il ?": "exit"
+							"Que se passe-t-il ?": ""
+						}
+					},
+					{
+						"state": "charpentier_intro",
+						"speaker": "Charpentier",
+						"text": "Le pont est endommagé, j’ai besoin de clous.",
+						"options": {
+							"Continuer": "mallak_reply_1"
+						}
+					},
+					{
+						"state": "mallak_reply_1",
+						"speaker": "Mallak",
+						"text": "Très bien, je vais m’en occuper.",
+						"options": {
+							"D’accord": "end",
+							"Plus tard": "exit"
 						}
 					}
 				]
@@ -31,9 +49,27 @@
 				"dialogs": [
 					{
 						"state": "start",
-						"text": "Bonjour, aventurier. Que puis-je faire pour vous ?",
+						"speaker": "Charpentier",
+						"text": "Mallak, j’ai besoin de ton aide pour le pont.",
 						"options": {
-							"Rien pour le moment.": "exit"
+							"Continuer": ""
+						}
+					},
+					{
+						"state": "mallak_reply_1",
+						"speaker": "Mallak",
+						"text": "Que te faut-il, Charpentier ?",
+						"options": {
+							"Il manque des clous.": "charpentier_reply_1"
+						}
+					},
+					{
+						"state": "charpentier_reply_1",
+						"speaker": "Charpentier",
+						"text": "Apporte-m’en et je m’occupe du reste.",
+						"options": {
+							"D’accord.": "end",
+							"Plus tard.": "exit"
 						}
 					}
 				]

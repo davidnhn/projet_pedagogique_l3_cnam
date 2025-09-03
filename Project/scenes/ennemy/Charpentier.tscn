@@ -131,6 +131,8 @@ script = ExtResource("1_hp886")
 npc_name = "Charpentier"
 npc_id = "npc_2"
 DialogResource = SubResource("Resource_w0vwo")
+AutoStartOnProximity = true
+ProximityRadius = 64.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-4, 2)

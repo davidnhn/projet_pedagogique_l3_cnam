@@ -165,7 +165,7 @@ animations = [{
 [node name="Mallak" type="CharacterBody2D" groups=["Enemy", "NPC"]]
 script = ExtResource("1_ai0vx")
 npc_name = "Mallak"
-npc_id = "npc_2"
+npc_id = "npc_1"
 DialogResource = SubResource("Resource_v3heb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

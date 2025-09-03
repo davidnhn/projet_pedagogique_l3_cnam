@@ -119,7 +119,7 @@ public partial class MainMenuManager : Control
 			string sceneFileName = MapZoneNameToSceneFile(zoneName);
 			
 			GD.Print($"Mapping zone '{zoneName}' to scene file '{sceneFileName}'");
-			GetTree().ChangeSceneToFile($"res://scenes/{sceneFileName}");
+			GetTree().ChangeSceneToFile(sceneFileName);
 		}
 	}
 	
@@ -129,16 +129,16 @@ public partial class MainMenuManager : Control
 		switch (zoneName)
 		{
 			case "Le Désert de la Cafet":
-				return "Stage1School.tscn";
+				return "res://scenes/stage/Stage1School.tscn";
 			case "L'Enfer du Tableau Mathématique":
-				return "Stage2Laboratory.tscn";
+				return "res://scenes/stage/Stage2Laboratory.tscn";
 			case "Le Parc Commando":
-				return "Stage1School.tscn"; // ou une autre scène si elle existe
+				return "res://scenes/stage/Stage1School.tscn"; // ou une autre scène si elle existe
 			case "La Salle Informatique":
-				return "Stage2Laboratory.tscn"; // ou une autre scène si elle existe
+				return "res://scenes/stage/Stage2Laboratory.tscn"; // ou une autre scène si elle existe
 			default:
 				GD.PrintErr($"Unknown zone name: {zoneName}. Defaulting to Stage1School.tscn");
-				return "Stage1School.tscn";
+				return "res://scenes/stage/Stage1School.tscn";
 		}
 	}
 }

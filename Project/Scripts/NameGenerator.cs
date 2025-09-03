@@ -175,7 +175,7 @@ public partial class NameGenerator : Control
 		GD.Print("Noms sauvegardés dans la base de données.");
 
 		// Changer de scène pour commencer l'aventure
-		GetTree().ChangeSceneToFile("res://scenes/Stage1School.tscn");
+		GetTree().ChangeSceneToFile("res://scenes/stage/Stage1School.tscn");
 	}
 
 	private void SaveIfNew(string word, string category)

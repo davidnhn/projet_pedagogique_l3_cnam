@@ -40,6 +40,15 @@ public partial class Character : CharacterBody2D
 	private DialogManager _dialogManager;
 	private bool _canMove = true;
 
+	public void SetMovementEnabled(bool enabled)
+	{
+		_canMove = enabled;
+		if (!enabled)
+		{
+			Velocity = Vector2.Zero;
+		}
+	}
+
 	public override void _Ready()
 	{
 		Health = MaxHealth;

@@ -9,6 +9,10 @@ public partial class Npc : CharacterBody2D
 	// Dialog vars
 	public DialogManager DialogManager { get; set; }
 	[Export] public Dialog DialogResource { get; set; }
+	[Export] public bool AutoStartOnProximity { get; set; } = false;
+	[Export] public float ProximityRadius { get; set; } = 48f;
+	private bool _dialogActive = false;
+	private bool _waitForExit = false;
 
 	public override void _Ready()
 	{
@@ -18,6 +22,10 @@ public partial class Npc : CharacterBody2D
 		}
 		
 		DialogManager = GetNode<DialogManager>("DialogManager");
+		if (DialogManager != null)
+		{
+			DialogManager.Connect(DialogManager.SignalName.DialogClosed, new Callable(this, nameof(OnDialogClosed)));
+		}
 		if (Name == "Mallak")
 		{
 			var anim = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
@@ -33,6 +41,38 @@ public partial class Npc : CharacterBody2D
 			anim.Frame = 0; 
 		}
 		DialogManager = GetNode<DialogManager>("DialogManager");
+	}
+
+	public override void _Process(double delta)
+	{
+		if (!AutoStartOnProximity || _dialogActive)
+		{
+			return;
+		}
+		var playerNode2D = Global.Player as Node2D;
+		if (playerNode2D == null)
+		{
+			return;
+		}
+		float distance = GlobalPosition.DistanceTo(playerNode2D.GlobalPosition);
+		if (_waitForExit)
+		{
+			// Require the player to leave the radius before allowing auto-start again
+			if (distance > ProximityRadius * 1.1f)
+			{
+				_waitForExit = false;
+			}
+			return;
+		}
+		if (distance <= ProximityRadius)
+		{
+			if (playerNode2D is Character ch)
+			{
+				ch.SetMovementEnabled(false);
+			}
+			StartDialog();
+			_dialogActive = true;
+		}
 	}
 
 	public int current_branch_index = 0;
@@ -101,5 +141,15 @@ public partial class Npc : CharacterBody2D
 	public void SetDialogState(string state)
 	{
 		current_state = state;
+	}
+
+	private void OnDialogClosed()
+	{
+		_dialogActive = false;
+		_waitForExit = true;
+		if (Global.Player is Character ch)
+		{
+			ch.SetMovementEnabled(true);
+		}
 	}
 }

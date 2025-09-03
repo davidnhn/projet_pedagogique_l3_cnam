@@ -2589,7 +2589,6 @@ UiLayerPath = NodePath("")
 
 [node name="Charpentier" parent="." instance=ExtResource("3_c580w")]
 position = Vector2(526, -469)
-npc_id = "npc_1"
 DialogResource = SubResource("Resource_pcfyo")
 
 [node name="Mallak" parent="." instance=ExtResource("4_uovxj")]

@@ -36,8 +36,13 @@ public partial class DialogManager : Node2D
 			if (dialog == null)
 			{
 				return;
-			}            
-			_dialogUI.ShowDialog(npc.npc_name, dialog["text"].AsString(), dialog["options"].AsGodotDictionary());
+			}
+			string speaker = npc.npc_name;
+			if (dialog.ContainsKey("speaker"))
+			{
+				speaker = dialog["speaker"].AsString();
+			}
+			_dialogUI.ShowDialog(speaker, dialog["text"].AsString(), dialog["options"].AsGodotDictionary());
 		}
 	}
 
@@ -55,14 +60,54 @@ public partial class DialogManager : Node2D
 		}
 
 		var options = current_dialog["options"].AsGodotDictionary();
-		string next_state = "start";
+		string requestedNextState = "start";
 		if (options.ContainsKey(option))
 		{
-			next_state = options[option].AsString();
+			requestedNextState = options[option].AsString();
 		}
-		Npc.SetDialogState(next_state);
 
-		if (next_state == "end")
+		// Compute current dialog index BEFORE changing state
+		int currentIndex = -1;
+		var npcDialogs = Npc.DialogResource.GetNpcDialog(Npc.npc_id);
+		if (Npc.current_branch_index < npcDialogs.Count)
+		{
+			var branch = npcDialogs[Npc.current_branch_index].AsGodotDictionary();
+			if (branch.TryGetValue("dialogs", out var dialogsVar))
+			{
+				var dialogs = dialogsVar.AsGodotArray();
+				for (int i = 0; i < dialogs.Count; i++)
+				{
+					var d = dialogs[i].AsGodotDictionary();
+					if (d.TryGetValue("state", out var st) && st.AsString() == Npc.current_state)
+					{
+						currentIndex = i;
+						break;
+					}
+				}
+			}
+		}
+
+		string nextStateToSet = requestedNextState;
+		bool autoAdvanced = false;
+		if (string.IsNullOrEmpty(requestedNextState) && currentIndex >= 0)
+		{
+			// Auto-advance to the next dialog entry in the current branch
+			var branch = npcDialogs[Npc.current_branch_index].AsGodotDictionary();
+			var dialogs = branch["dialogs"].AsGodotArray();
+			if (currentIndex + 1 < dialogs.Count)
+			{
+				var nextDialog = dialogs[currentIndex + 1].AsGodotDictionary();
+				if (nextDialog.TryGetValue("state", out var nextSt))
+				{
+					nextStateToSet = nextSt.AsString();
+					autoAdvanced = true;
+				}
+			}
+		}
+
+		Npc.SetDialogState(nextStateToSet);
+
+		if (nextStateToSet == "end")
 		{
 			if (Npc.current_branch_index < Npc.DialogResource.GetNpcDialog(Npc.npc_id).Count - 1)
 			{
@@ -70,14 +115,10 @@ public partial class DialogManager : Node2D
 			}
 			hide_dialog();
 		}
-		else if (next_state == "exit")
+		else if (nextStateToSet == "exit")
 		{
 			Npc.SetDialogState("start");
 			hide_dialog();
-		}
-		else if (next_state == "give_quests")
-		{
-			// TODO: Implement quest logic
 		}
 		else
 		{

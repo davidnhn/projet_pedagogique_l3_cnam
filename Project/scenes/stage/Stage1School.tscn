@@ -2584,11 +2584,11 @@ tile_map_data = PackedByteArray("AAAiANz/AAAAAB4AAGAiANv/AAABAB4AAGAiANr/AAACAB4
 tile_set = SubResource("TileSet_xslob")
 
 [node name="Indian" parent="." groups=["player"] instance=ExtResource("2_r52c1")]
-position = Vector2(1416, -451)
+position = Vector2(640, -353)
 UiLayerPath = NodePath("")
 
 [node name="Charpentier" parent="." instance=ExtResource("3_c580w")]
-position = Vector2(526, -469)
+position = Vector2(499, -475)
 npc_id = "npc_1"
 DialogResource = SubResource("Resource_pcfyo")
 

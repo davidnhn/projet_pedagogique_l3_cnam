@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://b42spf2nlovg6" path="res://assets/fonts/BLOODFONT/Blood Thirst.ttf" id="5_i63ib"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_if6sh"]
+radius = 24.1661
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j1b8j"]
 atlas = ExtResource("1_utn23")
@@ -163,6 +164,7 @@ AnimatedSpritePath = NodePath("AnimatedSprite2D")
 shape = SubResource("CircleShape2D_if6sh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_086ef")
 animation = &"idle"
 

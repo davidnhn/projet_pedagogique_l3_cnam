@@ -12,7 +12,7 @@ Dialogs = {}
 metadata/_custom_type_script = "uid://uhvmivq0grdp"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_st464"]
-radius = 73.7564
+radius = 31.0161
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8t16g"]
 atlas = ExtResource("2_4hvmc")
@@ -137,6 +137,8 @@ position = Vector2(-4, 2)
 shape = SubResource("CircleShape2D_st464")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, 7)
+scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_ih2f5")
 animation = &"idle"
 

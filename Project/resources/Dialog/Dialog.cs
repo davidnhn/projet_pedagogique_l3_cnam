@@ -35,6 +35,10 @@ public partial class Dialog : Resource
         if (Dialogs.TryGetValue(npcId, out var npcDialogVariant))
         {
             var npcDialogData = npcDialogVariant.AsGodotDictionary();
+            if (npcDialogData.TryGetValue("tree", out var treeVariant))
+            {
+                return treeVariant.AsGodotArray();
+            }
             if (npcDialogData.TryGetValue("trees", out var treesVariant))
             {
                 return treesVariant.AsGodotArray();

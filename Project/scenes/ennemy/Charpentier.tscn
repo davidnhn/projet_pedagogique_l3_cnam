@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://chh3p3rjmooiv"]
+[gd_scene load_steps=21 format=3 uid="uid://cw2s7k1i51q8c"]
 
 [ext_resource type="Script" uid="uid://d23fyg8p3nk8f" path="res://Scripts/Npc.cs" id="1_hp886"]
 [ext_resource type="Texture2D" uid="uid://c1fuoueu00ku2" path="res://assets/Sprite/CharpentierCharacter2d.png" id="2_4hvmc"]
@@ -150,4 +150,4 @@ script = ExtResource("3_b4osb")
 [node name="RayCast2D" type="RayCast2D" parent="."]
 collide_with_areas = true
 
-[node name="DialogManager" parent="." groups=["dialog_manager"] instance=ExtResource("4_4hvmc")]
+[node name="DialogManager" parent="." instance=ExtResource("4_4hvmc")]

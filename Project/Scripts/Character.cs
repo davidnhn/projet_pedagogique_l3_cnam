@@ -163,6 +163,10 @@ public partial class Character : CharacterBody2D
 				case Npc npc when npc.IsInGroup("NPC"):
 					GD.Print($"Interacting with an NPC: {npc.npc_name}");
 					_canMove = false;
+					if (npc.DialogManager != null)
+					{
+						npc.DialogManager.Connect(DialogManager.SignalName.DialogClosed, new Callable(this, nameof(OnDialogClosed)));
+					}
 					npc.StartDialog();
 					return;
 

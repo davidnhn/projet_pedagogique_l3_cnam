@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://71jpmins5pmb" path="res://Scripts/Dialog/DialogManager.cs" id="1_qneh8"]
 [ext_resource type="PackedScene" uid="uid://bt3hgsoh70l1w" path="res://scenes/dialog/DialogUI.tscn" id="2_efyty"]
 
-[node name="DialogManager" type="Node2D"]
+[node name="DialogManager" type="Node2D" groups=["dialog_manager"]]
 script = ExtResource("1_qneh8")
 DialogUiPath = NodePath("DialogUI")
 
-[node name="DialogUI" parent="." instance=ExtResource("2_efyty")]
+[node name="DialogUI" parent="." groups=["dialog_manager"] instance=ExtResource("2_efyty")]

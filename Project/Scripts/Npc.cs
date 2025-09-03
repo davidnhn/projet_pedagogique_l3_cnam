@@ -16,6 +16,8 @@ public partial class Npc : CharacterBody2D
 		{
 			DialogResource.LoadFromJson("res://resources/Dialog/dialog_data.json");
 		}
+		
+		DialogManager = GetNode<DialogManager>("DialogManager");
 		if (Name == "Mallak")
 		{
 			var anim = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
@@ -30,7 +32,7 @@ public partial class Npc : CharacterBody2D
 			anim.Stop();
 			anim.Frame = 0; 
 		}
-		DialogManager = GetTree().GetFirstNodeInGroup("dialog_manager") as DialogManager;
+		DialogManager = GetNode<DialogManager>("DialogManager");
 	}
 
 	public int current_branch_index = 0;

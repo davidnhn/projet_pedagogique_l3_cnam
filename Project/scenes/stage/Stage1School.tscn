@@ -2584,15 +2584,14 @@ tile_map_data = PackedByteArray("AAAiANz/AAAAAB4AAGAiANv/AAABAB4AAGAiANr/AAACAB4
 tile_set = SubResource("TileSet_xslob")
 
 [node name="Indian" parent="." groups=["player"] instance=ExtResource("2_r52c1")]
-position = Vector2(788, -324)
-AnimatedSpritePath = null
+position = Vector2(1416, -451)
+UiLayerPath = NodePath("")
 
 [node name="Charpentier" parent="." instance=ExtResource("3_c580w")]
-position = Vector2(491, -470)
+position = Vector2(526, -469)
 npc_id = "npc_1"
 DialogResource = SubResource("Resource_pcfyo")
 
 [node name="Mallak" parent="." instance=ExtResource("4_uovxj")]
-position = Vector2(394, -458)
-npc_id = "npc_2"
+position = Vector2(666, -462)
 DialogResource = SubResource("Resource_galu7")

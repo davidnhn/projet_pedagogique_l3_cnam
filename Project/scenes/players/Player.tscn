@@ -1,26 +1,27 @@
-[gd_scene load_steps=7 format=3 uid="uid://b5etaei2db5c"]
+[gd_scene load_steps=7 format=3 uid="uid://bwkrlr0fpijii"]
 
-[ext_resource type="Script" path="res://Scripts/Character.cs" id="1_aaut0"]
-[ext_resource type="SpriteFrames" uid="uid://d0t3rkomig84p" path="res://scenes/players/SpriteFrame/CalculatorThief.tres" id="2_ygpjg"]
-[ext_resource type="Script" uid="uid://7birhx7blkk3" path="res://Scripts/Camera.cs" id="3_ygpjg"]
-[ext_resource type="Texture2D" uid="uid://dtir5kmhydso1" path="res://Test/Assets/Icons/icon20.png" id="4_ygpjg"]
-[ext_resource type="FontFile" uid="uid://b42spf2nlovg6" path="res://assets/fonts/BLOODFONT/Blood Thirst.ttf" id="5_nhaeu"]
+[ext_resource type="Script" path="res://Scripts/Character.cs" id="1_smcha"]
+[ext_resource type="PackedScene" uid="uid://cif850tutjooj" path="res://scenes/animation.tscn" id="2_smcha"]
+[ext_resource type="Script" uid="uid://7birhx7blkk3" path="res://Scripts/Camera.cs" id="3_7166c"]
+[ext_resource type="Texture2D" uid="uid://dtir5kmhydso1" path="res://Test/Assets/Icons/icon20.png" id="4_r1bx0"]
+[ext_resource type="FontFile" uid="uid://b42spf2nlovg6" path="res://assets/fonts/BLOODFONT/Blood Thirst.ttf" id="5_shwb6"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ad088"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_if6sh"]
+radius = 24.1661
 
-[node name="CalculatorThief" type="CharacterBody2D"]
-script = ExtResource("1_aaut0")
-AnimatedSpritePath = NodePath("AnimatedSprite2D")
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_smcha")
+AnimatedSpritePath = NodePath("")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_ad088")
+shape = SubResource("CircleShape2D_if6sh")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = ExtResource("2_ygpjg")
-animation = &"walk_up"
+[node name="Animation" parent="." instance=ExtResource("2_smcha")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-script = ExtResource("3_ygpjg")
+limit_smoothed = true
+position_smoothing_enabled = true
+script = ExtResource("3_7166c")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 collide_with_areas = true
@@ -42,7 +43,7 @@ anchors_preset = 9
 anchor_bottom = 1.0
 offset_right = 32.0
 grow_vertical = 2
-texture = ExtResource("4_ygpjg")
+texture = ExtResource("4_r1bx0")
 expand_mode = 2
 metadata/_edit_use_anchors_ = true
 
@@ -59,7 +60,7 @@ offset_bottom = 29.5
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_fonts/font = ExtResource("5_nhaeu")
+theme_override_fonts/font = ExtResource("5_shwb6")
 theme_override_font_sizes/font_size = 69
 text = "0"
 horizontal_alignment = 1
@@ -81,7 +82,7 @@ grow_vertical = 2
 [node name="Title" type="Label" parent="HUD/QuestTracker/Details"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_fonts/font = ExtResource("5_nhaeu")
+theme_override_fonts/font = ExtResource("5_shwb6")
 theme_override_font_sizes/font_size = 33
 text = "Title"
 horizontal_alignment = 1

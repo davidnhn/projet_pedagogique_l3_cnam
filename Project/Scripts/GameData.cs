@@ -69,6 +69,9 @@ public partial class GameData : Node
     public string ExtraName2 { get; set; }
     public string ExtraName3 { get; set; }
 
+    // Pending enemy for battle scene
+    public BaseEnemy PendingEnemy { get; set; }
+
     public override void _Ready()
     {
         Instance = this;

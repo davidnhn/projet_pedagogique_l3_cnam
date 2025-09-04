@@ -11,8 +11,10 @@ public partial class Npc : CharacterBody2D
 	[Export] public Dialog DialogResource { get; set; }
 	[Export] public bool AutoStartOnProximity { get; set; } = false;
 	[Export] public float ProximityRadius { get; set; } = 48f;
+	[Export] public bool StartBattleOnSecondInteract { get; set; } = false;
 	private bool _dialogActive = false;
 	private bool _waitForExit = false;
+	private bool _firstDialogCompleted = false;
 
 	public override void _Ready()
 	{
@@ -80,6 +82,13 @@ public partial class Npc : CharacterBody2D
 
 	public void StartDialog()
 	{
+		// If configured, start battle on second interaction (after first dialog has been completed)
+		if (StartBattleOnSecondInteract && _firstDialogCompleted)
+		{
+			StartBattle();
+			return;
+		}
+
 		if (DialogResource == null)
 		{
 			GD.PrintErr("DialogResource not set for this NPC!");
@@ -100,6 +109,23 @@ public partial class Npc : CharacterBody2D
 		{
 			GD.PrintErr("DialogManager node not found in scene. Did you add it to the 'dialog_manager' group?");
 		}
+	}
+
+	private void StartBattle()
+	{
+		GD.Print($"Starting battle after second interact with NPC: {npc_name}");
+		// Provide a simple default enemy if none is set
+		if (GameData.Instance != null)
+		{
+			var enemy = new BaseEnemy
+			{
+				EnemyName = npc_name,
+				Health = 100,
+				Damage = 10
+			};
+			GameData.Instance.PendingEnemy = enemy;
+		}
+		GetTree().ChangeSceneToFile("res://scenes/Battle.tscn");
 	}
 
 	public Godot.Collections.Dictionary GetCurrentDialog()
@@ -147,6 +173,8 @@ public partial class Npc : CharacterBody2D
 	{
 		_dialogActive = false;
 		_waitForExit = true;
+		// Mark first dialog as completed so next interaction can trigger battle (if enabled)
+		_firstDialogCompleted = true;
 		if (Global.Player is Character ch)
 		{
 			ch.SetMovementEnabled(true);

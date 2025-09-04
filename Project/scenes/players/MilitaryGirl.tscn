@@ -1,159 +1,12 @@
-[gd_scene load_steps=25 format=3 uid="uid://b3afghhqbf04k"]
+[gd_scene load_steps=7 format=3 uid="uid://b3afghhqbf04k"]
 
 [ext_resource type="Script" path="res://Scripts/Character.cs" id="1_33voa"]
-[ext_resource type="Texture2D" uid="uid://najlkj5k6gno" path="res://assets/Sprite/MilitaryCharacter2d.png" id="2_7u5f5"]
+[ext_resource type="SpriteFrames" uid="uid://bkf0ddwrgghpx" path="res://scenes/players/SpriteFrame/MilitaryGirl.tres" id="2_1fj5x"]
 [ext_resource type="Script" uid="uid://7birhx7blkk3" path="res://Scripts/Camera.cs" id="3_1fj5x"]
 [ext_resource type="Texture2D" uid="uid://dtir5kmhydso1" path="res://Test/Assets/Icons/icon20.png" id="4_1fj5x"]
 [ext_resource type="FontFile" uid="uid://b42spf2nlovg6" path="res://assets/fonts/BLOODFONT/Blood Thirst.ttf" id="5_ojmmn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wqskt"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xmtvy"]
-atlas = ExtResource("2_7u5f5")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1b30g"]
-atlas = ExtResource("2_7u5f5")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xhrfc"]
-atlas = ExtResource("2_7u5f5")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vyfvw"]
-atlas = ExtResource("2_7u5f5")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_u3l22"]
-atlas = ExtResource("2_7u5f5")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j8q1d"]
-atlas = ExtResource("2_7u5f5")
-region = Rect2(0, 96, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6f6qt"]
-atlas = ExtResource("2_7u5f5")
-region = Rect2(32, 96, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y0mjf"]
-atlas = ExtResource("2_7u5f5")
-region = Rect2(64, 96, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jn1x8"]
-atlas = ExtResource("2_7u5f5")
-region = Rect2(96, 96, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2cuwm"]
-atlas = ExtResource("2_7u5f5")
-region = Rect2(0, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n5ug3"]
-atlas = ExtResource("2_7u5f5")
-region = Rect2(32, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ymopo"]
-atlas = ExtResource("2_7u5f5")
-region = Rect2(64, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_u6x7i"]
-atlas = ExtResource("2_7u5f5")
-region = Rect2(96, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_flhs5"]
-atlas = ExtResource("2_7u5f5")
-region = Rect2(0, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_otrqx"]
-atlas = ExtResource("2_7u5f5")
-region = Rect2(32, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_h5wts"]
-atlas = ExtResource("2_7u5f5")
-region = Rect2(64, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s5efx"]
-atlas = ExtResource("2_7u5f5")
-region = Rect2(96, 32, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_j5che"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xmtvy")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1b30g")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xhrfc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vyfvw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_u3l22")
-}],
-"loop": true,
-"name": &"walk_down",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_j8q1d")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6f6qt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y0mjf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jn1x8")
-}],
-"loop": true,
-"name": &"walk_left",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2cuwm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_n5ug3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ymopo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_u6x7i")
-}],
-"loop": true,
-"name": &"walk_right",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_flhs5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_otrqx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_h5wts")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_s5efx")
-}],
-"loop": true,
-"name": &"walk_up",
-"speed": 5.0
-}]
 
 [node name="MilitaryGirl" type="CharacterBody2D"]
 script = ExtResource("1_33voa")
@@ -163,7 +16,7 @@ AnimatedSpritePath = NodePath("AnimatedSprite2D")
 shape = SubResource("CircleShape2D_wqskt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_j5che")
+sprite_frames = ExtResource("2_1fj5x")
 animation = &"walk_up"
 
 [node name="Camera2D" type="Camera2D" parent="."]

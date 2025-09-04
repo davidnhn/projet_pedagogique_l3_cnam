@@ -40,6 +40,64 @@ public partial class Character : CharacterBody2D
 	private DialogManager _dialogManager;
 	private bool _canMove = true;
 
+	private string GetDesiredSpriteNodeName()
+	{
+		var cls = GameData.Instance != null ? GameData.Instance.CharacterClass : default;
+		switch (cls)
+		{
+			case Classe.CalculatorThief: return "CalculatorThief";
+			case Classe.Nudist: return "Camper";
+			case Classe.MathTeacher: return "MathTeacher";
+			case Classe.MilitaryGirl: return "MilitaryGirl";
+			case Classe.Stewardess: return "FlightAttendant";
+			case Classe.Bollywood:
+			default: return "Indian";
+		}
+	}
+
+	private void SelectAnimatedSpriteForClass()
+	{
+		// If already set via export path, keep it
+		if (_animatedSprite != null && IsInstanceValid(_animatedSprite)) return;
+
+		var desiredName = GetDesiredSpriteNodeName();
+		var animationRoot = GetNodeOrNull<Node>("Animation");
+		AnimatedSprite2D selected = null;
+		if (animationRoot != null)
+		{
+			foreach (Node child in animationRoot.GetChildren())
+			{
+				if (child is AnimatedSprite2D anim)
+				{
+					bool isDesired = anim.Name == desiredName;
+					anim.Visible = isDesired;
+					if (isDesired) selected = anim;
+				}
+			}
+		}
+
+		if (selected == null)
+		{
+			// Fallback: try to find any AnimatedSprite2D under this node
+			selected = GetNodeOrNull<AnimatedSprite2D>("AnimatedSprite2D");
+			if (selected == null)
+			{
+				var found = FindChild("AnimatedSprite2D", true, false);
+				selected = found as AnimatedSprite2D;
+			}
+		}
+
+		_animatedSprite = selected;
+		if (_animatedSprite != null)
+		{
+			// Ensure an initial animation is playing
+			if (_animatedSprite.SpriteFrames != null && _animatedSprite.SpriteFrames.HasAnimation("idle"))
+			{
+				_animatedSprite.Play("idle");
+			}
+		}
+	}
+
 	public void SetMovementEnabled(bool enabled)
 	{
 		_canMove = enabled;
@@ -61,6 +119,9 @@ public partial class Character : CharacterBody2D
 			
 		if (AnimatedSpritePath != null && !AnimatedSpritePath.IsEmpty)
 			_animatedSprite = GetNodeOrNull<AnimatedSprite2D>(AnimatedSpritePath);
+
+		// Dynamically select the appropriate animated sprite based on selected class
+		SelectAnimatedSpriteForClass();
 
 		_raycast = GetNodeOrNull<RayCast2D>("RayCast2D");
 

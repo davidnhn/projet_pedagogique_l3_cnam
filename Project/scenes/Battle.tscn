@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://7o6s76hcyvc2"]
+[gd_scene load_steps=10 format=3 uid="uid://xmfpvqfgt1bk"]
 
-[ext_resource type="Texture2D" uid="uid://bjj37a1hfnnkp" path="res://assets/images/background_classroom_battle.jpg" id="1_0448q"]
-[ext_resource type="Resource" uid="uid://l3oklnw1f7vb" path="res://Data/LeSeigneur.tres" id="2_0y4rl"]
-[ext_resource type="Texture2D" uid="uid://blhvcxpnn741r" path="res://assets/images/god.png" id="2_2rusm"]
+[ext_resource type="Texture2D" uid="uid://bjj37a1hfnnkp" path="res://assets/images/background_classroom_battle.jpg" id="2_0y4rl"]
 [ext_resource type="FontFile" uid="uid://76033bjs1xhf" path="res://assets/fonts/Valorant Font.ttf" id="2_6grd4"]
-[ext_resource type="Script" uid="uid://cdl26gamnl261" path="res://Scripts/BattleManager.cs" id="3_battle_manager"]
+[ext_resource type="Script" uid="uid://cbvloh2m5qf6c" path="res://Scripts/BattleManager.cs" id="3_battle_manager"]
+[ext_resource type="Texture2D" uid="uid://blhvcxpnn741r" path="res://assets/images/god.png" id="4_ggyc1"]
+
+[sub_resource type="Resource" id="Resource_0448q"]
+metadata/__load_path__ = "res://Data/LeSeigneur.tres"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_action_button"]
 bg_color = Color(0, 0, 0, 1)
@@ -36,13 +38,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_battle_manager")
-Enemy = ExtResource("2_0y4rl")
+Enemy = SubResource("Resource_0448q")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1081.0
-texture = ExtResource("1_0448q")
+texture = ExtResource("2_0y4rl")
 expand_mode = 1
 
 [node name="ActionsPanel" type="HBoxContainer" parent="."]
@@ -134,7 +136,7 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-texture = ExtResource("2_2rusm")
+texture = ExtResource("4_ggyc1")
 stretch_mode = 3
 
 [node name="PlayerHealthPanel" type="Panel" parent="."]

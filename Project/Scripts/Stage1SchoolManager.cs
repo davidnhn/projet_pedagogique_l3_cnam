@@ -1,12 +1,128 @@
 using Godot;
+using System.Collections.Generic;
 
 public partial class Stage1SchoolManager : Node2D
 {
     private Control _optionsMenu;
-    private Character _player;
+    private Node2D _player;
     private Button[] _menuButtons;
     private int _currentSelection = 0;
     private bool _isOptionsMenuVisible = false;
+
+    private static readonly Dictionary<Classe, string> _classToScenePath = new()
+    {
+        { Classe.Bollywood, "res://scenes/players/Indian.tscn" },
+        { Classe.CalculatorThief, "res://scenes/players/CalculatorThief.tscn" },
+        { Classe.Nudist, "res://scenes/players/Camper.tscn" },
+        { Classe.MathTeacher, "res://scenes/players/MathTeacher.tscn" },
+        { Classe.MilitaryGirl, "res://scenes/players/MilitaryGirl.tscn" },
+        { Classe.Stewardess, "res://scenes/players/FlightAttendant.tscn" }
+        // Classe.Ai not mapped; fallback will be used
+    };
+
+    private static readonly Dictionary<Classe, string> _classToSpriteFrames = new()
+    {
+        { Classe.Bollywood, "res://scenes/players/SpriteFrame/Indian.tres" },
+        { Classe.CalculatorThief, "res://scenes/players/SpriteFrame/CalculatorThief.tres" },
+        { Classe.Nudist, "res://scenes/players/SpriteFrame/Camper.tres" },
+        { Classe.MathTeacher, "res://scenes/players/SpriteFrame/MathTeacher.tres" },
+        { Classe.MilitaryGirl, "res://scenes/players/SpriteFrame/MilitaryGirl.tres" },
+        { Classe.Stewardess, "res://scenes/players/SpriteFrame/FlightAttendant.tres" }
+    };
+
+    private void ApplyPlayerSpriteFrames()
+    {
+        if (_player == null) { GD.PushWarning("Player node is null when applying frames."); return; }
+        var selectedClass = GameData.Instance?.CharacterClass;
+        string framesPath = null;
+        if (selectedClass.HasValue && _classToSpriteFrames.TryGetValue(selectedClass.Value, out framesPath))
+        {
+            GD.Print($"Selected class: {selectedClass.Value}");
+        }
+        else
+        {
+            GD.PushWarning("No selected class or mapping not found; falling back to Indian frames.");
+            framesPath = "res://scenes/players/SpriteFrame/Indian.tres";
+        }
+
+        GD.Print($"Loading SpriteFrames from: {framesPath}");
+        var frames = ResourceLoader.Load<SpriteFrames>(framesPath);
+        if (frames == null)
+        {
+            GD.PushWarning($"SpriteFrames not found at {framesPath}");
+            return;
+        }
+
+		AnimatedSprite2D anim = null;
+		anim = _player.GetNodeOrNull<AnimatedSprite2D>("AnimatedSprite2D");
+		if (anim == null)
+		{
+			var found = _player.FindChild("AnimatedSprite2D", true, false);
+			anim = found as AnimatedSprite2D;
+		}
+
+		if (anim != null)
+		{
+			GD.Print($"Applying frames to AnimatedSprite2D on Player: {framesPath}");
+			anim.SpriteFrames = frames;
+			if (frames.HasAnimation("idle"))
+			{
+				anim.Play("idle");
+			}
+		}
+		else
+		{
+			GD.PushWarning("AnimatedSprite2D not found under Player node (recursive search).");
+		}
+    }
+
+    private void EnsurePlayerInstance()
+    {
+        // Try to find existing Player (any Node2D)
+        _player = GetNodeOrNull<Node2D>("Player");
+        if (_player != null)
+        {
+            Global.Player = _player;
+            return;
+        }
+
+        // Instantiate based on selected class
+        var selectedClass = GameData.Instance?.CharacterClass;
+        string path;
+        if (selectedClass.HasValue && _classToScenePath.TryGetValue(selectedClass.Value, out path))
+        {
+            var packed = ResourceLoader.Load<PackedScene>(path);
+            if (packed != null)
+            {
+                var instance = packed.Instantiate<Node2D>();
+                if (instance != null)
+                {
+                    instance.Name = "Player";
+                    AddChild(instance);
+                    _player = instance;
+                    Global.Player = _player;
+                }
+            }
+        }
+        else
+        {
+            // Fallback: default to Indian
+            const string defaultPath = "res://scenes/players/Indian.tscn";
+            var packed = ResourceLoader.Load<PackedScene>(defaultPath);
+            if (packed != null)
+            {
+                var instance = packed.Instantiate<Node2D>();
+                if (instance != null)
+                {
+                    instance.Name = "Player";
+                    AddChild(instance);
+                    _player = instance;
+                    Global.Player = _player;
+                    GD.PushWarning("No class selected or mapping missing; defaulted to Indian player.");
+                }
+            }
+        }
+    }
 
     public override void _Ready()
     {
@@ -18,9 +134,13 @@ public partial class Stage1SchoolManager : Node2D
             GD.PrintErr("OptionsMenuInGame not found in Stage1School scene!");
             return;
         }
+
+        // Ensure player exists and matches selection
+        EnsurePlayerInstance();
         
         // Récupérer le personnage
-        _player = GetNode<Character>("Player");
+        _player ??= GetNodeOrNull<Node2D>("Player");
+        CallDeferred(nameof(ApplyPlayerSpriteFrames));
         
         // Récupérer les boutons du menu
         _menuButtons = new Button[]

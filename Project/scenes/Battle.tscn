@@ -1,0 +1,202 @@
+[gd_scene load_steps=10 format=3 uid="uid://xmfpvqfgt1bk"]
+
+[ext_resource type="Texture2D" uid="uid://bjj37a1hfnnkp" path="res://assets/images/background_classroom_battle.jpg" id="2_0y4rl"]
+[ext_resource type="FontFile" uid="uid://76033bjs1xhf" path="res://assets/fonts/Valorant Font.ttf" id="2_6grd4"]
+[ext_resource type="Script" uid="uid://cbvloh2m5qf6c" path="res://Scripts/BattleManager.cs" id="3_battle_manager"]
+[ext_resource type="Texture2D" uid="uid://blhvcxpnn741r" path="res://assets/images/god.png" id="4_ggyc1"]
+
+[sub_resource type="Resource" id="Resource_0448q"]
+metadata/__load_path__ = "res://Data/LeSeigneur.tres"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_action_button"]
+bg_color = Color(0, 0, 0, 1)
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0448q"]
+bg_color = Color(0.996215, 0.000807923, 0.0482527, 1)
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2rusm"]
+bg_color = Color(2.71939e-06, 0.599802, 0.251024, 1)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6grd4"]
+bg_color = Color(0, 0, 0, 0.509804)
+
+[node name="Battle" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_battle_manager")
+Enemy = SubResource("Resource_0448q")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1081.0
+texture = ExtResource("2_0y4rl")
+expand_mode = 1
+
+[node name="ActionsPanel" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 100.0
+offset_top = 50.0
+offset_right = -100.0
+offset_bottom = 120.0
+grow_horizontal = 2
+theme_override_constants/separation = 20
+
+[node name="AttackButton" type="Button" parent="ActionsPanel"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_6grd4")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/hover = SubResource("StyleBoxFlat_action_button")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_action_button")
+theme_override_styles/normal = SubResource("StyleBoxFlat_action_button")
+text = "ATTACK"
+
+[node name="DefendButton" type="Button" parent="ActionsPanel"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_6grd4")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/hover = SubResource("StyleBoxFlat_action_button")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_action_button")
+theme_override_styles/normal = SubResource("StyleBoxFlat_action_button")
+text = "DEFEND"
+
+[node name="RunButton" type="Button" parent="ActionsPanel"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_6grd4")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/hover = SubResource("StyleBoxFlat_action_button")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_action_button")
+theme_override_styles/normal = SubResource("StyleBoxFlat_action_button")
+text = "RUN"
+
+[node name="EnemyContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -306.0
+offset_top = -219.0
+offset_right = 306.0
+offset_bottom = 194.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="EnemyContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_0448q")
+theme_override_styles/fill = SubResource("StyleBoxFlat_2rusm")
+step = 1.0
+value = 100.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="EnemyContainer/ProgressBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("2_6grd4")
+theme_override_font_sizes/font_size = 30
+text = "Pv : 100/100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Enemy" type="TextureRect" parent="EnemyContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("4_ggyc1")
+stretch_mode = 3
+
+[node name="PlayerHealthPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 196.0
+offset_top = -178.0
+offset_right = -221.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6grd4")
+
+[node name="PlayerData" type="HBoxContainer" parent="PlayerHealthPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 10.0
+offset_right = -20.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="PlayerLabel" type="Label" parent="PlayerHealthPanel/PlayerData"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_6grd4")
+theme_override_font_sizes/font_size = 24
+text = "PLAYER"
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="PlayerHealthPanel/PlayerData"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/background = SubResource("StyleBoxFlat_0448q")
+theme_override_styles/fill = SubResource("StyleBoxFlat_2rusm")
+step = 1.0
+value = 100.0
+show_percentage = false
+
+[node name="HPLabel" type="Label" parent="PlayerHealthPanel/PlayerData/ProgressBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_6grd4")
+theme_override_font_sizes/font_size = 18
+text = "HP: 100/100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="ActionsPanel/AttackButton" to="." method="OnAttackPressed"]
+[connection signal="pressed" from="ActionsPanel/DefendButton" to="." method="OnDefendPressed"]
+[connection signal="pressed" from="ActionsPanel/RunButton" to="." method="OnRunPressed"]

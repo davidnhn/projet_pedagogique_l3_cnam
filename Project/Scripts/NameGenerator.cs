@@ -95,6 +95,63 @@ public partial class NameGenerator : Control
 
 		_validateButton.Pressed += OnValidateButtonPressed;
 		LoadPlayerGeneratedTheme();
+
+		PrefillFromGameData();
+
+		GenerateSuggestionsIfEmpty();
+	}
+
+	private void PrefillFromGameData()
+	{
+		var gd = GameData.Instance;
+		if (gd == null) return;
+
+		if (!string.IsNullOrEmpty(gd.PersonalName1)) _personalNameInput1.Text = gd.PersonalName1;
+		if (!string.IsNullOrEmpty(gd.PersonalName2)) _personalNameInput2.Text = gd.PersonalName2;
+		if (!string.IsNullOrEmpty(gd.PersonalName3)) _personalNameInput3.Text = gd.PersonalName3;
+		if (!string.IsNullOrEmpty(gd.ProfessionName)) _professionNameInput.Text = gd.ProfessionName;
+		if (!string.IsNullOrEmpty(gd.UnusualObjectName)) _unusualObjectInput.Text = gd.UnusualObjectName;
+		if (!string.IsNullOrEmpty(gd.PlaceName)) _placeNameInput.Text = gd.PlaceName;
+		if (!string.IsNullOrEmpty(gd.ExtraName1)) _extraNameInput1.Text = gd.ExtraName1;
+		if (!string.IsNullOrEmpty(gd.ExtraName2)) _extraNameInput2.Text = gd.ExtraName2;
+		if (!string.IsNullOrEmpty(gd.ExtraName3)) _extraNameInput3.Text = gd.ExtraName3;
+	}
+
+	private void GenerateSuggestionsIfEmpty()
+	{
+		bool allEmpty = string.IsNullOrWhiteSpace(_personalNameInput1.Text)
+			&& string.IsNullOrWhiteSpace(_personalNameInput2.Text)
+			&& string.IsNullOrWhiteSpace(_personalNameInput3.Text)
+			&& string.IsNullOrWhiteSpace(_professionNameInput.Text)
+			&& string.IsNullOrWhiteSpace(_unusualObjectInput.Text)
+			&& string.IsNullOrWhiteSpace(_placeNameInput.Text)
+			&& string.IsNullOrWhiteSpace(_extraNameInput1.Text)
+			&& string.IsNullOrWhiteSpace(_extraNameInput2.Text)
+			&& string.IsNullOrWhiteSpace(_extraNameInput3.Text);
+
+		if (!allEmpty)
+		{
+			return;
+		}
+
+		// Pick a random available theme and populate fields
+		var themeKeys = _themes.Keys.ToList();
+		if (themeKeys.Count == 0) return;
+		var randomKey = themeKeys[_random.Next(themeKeys.Count)];
+		var theme = _themes[randomKey];
+
+		var usedPersonal = new HashSet<string>();
+		var usedExtras = new HashSet<string>();
+
+		_personalNameInput1.Text = GetOrCreateText(_personalNameInput1, theme.PersonalNames, usedPersonal);
+		_personalNameInput2.Text = GetOrCreateText(_personalNameInput2, theme.PersonalNames, usedPersonal);
+		_personalNameInput3.Text = GetOrCreateText(_personalNameInput3, theme.PersonalNames, usedPersonal);
+		_professionNameInput.Text = GetOrCreateText(_professionNameInput, theme.Professions);
+		_unusualObjectInput.Text = GetOrCreateText(_unusualObjectInput, theme.UnusualObjects);
+		_placeNameInput.Text = GetOrCreateText(_placeNameInput, theme.PlaceNames);
+		_extraNameInput1.Text = GetOrCreateText(_extraNameInput1, theme.ExtraNames, usedExtras);
+		_extraNameInput2.Text = GetOrCreateText(_extraNameInput2, theme.ExtraNames, usedExtras);
+		_extraNameInput3.Text = GetOrCreateText(_extraNameInput3, theme.ExtraNames, usedExtras);
 	}
 
 	private void LoadPlayerGeneratedTheme()
@@ -175,7 +232,7 @@ public partial class NameGenerator : Control
 		GD.Print("Noms sauvegardés dans la base de données.");
 
 		// Changer de scène pour commencer l'aventure
-		GetTree().ChangeSceneToFile("res://scenes/Stage1School.tscn");
+		GetTree().ChangeSceneToFile("res://scenes/stage/Stage1School.tscn");
 	}
 
 	private void SaveIfNew(string word, string category)

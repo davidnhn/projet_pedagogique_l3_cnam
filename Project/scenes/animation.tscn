@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://cif850tutjooj"]
+
+[ext_resource type="SpriteFrames" uid="uid://b0xsh40i32ceq" path="res://scenes/players/SpriteFrame/Indian.tres" id="1_qifec"]
+[ext_resource type="SpriteFrames" uid="uid://d0t3rkomig84p" path="res://scenes/players/SpriteFrame/CalculatorThief.tres" id="2_y6bwc"]
+[ext_resource type="SpriteFrames" uid="uid://ee0xy0noi8fl" path="res://scenes/players/SpriteFrame/Camper.tres" id="3_kbas4"]
+[ext_resource type="SpriteFrames" uid="uid://bdlt3hvksie3q" path="res://scenes/players/SpriteFrame/FlightAttendant.tres" id="4_4qpg7"]
+[ext_resource type="SpriteFrames" uid="uid://fk6b2am3afcx" path="res://scenes/players/SpriteFrame/MathTeacher.tres" id="5_p37yg"]
+[ext_resource type="SpriteFrames" uid="uid://bkf0ddwrgghpx" path="res://scenes/players/SpriteFrame/MilitaryGirl.tres" id="6_2ij7o"]
+
+[node name="Animation" type="Node2D"]
+
+[node name="Indian" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_qifec")
+animation = &"idle"
+
+[node name="CalculatorThief" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_y6bwc")
+animation = &"idle"
+
+[node name="Camper" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("3_kbas4")
+animation = &"idle"
+
+[node name="FlightAttendant" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("4_4qpg7")
+animation = &"idle"
+
+[node name="MathTeacher" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("5_p37yg")
+animation = &"idle"
+
+[node name="MilitaryGirl" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("6_2ij7o")
+animation = &"idle"

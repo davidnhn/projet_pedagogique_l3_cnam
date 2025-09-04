@@ -1,0 +1,96 @@
+[gd_scene load_steps=5 format=3 uid="uid://bt3hgsoh70l1w"]
+
+[ext_resource type="Script" uid="uid://daioo70wwgudn" path="res://Scripts/Dialog/DialogUI.cs" id="1_sdxd7"]
+[ext_resource type="FontFile" uid="uid://b42spf2nlovg6" path="res://assets/fonts/BLOODFONT/Blood Thirst.ttf" id="2_asasi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fejp3"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0, 0, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pxf57"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="DialogUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sdxd7")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -280.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fejp3")
+
+[node name="DialogBox" type="VBoxContainer" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="DialogSpeaker" type="Label" parent="CanvasLayer/Panel/DialogBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.988235, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_asasi")
+theme_override_font_sizes/font_size = 26
+text = "NPC Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DialogText" type="RichTextLabel" parent="CanvasLayer/Panel/DialogBox"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "DialogText"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DialogOptions" type="VBoxContainer" parent="CanvasLayer/Panel/DialogBox"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="CloseButton" type="Button" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -45.0
+offset_top = 5.0
+offset_right = -9.0
+offset_bottom = 41.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_pxf57")
+text = "X"
+icon_alignment = 1
+
+[connection signal="pressed" from="CanvasLayer/Panel/CloseButton" to="." method="_on_close_button_pressed"]

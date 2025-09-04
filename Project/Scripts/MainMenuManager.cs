@@ -11,6 +11,8 @@ public partial class MainMenuManager : Control
 	private Button startButton;
 	// Variable pour stocker la référence au bouton Options
 	private Button optionsButton;
+	// Variable pour stocker la référence au bouton Continue
+	private Button continueButton;
 
 	// Cette méthode est appelée automatiquement quand la scène est chargée
 	// C'est l'équivalent du "constructeur" pour les nodes Godot
@@ -28,6 +30,14 @@ public partial class MainMenuManager : Control
 		if (optionsButton == null)
 		{
 			GD.PrintErr("Options_Button not found! Check the node path.");
+			return;
+		}
+		
+		// Ajout de la récupération du bouton Continue
+		continueButton = GetNode<Button>("VBoxContainer/Continue_Button");
+		if (continueButton == null)
+		{
+			GD.PrintErr("Continue_Button not found! Check the node path.");
 			return;
 		}
 		
@@ -56,6 +66,9 @@ public partial class MainMenuManager : Control
 		
 		// Connecte le signal "Pressed" du bouton Options à notre méthode OnOptionsButtonPressed
 		optionsButton.Pressed += OnOptionsButtonPressed;
+		
+		// Connecte le signal "Pressed" du bouton Continue à notre méthode OnContinueButtonPressed
+		continueButton.Pressed += OnContinueButtonPressed;
 	}
 
 	// Méthode appelée quand le bouton Exit est pressé
@@ -80,5 +93,52 @@ public partial class MainMenuManager : Control
 		GD.Print("Options button pressed!");
 		// Change la scène vers le menu d'options (à adapter selon ton projet)
 		GetTree().ChangeSceneToFile("res://scenes/options_menu.tscn");
+	}
+
+	// Méthode appelée quand le bouton Continue est pressé
+	private void OnContinueButtonPressed()
+	{
+		GD.Print("Continue button pressed!");
+
+		// Au lieu de chercher un joueur spécifique, on cherche la sauvegarde la plus récente de tous les joueurs
+		var saveData = DatabaseManager.Instance.LoadMostRecentSaveFromAnyPlayer();
+
+		if (saveData == null)
+		{
+			GD.Print("No save game found.");
+		}
+		else
+		{
+			GD.Print("Save data found. Loading game...");
+
+			// Stocker les données de chargement pour que la nouvelle scène puisse les utiliser
+			GameData.Instance.PlayerPosition = (Vector2)saveData["position"];
+			
+			// Le nom de la scène est stocké dans la base, par exemple "Le Désert de la Cafet"
+			string zoneName = (string)saveData["scene_name"];
+			string sceneFileName = MapZoneNameToSceneFile(zoneName);
+			
+			GD.Print($"Mapping zone '{zoneName}' to scene file '{sceneFileName}'");
+			GetTree().ChangeSceneToFile(sceneFileName);
+		}
+	}
+	
+	// Mappe les noms de zones de la base de données vers les vrais fichiers de scènes
+	private string MapZoneNameToSceneFile(string zoneName)
+	{
+		switch (zoneName)
+		{
+			case "Le Désert de la Cafet":
+				return "res://scenes/stage/Stage1School.tscn";
+			case "L'Enfer du Tableau Mathématique":
+				return "res://scenes/stage/Stage2Laboratory.tscn";
+			case "Le Parc Commando":
+				return "res://scenes/stage/Stage1School.tscn"; // ou une autre scène si elle existe
+			case "La Salle Informatique":
+				return "res://scenes/stage/Stage2Laboratory.tscn"; // ou une autre scène si elle existe
+			default:
+				GD.PrintErr($"Unknown zone name: {zoneName}. Defaulting to Stage1School.tscn");
+				return "res://scenes/stage/Stage1School.tscn";
+		}
 	}
 }

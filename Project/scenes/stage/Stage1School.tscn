@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://chh3p3rjmooiv" path="res://scenes/ennemy/Charpentier.tscn" id="3_c580w"]
 [ext_resource type="Script" uid="uid://uhvmivq0grdp" path="res://resources/Dialog/Dialog.cs" id="4_5sviu"]
 [ext_resource type="PackedScene" uid="uid://bdbavhsj47ndl" path="res://scenes/ennemy/Mallak.tscn" id="4_uovxj"]
-[ext_resource type="PackedScene" uid="uid://bwkrlr0fpijii" path="res://scenes/players/Player.tscn" id="5_5sviu"]
+[ext_resource type="PackedScene" path="res://scenes/players/Player.tscn" id="5_5sviu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uacy5"]
 texture = ExtResource("1_nk0k0")
@@ -2586,7 +2586,6 @@ tile_set = SubResource("TileSet_xslob")
 [node name="Charpentier" parent="." instance=ExtResource("3_c580w")]
 position = Vector2(526, -469)
 DialogResource = SubResource("Resource_pcfyo")
-StartBattleOnSecondInteract = true
 
 [node name="Mallak" parent="." instance=ExtResource("4_uovxj")]
 position = Vector2(391, -463)

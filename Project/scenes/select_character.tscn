@@ -93,12 +93,6 @@ size_flags_vertical = 4
 texture = ExtResource("5_oeraq")
 expand_mode = 3
 
-[node name="ButtonBollywoodActor" type="Button" parent="Panel/TextureContainer/ContainerBollywoodActor"]
-custom_minimum_size = Vector2(315, 400)
-layout_mode = 2
-theme_override_colors/font_focus_color = Color(0.219608, 0, 0, 0.733333)
-theme_override_styles/normal = SubResource("StyleBoxEmpty_trwbv")
-
 [node name="Margin" type="MarginContainer" parent="Panel/TextureContainer/ContainerBollywoodActor"]
 layout_mode = 2
 theme_override_constants/margin_left = 0
@@ -128,6 +122,12 @@ Bollywood"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="ButtonBollywoodActor" type="Button" parent="Panel/TextureContainer/ContainerBollywoodActor"]
+custom_minimum_size = Vector2(315, 400)
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.219608, 0, 0, 0.733333)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_trwbv")
+
 [node name="ContainerCalculatorThief" type="PanelContainer" parent="Panel/TextureContainer"]
 custom_minimum_size = Vector2(0, 400)
 layout_mode = 2
@@ -142,12 +142,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("6_kxm83")
 expand_mode = 3
-
-[node name="ButtonCalculatorThief" type="Button" parent="Panel/TextureContainer/ContainerCalculatorThief"]
-custom_minimum_size = Vector2(315, 400)
-layout_mode = 2
-theme_override_colors/font_focus_color = Color(0.219608, 0, 0, 0.733333)
-theme_override_styles/normal = SubResource("StyleBoxEmpty_trwbv")
 
 [node name="Margin" type="MarginContainer" parent="Panel/TextureContainer/ContainerCalculatorThief"]
 layout_mode = 2
@@ -178,6 +172,12 @@ calculatrice"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="ButtonCalculatorThief" type="Button" parent="Panel/TextureContainer/ContainerCalculatorThief"]
+custom_minimum_size = Vector2(315, 400)
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.219608, 0, 0, 0.733333)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_trwbv")
+
 [node name="ContainerNudiste" type="PanelContainer" parent="Panel/TextureContainer"]
 custom_minimum_size = Vector2(0, 400)
 layout_mode = 2
@@ -192,12 +192,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("7_28l0d")
 expand_mode = 3
-
-[node name="ButtonNudist" type="Button" parent="Panel/TextureContainer/ContainerNudiste"]
-custom_minimum_size = Vector2(315, 400)
-layout_mode = 2
-theme_override_colors/font_focus_color = Color(0.219608, 0, 0, 0.733333)
-theme_override_styles/normal = SubResource("StyleBoxEmpty_trwbv")
 
 [node name="Margin" type="MarginContainer" parent="Panel/TextureContainer/ContainerNudiste"]
 layout_mode = 2
@@ -227,6 +221,12 @@ text = "Nudiste"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="ButtonNudist" type="Button" parent="Panel/TextureContainer/ContainerNudiste"]
+custom_minimum_size = Vector2(315, 400)
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.219608, 0, 0, 0.733333)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_trwbv")
+
 [node name="ContainerMathTeacher" type="PanelContainer" parent="Panel/TextureContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -240,12 +240,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("8_ygfxk")
 expand_mode = 3
-
-[node name="ButtonMathTeacher" type="Button" parent="Panel/TextureContainer/ContainerMathTeacher"]
-custom_minimum_size = Vector2(315, 400)
-layout_mode = 2
-theme_override_colors/font_focus_color = Color(0.219608, 0, 0, 0.733333)
-theme_override_styles/normal = SubResource("StyleBoxEmpty_trwbv")
 
 [node name="Margin" type="MarginContainer" parent="Panel/TextureContainer/ContainerMathTeacher"]
 layout_mode = 2
@@ -276,6 +270,12 @@ mathématique	"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="ButtonMathTeacher" type="Button" parent="Panel/TextureContainer/ContainerMathTeacher"]
+custom_minimum_size = Vector2(315, 400)
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.219608, 0, 0, 0.733333)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_trwbv")
+
 [node name="ContainerMilitaryGirl" type="PanelContainer" parent="Panel/TextureContainer"]
 custom_minimum_size = Vector2(0, 400)
 layout_mode = 2
@@ -290,12 +290,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("9_8jr2u")
 expand_mode = 3
-
-[node name="ButtonMilitaryGirl" type="Button" parent="Panel/TextureContainer/ContainerMilitaryGirl"]
-custom_minimum_size = Vector2(315, 400)
-layout_mode = 2
-theme_override_colors/font_focus_color = Color(0.219608, 0, 0, 0.733333)
-theme_override_styles/normal = SubResource("StyleBoxEmpty_trwbv")
 
 [node name="Margin" type="MarginContainer" parent="Panel/TextureContainer/ContainerMilitaryGirl"]
 layout_mode = 2
@@ -325,6 +319,12 @@ text = "Militaire"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="ButtonMilitaryGirl" type="Button" parent="Panel/TextureContainer/ContainerMilitaryGirl"]
+custom_minimum_size = Vector2(315, 400)
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.219608, 0, 0, 0.733333)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_trwbv")
+
 [node name="ContainerStewardess" type="PanelContainer" parent="Panel/TextureContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -338,12 +338,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("10_xo6pa")
 expand_mode = 2
-
-[node name="ButtonStewardess" type="Button" parent="Panel/TextureContainer/ContainerStewardess"]
-custom_minimum_size = Vector2(315, 400)
-layout_mode = 2
-theme_override_colors/font_focus_color = Color(0.219608, 0, 0, 0.733333)
-theme_override_styles/normal = SubResource("StyleBoxEmpty_trwbv")
 
 [node name="Margin" type="MarginContainer" parent="Panel/TextureContainer/ContainerStewardess"]
 layout_mode = 2
@@ -373,6 +367,12 @@ text = "Hotesse
 de l'air"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ButtonStewardess" type="Button" parent="Panel/TextureContainer/ContainerStewardess"]
+custom_minimum_size = Vector2(315, 400)
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.219608, 0, 0, 0.733333)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_trwbv")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_nnbm3")

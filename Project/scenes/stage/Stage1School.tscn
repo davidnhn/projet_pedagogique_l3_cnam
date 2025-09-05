@@ -2593,3 +2593,7 @@ DialogResource = SubResource("Resource_galu7")
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("5_5sviu")]
 position = Vector2(1411, -451)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1320, -460)
+zoom = Vector2(6, 3)

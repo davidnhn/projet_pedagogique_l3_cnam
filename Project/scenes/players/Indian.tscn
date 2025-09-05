@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Character.cs" id="1_v00lv"]
 [ext_resource type="SpriteFrames" uid="uid://b0xsh40i32ceq" path="res://scenes/players/SpriteFrame/Indian.tres" id="2_b4nj1"]
-[ext_resource type="Script" path="res://Scripts/Camera.cs" id="2_j1b8j"]
+[ext_resource type="Script" uid="uid://7birhx7blkk3" path="res://Scripts/Camera.cs" id="2_j1b8j"]
 [ext_resource type="Texture2D" uid="uid://dtir5kmhydso1" path="res://Test/Assets/Icons/icon20.png" id="4_b4nj1"]
 [ext_resource type="FontFile" uid="uid://b42spf2nlovg6" path="res://assets/fonts/BLOODFONT/Blood Thirst.ttf" id="5_i63ib"]
 

@@ -47,7 +47,7 @@ public partial class EnterName : Control
 		if (string.IsNullOrEmpty(playerName))
 		{
 			GD.Print("Name is empty"); // Debug log
-			messageLabel.Text = "Veuillez entrer un nom !";
+			messageLabel.Text = "Veuillez entrer \r\n un nom !";
 			messageLabel.Modulate = new Color(1, 0, 0); // Rouge pour l'erreur
 			return;
 		}

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://d23fyg8p3nk8f" path="res://Scripts/Npc.cs" id="1_hp886"]
 [ext_resource type="Texture2D" uid="uid://c1fuoueu00ku2" path="res://assets/Sprite/CharpentierCharacter2d.png" id="2_4hvmc"]
 [ext_resource type="Script" uid="uid://uhvmivq0grdp" path="res://resources/Dialog/Dialog.cs" id="2_b4osb"]
-[ext_resource type="Script" path="res://Scripts/Camera.cs" id="3_b4osb"]
+[ext_resource type="Script" uid="uid://7birhx7blkk3" path="res://Scripts/Camera.cs" id="3_b4osb"]
 [ext_resource type="PackedScene" uid="uid://dq703u538q0t2" path="res://scenes/dialog/DialogManager.tscn" id="4_4hvmc"]
 
 [sub_resource type="Resource" id="Resource_w0vwo"]

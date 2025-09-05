@@ -44,19 +44,6 @@ public partial class BattleManager : Control
 		// Créer un label pour afficher les messages
 		CreateMessageLabel();
 		
-		// If Enemy not set in editor, try to use pending enemy from GameData
-		if (Enemy == null && GameData.Instance != null && GameData.Instance.PendingEnemy != null)
-		{
-			Enemy = GameData.Instance.PendingEnemy;
-			GameData.Instance.PendingEnemy = null;
-		}
-		
-		// Provide minimal fallback to avoid null
-		if (Enemy == null)
-		{
-			Enemy = new BaseEnemy { EnemyName = "Adversaire", Health = 50, Damage = 8 };
-		}
-		
 		// Initialiser le combat
 		InitializeBattle();
 	}
@@ -250,9 +237,9 @@ public partial class BattleManager : Control
 		if (_currentEnemyHealth <= 0)
 		{
 			DisplayMessage($"{Enemy.EnemyName} a été vaincu!");
-			// Transition to Stage 2 after a short delay
-			GetTree().CreateTimer(2.0f).Timeout += () => {
-				GetTree().ChangeSceneToFile("res://scenes/stage/Stage2Laboratory.tscn");
+			// Arrêter la scène après 3 secondes
+			GetTree().CreateTimer(3.0f).Timeout += () => {
+				GetTree().Quit();
 			};
 			return;
 		}

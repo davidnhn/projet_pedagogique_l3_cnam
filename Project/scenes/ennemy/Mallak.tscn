@@ -1,9 +1,9 @@
 [gd_scene load_steps=26 format=3 uid="uid://bdbavhsj47ndl"]
 
-[ext_resource type="Script" uid="uid://d23fyg8p3nk8f" path="res://Scripts/Npc.cs" id="1_ai0vx"]
+[ext_resource type="Script" path="res://Scripts/Npc.cs" id="1_ai0vx"]
 [ext_resource type="Texture2D" uid="uid://gpm21fe0lwub" path="res://assets/Sprite/mallaksprite2d_.png" id="1_yq62l"]
 [ext_resource type="Script" uid="uid://uhvmivq0grdp" path="res://resources/Dialog/Dialog.cs" id="2_0siwc"]
-[ext_resource type="Script" uid="uid://7birhx7blkk3" path="res://Scripts/Camera.cs" id="3_k3fpg"]
+[ext_resource type="Script" path="res://Scripts/Camera.cs" id="3_k3fpg"]
 [ext_resource type="PackedScene" uid="uid://dq703u538q0t2" path="res://scenes/dialog/DialogManager.tscn" id="4_0siwc"]
 
 [sub_resource type="Resource" id="Resource_v3heb"]

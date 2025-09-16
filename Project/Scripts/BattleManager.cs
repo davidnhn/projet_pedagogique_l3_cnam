@@ -27,7 +27,10 @@ public partial class BattleManager : Control
 	private TextureRect _enemySprite;      // Sprite de l'ennemi
 	private Control _actionsPanel;         // Panel contenant les boutons d'action
 	private Label _messageLabel;           // Label pour afficher les messages de combat
-	
+	private bool _waitingForExit = false;  // Attend l'appui sur Espace pour quitter
+	private int _lastMallakQuipIndex = -1; // Eviter répétition (Mallak)
+	private int _lastRaiffQuipIndex = -1;  // Eviter répétition (Raiff)
+
 	/// <summary>
 	/// Appelé quand le nœud est prêt. Initialise les références et démarre le combat.
 	/// </summary>
@@ -95,6 +98,27 @@ public partial class BattleManager : Control
 			DisplayMessage("Erreur: Ennemi non configuré!");
 			return;
 		}
+
+		// For the very first battle, force the enemy texture to god.png if none provided
+		if (GameData.Instance != null && GameData.Instance.BattlesStartedCount == 0 && Enemy.EnemyTexture == null)
+		{
+			var godTexture = ResourceLoader.Load<Texture2D>("res://assets/images/god.png");
+			if (godTexture != null)
+			{
+				Enemy.EnemyTexture = godTexture;
+			}
+			// Force enemy display name for the first battle
+			Enemy.EnemyName = "Monsieur Mallak";
+		}
+		// If the pending enemy is Raiff, ensure the Raiff texture is used regardless of battle index
+		if (!string.IsNullOrEmpty(Enemy.EnemyName) && Enemy.EnemyName.ToLower() == "raiff")
+		{
+			var raiffTexture = ResourceLoader.Load<Texture2D>("res://assets/images/Enemy.jpg");
+			if (raiffTexture != null)
+			{
+				Enemy.EnemyTexture = raiffTexture;
+			}
+		}
 		
 		// Configurer les barres de vie
 		SetHealth(_enemyHealthBar, Enemy.Health, Enemy.Health);
@@ -102,11 +126,28 @@ public partial class BattleManager : Control
 		
 		// Configurer l'ennemi
 		_enemySprite.Texture = Enemy.EnemyTexture;
+		// Ajuster la taille d'affichage pour certains ennemis
+		if (!string.IsNullOrEmpty(Enemy.EnemyName) && Enemy.EnemyName.ToLower() == "raiff")
+		{
+			// Réduire fortement pour laisser la place aux boutons
+			_enemySprite.CustomMinimumSize = new Vector2(128, 128);
+			_enemySprite.StretchMode = TextureRect.StretchModeEnum.Scale;
+		}
+		else
+		{
+			_enemySprite.CustomMinimumSize = new Vector2(360, 360);
+		}
 		
 		// Initialiser les variables de combat
 		_currentPlayerHealth = _playerMaxHealth;
 		_currentEnemyHealth = Enemy.Health;
 		
+		// Increment battle count once initialized
+		if (GameData.Instance != null)
+		{
+			GameData.Instance.BattlesStartedCount++;
+		}
+
 		// Cacher le panel d'actions au début
 		_actionsPanel.Visible = false;
 		
@@ -190,7 +231,18 @@ public partial class BattleManager : Control
 				DisplayMessage("Ta défense a échoué!");
 				_currentPlayerHealth = Mathf.Max(0, _currentPlayerHealth - Enemy.Damage);
 				SetHealth(_playerHealthBar, _currentPlayerHealth, _playerMaxHealth);
-				DisplayMessage($"{Enemy.EnemyName} t'a infligé {Enemy.Damage} dégâts!");
+				if (!string.IsNullOrEmpty(Enemy.EnemyName) && Enemy.EnemyName.ToLower() == "monsieur mallak")
+				{
+					DisplayMessage(GetMallakAttackQuip(Enemy.Damage));
+				}
+				else if (!string.IsNullOrEmpty(Enemy.EnemyName) && Enemy.EnemyName.ToLower() == "raiff")
+				{
+					DisplayMessage(GetRaiffAttackQuip(Enemy.Damage));
+				}
+				else
+				{
+					DisplayMessage($"{Enemy.EnemyName} t'a infligé {Enemy.Damage} dégâts!");
+				}
 			}
 		}
 		else
@@ -198,7 +250,18 @@ public partial class BattleManager : Control
 			// Attaque normale si le joueur ne se défend pas
 			_currentPlayerHealth = Mathf.Max(0, _currentPlayerHealth - Enemy.Damage);
 			SetHealth(_playerHealthBar, _currentPlayerHealth, _playerMaxHealth);
-			DisplayMessage($"{Enemy.EnemyName} t'a infligé {Enemy.Damage} dégâts!");
+			if (!string.IsNullOrEmpty(Enemy.EnemyName) && Enemy.EnemyName.ToLower() == "monsieur mallak")
+			{
+				DisplayMessage(GetMallakAttackQuip(Enemy.Damage));
+			}
+			else if (!string.IsNullOrEmpty(Enemy.EnemyName) && Enemy.EnemyName.ToLower() == "raiff")
+			{
+				DisplayMessage(GetRaiffAttackQuip(Enemy.Damage));
+			}
+			else
+			{
+				DisplayMessage($"{Enemy.EnemyName} t'a infligé {Enemy.Damage} dégâts!");
+			}
 		}
 		
 		// Vérifier si le joueur est mort
@@ -212,6 +275,56 @@ public partial class BattleManager : Control
 			return;
 		}
 	}
+
+	// Génère une phrase humoristique liée au cours de BDD pour Monsieur Mallak
+	private string GetMallakAttackQuip(int damage)
+	{
+		var quips = new string[]
+		{
+			$"Ton MCD a des cardinalités bancales… correction immédiate ! (-{damage} PV)",
+			$"Tu confonds clé primaire et clé étrangère… pénalité ! (-{damage} PV)",
+			$"Violation d'intégrité référentielle détectée. ROLLBACK de ta vie ! (-{damage} PV)",
+			$"Pas en 3e forme normale ? Normalisation douloureuse… (-{damage} PV)",
+			$"JOINTURE cartésienne involontaire… ça pique ! (-{damage} PV)",
+			$"Syntax error near SQL… sanction pédagogique ! (-{damage} PV)",
+			$"Trigger surprise activé. Effets secondaires violents ! (-{damage} PV)",
+			$"Index manquant, performance en chute libre… (-{damage} PV)",
+			$"Schéma non normalisé, anomalies d'update en vue… (-{damage} PV)",
+			$"Ton modèle logique n'est pas conforme au MCD… (-{damage} PV)"
+		};
+		int idx;
+		do
+		{
+			idx = (int)Mathf.Floor(GD.Randf() * quips.Length) % quips.Length;
+		} while (idx == _lastMallakQuipIndex && quips.Length > 1);
+		_lastMallakQuipIndex = idx;
+		return quips[idx];
+	}
+	
+	// Génère une phrase humour réseau/cyber pour Raiff
+	private string GetRaiffAttackQuip(int damage)
+	{
+		var quips = new string[]
+		{
+			$"Ton SSL est en TLS1.0… downgrade et douleur garantie ! (-{damage} PV)",
+			$"J’ai sniffé tes paquets avec Wireshark, aucune pitié ! (-{damage} PV)",
+			$"Un petit netcat -l te met à genoux… (-{damage} PV)",
+			$"Telnet en clair ? Tes PV fuitent sur le réseau ! (-{damage} PV)",
+			$"Ton pare-feu a un port ouvert de trop… exploitation ! (-{damage} PV)",
+			$"Certificat auto-signé ? Je te révoque des points de vie. (-{damage} PV)",
+			$"Ping of death pédagogique reçu ! (-{damage} PV)",
+			$"Ton handshake TLS a échoué… reset brutal ! (-{damage} PV)",
+			$"ARP spoofing sur ta barre de vie… (-{damage} PV)",
+			$"Je t’inonde en SYN, pas de ACK pour tes PV. (-{damage} PV)"
+		};
+		int idx;
+		do
+		{
+			idx = (int)Mathf.Floor(GD.Randf() * quips.Length) % quips.Length;
+		} while (idx == _lastRaiffQuipIndex && quips.Length > 1);
+		_lastRaiffQuipIndex = idx;
+		return quips[idx];
+	}
 	
 	// ===== MÉTHODES APPELÉES PAR LES BOUTONS D'ACTION =====
 	
@@ -220,9 +333,22 @@ public partial class BattleManager : Control
 	/// </summary>
 	public void OnRunPressed()
 	{
-		DisplayMessage("Tu t'es échappé en sécurité!");
-		// Ici tu peux ajouter la logique de fuite
-		GetTree().Quit();
+		// Afficher un message persistant et attendre Espace pour quitter
+		_waitingForExit = true;
+		_actionsPanel.Visible = false;
+		if (_messageLabel != null)
+		{
+			_messageLabel.Text = "GAME OVER : Vous etes NULL, votre Trigger SQL n'est PAS au point";
+			_messageLabel.Visible = true;
+		}
+	}
+
+	public override void _Input(InputEvent @event)
+	{
+		if (_waitingForExit && @event is InputEventKey key && key.Pressed && key.Keycode == Key.Space)
+		{
+			GetTree().Quit();
+		}
 	}
 	
 	/// <summary>
@@ -250,7 +376,7 @@ public partial class BattleManager : Control
 		if (_currentEnemyHealth <= 0)
 		{
 			DisplayMessage($"{Enemy.EnemyName} a été vaincu!");
-			// Transition to Stage 2 after a short delay
+			// Transition to Stage 2 after a short délai
 			GetTree().CreateTimer(2.0f).Timeout += () => {
 				GetTree().ChangeSceneToFile("res://scenes/stage/Stage2Laboratory.tscn");
 			};

@@ -1,0 +1,196 @@
+classDiagram
+    direction LR
+
+    package "Core Interfaces" {
+        interface ICombatable {
+            +Attaquer(ICombatable cible) int
+            +Defendre(int degats) int
+            +EstVivant bool
+        }
+
+        interface IInteractable {
+            +Interagir() string
+        }
+
+        interface ActionStrategy {
+            +Executer() string
+        }
+    }
+
+    package "Character Classes" {
+        class CharacterBody2D {
+            <<Godot>>
+        }
+
+        class Character {
+            <<partial>>
+            +float Speed
+            +int MaxHealth
+            +int Health
+            +int Attack
+            +int Defense
+            +TakeDamage(int damage)
+            +AttackCharacter(Character target)
+        }
+        Character --|> CharacterBody2D
+
+        class Enemy {
+            <<partial>>
+            +int ExperienceValue
+        }
+        Enemy --|> Character
+
+        class Personnage {
+            <<partial>>
+            +int Vie
+            +int Experience
+        }
+        Personnage --|> CharacterBody2D
+        Personnage ..|> IInteractable
+        Personnage ..|> ICombatable
+
+        class Bot {
+            <<partial>>
+            +string NiveauBot
+        }
+        Bot --|> CharacterBody2D
+        Bot ..|> IInteractable
+        Bot ..|> ICombatable
+
+        class Npc {
+            <<partial>>
+            +string npc_name
+        }
+        Npc --|> CharacterBody2D
+    }
+
+    package "Data Models" {
+        class Resource {
+            <<Godot>>
+        }
+
+        class Joueur {
+            +string PseudoJoueur
+        }
+        Joueur "1" -- "0..*" Personnage
+        Joueur "1" -- "0..*" Sauvegarde
+
+        class Quete {
+            +string NomQuete
+        }
+        Quete --|> Resource
+        Quete "1" -- "0..*" Objet : recompenses
+
+        class Objet {
+            +string NomObjet
+        }
+        Objet --|> Resource
+
+        class Inventaire {
+        }
+        Inventaire --|> Resource
+        Inventaire "1" o-- "0..*" Objet
+
+        class Equipement {
+            +string TypeEquipement
+        }
+        Equipement --|> Resource
+
+        class TypePersonnage {
+            +string NomTypePersonnage
+        }
+        TypePersonnage --|> Resource
+
+        class Sauvegarde {
+        }
+        Sauvegarde --|> Resource
+        Sauvegarde --> SauvegardeMemento : Creates
+
+        class SauvegardeMemento {
+        }
+        SauvegardeMemento --|> Resource
+
+        class Zone {
+            +string NomZone
+        }
+        Zone --|> CharacterBody2D
+        Zone "1" -- "0..*" Bot
+        Zone "1" -- "0..*" Combat
+        
+        class Combat {
+           +string ResultatCombat
+        }
+        Combat --|> CharacterBody2D
+    }
+
+    package "Managers" {
+        class Node {
+            <<Godot>>
+        }
+        class Control {
+            <<Godot>>
+        }
+        Control --|> Node
+        
+        class BattleManager {
+            +BaseEnemy Enemy
+        }
+        BattleManager --|> Control
+
+        class DatabaseManager {
+            <<Singleton>>
+            +ConnectToDatabase()
+        }
+        DatabaseManager --|> Node
+
+        class BaseEnemy {
+            +string EnemyName
+            +int Health
+            +int Damage
+        }
+        BaseEnemy --|> Resource
+        BattleManager o-- BaseEnemy
+    }
+
+    package "Strategy Pattern" {
+        class ActionDeBase {
+            <<abstract>>
+        }
+        ActionDeBase ..|> ActionStrategy
+
+        class CombatStrategy {
+        }
+        CombatStrategy --|> ActionDeBase
+        CombatStrategy o-- ICombatable
+
+        class InteractionStrategy {
+        }
+        InteractionStrategy --|> ActionDeBase
+        InteractionStrategy o-- IInteractable
+
+        class MagieStrategy {
+        }
+        MagieStrategy --|> ActionDeBase
+    }
+    
+    package "Relationships" {
+      Personnage "1" -- "1" TypePersonnage
+      Personnage "1" -- "1" ActionStrategy
+      Personnage "1" -- "1" Inventaire
+      Personnage "1" -- "0..*" Equipement
+      Personnage "1" -- "0..*" Quete
+      Sauvegarde "1" -- "1" Zone
+      Sauvegarde "1" -- "1" Personnage
+      Combat "1" -- "1" Zone
+      Combat "1" -- "1" Personnage
+      Combat "1" -- "1" Bot
+    }
+    
+    package "Godot Nodes" {
+         class Area2D {
+            <<Godot>>
+        }
+        class QuestItem {
+        }
+        QuestItem --|> Area2D
+    }

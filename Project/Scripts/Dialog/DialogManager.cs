@@ -42,8 +42,40 @@ public partial class DialogManager : Node2D
 			{
 				speaker = dialog["speaker"].AsString();
 			}
-			_dialogUI.ShowDialog(speaker, dialog["text"].AsString(), dialog["options"].AsGodotDictionary());
+
+			var filteredOptions = GetFilteredDialogOptions(dialog);
+			_dialogUI.ShowDialog(speaker, dialog["text"].AsString(), filteredOptions);
 		}
+	}
+
+	private Godot.Collections.Dictionary GetFilteredDialogOptions(Godot.Collections.Dictionary dialog)
+	{
+		var filteredOptions = new Godot.Collections.Dictionary();
+		if (!dialog.ContainsKey("options"))
+		{
+			return filteredOptions;
+		}
+
+		var options = dialog["options"].AsGodotArray();
+		var playerClass = GameData.Instance.CharacterClass.ToString();
+
+		foreach (var optionVar in options)
+		{
+			var option = optionVar.AsGodotDictionary();
+			if (option.TryGetValue("required_class", out var requiredClassVar))
+			{
+				if (requiredClassVar.AsString() == playerClass)
+				{
+					filteredOptions[option["text"].AsString()] = option["next_state"].AsString();
+				}
+			}
+			else
+			{
+				filteredOptions[option["text"].AsString()] = option["next_state"].AsString();
+			}
+		}
+
+		return filteredOptions;
 	}
 
 	public void hide_dialog()
@@ -59,11 +91,16 @@ public partial class DialogManager : Node2D
 			return;
 		}
 
-		var options = current_dialog["options"].AsGodotDictionary();
+		var options = current_dialog["options"].AsGodotArray();
 		string requestedNextState = "start";
-		if (options.ContainsKey(option))
+		foreach(var optionVar in options)
 		{
-			requestedNextState = options[option].AsString();
+			var optionDict = optionVar.AsGodotDictionary();
+			if (optionDict["text"].AsString() == option)
+			{
+				requestedNextState = optionDict["next_state"].AsString();
+				break;
+			}
 		}
 
 		// Compute current dialog index BEFORE changing state

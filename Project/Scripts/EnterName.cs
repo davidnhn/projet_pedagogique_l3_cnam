@@ -72,7 +72,7 @@ public partial class EnterName : Control
 		GameData.Instance.PlayerId = playerId;
 		GD.Print($"Name stored: {playerName} with ID: {GameData.Instance.PlayerId}"); // Debug log
 		
-		// Change la scène vers select_character.tscn
-		GetTree().ChangeSceneToFile("res://scenes/select_character.tscn");
+		// Change la scène vers select_character2.tscn
+		GetTree().ChangeSceneToFile("res://scenes/select_character2.tscn");
 	}
 } 

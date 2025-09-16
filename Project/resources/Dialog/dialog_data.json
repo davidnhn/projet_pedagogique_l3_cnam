@@ -16,9 +16,15 @@
 						"state": "charpentier_intro",
 						"speaker": "Charpentier",
 						"text": "Le pont est endommagé, j’ai besoin de clous.",
-						"options": {
-							"Continuer": "mallak_reply_1"
-						}
+						"options": [
+							{ "text": "[Prof de Maths] Combien de clous exactement ? Et de quelle taille ?", "next_state": "mallak_reply_1", "required_class": "MathTeacher" },
+							{ "text": "[Militaire] Sécurisez la zone. J'évalue les dégâts.", "next_state": "mallak_reply_1", "required_class": "MilitaryGirl" },
+							{ "text": "[Hôtesse de l'air] Je peux peut-être trouver quelque chose pour dépanner dans mon kit de voyage.", "next_state": "mallak_reply_1", "required_class": "Stewardess" },
+							{ "text": "[Voleur de Calculatrices] Des clous... brillants. Intéressant.", "next_state": "mallak_reply_1", "required_class": "CalculatorThief" },
+							{ "text": "[Nudiste] Les clous sont une contrainte. Libérons le bois !", "next_state": "mallak_reply_1", "required_class": "Nudist" },
+							{ "text": "[Bollywood] Un pont brisé ? C'est une métaphore parfaite pour une chanson sur un amour impossible !", "next_state": "mallak_reply_1", "required_class": "Bollywood" },
+							{ "text": "[IA] Scan des matériaux environnants... Probabilité de trouver des clous : 12%.", "next_state": "mallak_reply_1", "required_class": "Ai" }
+						]
 					},
 					{
 						"state": "mallak_reply_1",
@@ -49,28 +55,41 @@
 				"dialogs": [
 					{
 						"state": "start",
-						"speaker": "Charpentier",
-						"text": "Mallak, j’ai besoin de ton aide pour le pont.",
-						"options": {
-							"Continuer": ""
-						}
+						"speaker": "Professeur 1",
+						"text": "J’ai encore demandé à ChatGPT d’expliquer le virus qui s'est attaqué à l'école… il m’a répondu 42 fois avec “cela dépend du contexte”.",
+						"options": [
+							{ "text": "Continuer", "next_state": "" },
+							{ "text": "[Prof de Maths] La réponse est 42. C'est mathématique.", "next_state": "mallak_reply_1", "required_class": "MathTeacher" },
+							{ "text": "[Militaire] Manque d'informations. Impossible d'agir.", "next_state": "mallak_reply_1", "required_class": "MilitaryGirl" },
+							{ "text": "[Hôtesse de l'air] Auriez-vous besoin d'une boisson chaude pour vous éclaircir les idées ?", "next_state": "mallak_reply_1", "required_class": "Stewardess" },
+							{ "text": "[Voleur de Calculatrices] 42... ce n'est même pas un nombre premier. Inintéressant.", "next_state": "mallak_reply_1", "required_class": "CalculatorThief" },
+							{ "text": "[Nudiste] Peut-être que le problème est que nous ne sommes pas assez ouverts et... naturels.", "next_state": "mallak_reply_1", "required_class": "Nudist" },
+							{ "text": "[Bollywood] C'est un signe ! Le destin nous appelle à régler ce problème en chanson !", "next_state": "mallak_reply_1", "required_class": "Bollywood" },
+							{ "text": "[IA] Analyse : 'Cela dépend du contexte' est une réponse valide pour une requête ambiguë. Veuillez reformuler.", "next_state": "mallak_reply_1", "required_class": "Ai" }
+						]
 					},
 					{
 						"state": "mallak_reply_1",
-						"speaker": "Mallak",
-						"text": "Que te faut-il, Charpentier ?",
-						"options": {
-							"Il manque des clous.": "charpentier_reply_1"
-						}
+						"speaker": "Professeur 2",
+						"text": " Au vu de nos relations, je pensais que vous auriez saisi le CONTEXTE... Il faut vous liberer de votre dependance au CNAM. Une bonne clé ne peut etre qu'ETRANGERE !!",
+						"options": [
+							{ "text": "[Prof de Maths] Votre logique est erronée. Une clé étrangère garantit l'intégrité référentielle.", "next_state": "charpentier_reply_1", "required_class": "MathTeacher" },
+							{ "text": "[Militaire] C'est un code ? Un ordre ? Soyez plus clair, soldat !", "next_state": "charpentier_reply_1", "required_class": "MilitaryGirl" },
+							{ "text": "[Hôtesse de l'air] Monsieur, calmez-vous. Puis-je vous proposer un café ?", "next_state": "charpentier_reply_1", "required_class": "Stewardess" },
+							{ "text": "[Voleur de Calculatrices] Une clé... étrangère, dites-vous ? Ouvre-t-elle des coffres ?", "next_state": "charpentier_reply_1", "required_class": "CalculatorThief" },
+							{ "text": "[Nudiste] Votre énergie est très... réprimée. Libérez-vous !", "next_state": "charpentier_reply_1", "required_class": "Nudist" },
+							{ "text": "[Bollywood] Ah, une déclaration passionnée ! C'est le moment d'un duo dramatique sous la pluie !", "next_state": "charpentier_reply_1", "required_class": "Bollywood" },
+							{ "text": "[IA] Erreur sémantique. Les termes 'clé étrangère' et 'dépendance' sont utilisés hors de leur contexte informatique standard.", "next_state": "charpentier_reply_1", "required_class": "Ai" }
+						]
 					},
 					{
 						"state": "charpentier_reply_1",
-						"speaker": "Charpentier",
-						"text": "Apporte-m’en et je m’occupe du reste.",
-						"options": {
-							"D’accord.": "end",
-							"Plus tard.": "exit"
-						}
+						"speaker": "Professeur 1",
+						"text": "… euh, oui, enfin… peut-être qu’on devrait demander à ChatGPT d’abord ?",
+						"options": [
+							{ "text": "D’accord.", "next_state": "end" },
+							{ "text": "Plus tard.", "next_state": "exit" }
+						]
 					}
 				]
 			},
@@ -80,6 +99,68 @@
 			},
 			{
 				"branch_id":"npc_2_default",
+				"dialogs": []
+			}
+		]
+	},
+	"npc_3": {
+		"tree": [
+			{
+				"branch_id": "npc_3_1",
+				"dialogs": [
+					{
+						"state": "start",
+						"speaker": "Professeur 2",
+						"text": "CONTEXTE ?! Ta dépendance n’est qu’une CLE ÉTRANGÈRE corrompue ! C’est moi la VRAIE relation… et je vais faire un CARTESIAN JOIN entre ta raison et ta peur !",
+						"options": [
+							{ "text": "[Prof de Maths] Un produit cartésien de deux ensembles non quantifiables ? Absurde.", "next_state": "end", "required_class": "MathTeacher" },
+							{ "text": "[Militaire] Votre discours est une menace. Rendez-vous immédiatement.", "next_state": "end", "required_class": "MilitaryGirl" },
+							{ "text": "[Hôtesse de l'air] Veuillez attacher votre ceinture, nous allons traverser une zone de turbulences émotionnelles.", "next_state": "end", "required_class": "Stewardess" },
+							{ "text": "[Voleur de Calculatrices] Plus vous parlez, plus je me demande si vous avez des objets de valeur.", "next_state": "end", "required_class": "CalculatorThief" },
+							{ "text": "[Nudiste] Vous devriez laisser tomber ces concepts rigides. Et vos vêtements aussi.", "next_state": "end", "required_class": "Nudist" },
+							{ "text": "[Bollywood] Quelle intensité ! Les projecteurs ! La musique ! C'est notre scène !", "next_state": "end", "required_class": "Bollywood" },
+							{ "text": "[IA] L'utilisation du terme 'JOIN' est incorrecte. La peur et la raison ne sont pas des tables relationnelles.", "next_state": "end", "required_class": "Ai" }
+						]
+					}
+				]
+			},
+			{
+				"branch_id": "npc_3_2",
+				"dialogs": []
+			},
+			{
+				"branch_id": "npc_3_default",
+				"dialogs": []
+			}
+		]
+	},
+	"npc_4": {
+		"tree": [
+			{
+				"branch_id": "npc_4_1",
+				"dialogs": [
+					{
+						"state": "start",
+						"speaker": "Boss de fin",
+						"text": "HAHAAA ! Vous êtes tous DES PAQUETS PERDUS ! Je vais vous ROUTER droit vers la folie, saturer vos PORTS, et quand mon attaque DDoS cérébrale commencera… vous serez en TIMEOUT ÉTERNEL !",
+						"options": [
+							{ "text": "[Prof de Maths] Vos paquets ne seront pas perdus, ils seront simplement non distribués. La folie est une variable non calculable.", "next_state": "end", "required_class": "MathTeacher" },
+							{ "text": "[Militaire] Attaque non conventionnelle. Nous allons répondre avec une force écrasante.", "next_state": "end", "required_class": "MilitaryGirl" },
+							{ "text": "[Hôtesse de l'air] Pour votre sécurité, veuillez rester calme. Les sorties de secours sont indiquées sur votre droite.", "next_state": "end", "required_class": "Stewardess" },
+							{ "text": "[Voleur de Calculatrices] Pendant que vous saturez les ports, je m'occupe de vos poches.", "next_state": "end", "required_class": "CalculatorThief" },
+							{ "text": "[Nudiste] Votre esprit est trop encombré. Déshabillez votre âme de cette colère !", "next_state": "end", "required_class": "Nudist" },
+							{ "text": "[Bollywood] Une attaque DDoS cérébrale ? C'est le final le plus spectaculaire ! Place à la danse de la victoire !", "next_state": "end", "required_class": "Bollywood" },
+							{ "text": "[IA] Protocole de défense activé. Mise en place d'un pare-feu neuronal. Votre attaque est inefficace.", "next_state": "end", "required_class": "Ai" }
+						]
+					}
+				]
+			},
+			{
+				"branch_id": "npc_4_2",
+				"dialogs": []
+			},
+			{
+				"branch_id": "npc_4_default",
 				"dialogs": []
 			}
 		]

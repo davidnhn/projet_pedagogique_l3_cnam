@@ -28,7 +28,7 @@ public partial class DatabaseManager : Node
 		// Load configuration from environment variables or optional .env file under BaseDeDonnees
 		var envFromFile = LoadDotEnv("res://BaseDeDonnees/.env");
 
-		string dbHost = GetConfigValue("DB_HOST", envFromFile, "192.168.240.136");
+		string dbHost = GetConfigValue("DB_HOST", envFromFile, "127.0.0.1");
 		string dbPort = GetConfigValue("DB_PORT", envFromFile, "5432");
 		string dbUsername = GetConfigValue("DB_USER", envFromFile, "postgres");
 		string dbPassword = GetConfigValue("DB_PASSWORD", envFromFile, "example_password");

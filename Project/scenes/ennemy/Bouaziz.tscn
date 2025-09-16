@@ -168,6 +168,7 @@ npc_id = "npc_3"
 DialogResource = SubResource("Resource_w0vwo")
 AutoStartOnProximity = true
 ProximityRadius = 64.0
+StartBattleOnSecondInteract = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_st464")

@@ -30,6 +30,7 @@ public partial class NameGenerator : Control
 	private LineEdit _extraNameInput2;
 	private LineEdit _extraNameInput3;
 	private Button _validateButton;
+	private bool _hasPreviewed = false;
 
 	public NameGenerator()
 	{
@@ -98,7 +99,7 @@ public partial class NameGenerator : Control
 
 		PrefillFromGameData();
 
-		GenerateSuggestionsIfEmpty();
+		// Do not auto-generate suggestions on load; show placeholders until user previews
 	}
 
 	private void PrefillFromGameData()
@@ -173,24 +174,45 @@ public partial class NameGenerator : Control
 
 	private void OnValidateButtonPressed()
 	{
-		// Choisir un thème au hasard
-		var randomThemeKey = _themes.Keys.ElementAt(_random.Next(_themes.Count));
-		var selectedTheme = _themes[randomThemeKey];
-		GD.Print($"Thème choisi : {randomThemeKey}");
+		// First press: generate/preview only (no DB writes)
+		if (!_hasPreviewed)
+		{
+			var randomThemeKey = _themes.Keys.ElementAt(_random.Next(_themes.Count));
+			var selectedTheme = _themes[randomThemeKey];
+			GD.Print($"Prévisualisation - Thème choisi : {randomThemeKey}");
 
-		var usedPersonalNames = new HashSet<string>();
-		var usedExtraNames = new HashSet<string>();
+			var usedPersonalNames = new HashSet<string>();
+			var usedExtraNames = new HashSet<string>();
 
-		// Récupérer le texte ou générer un nom si le champ est vide
-		var personalName1 = GetOrCreateText(_personalNameInput1, selectedTheme.PersonalNames, usedPersonalNames);
-		var personalName2 = GetOrCreateText(_personalNameInput2, selectedTheme.PersonalNames, usedPersonalNames);
-		var personalName3 = GetOrCreateText(_personalNameInput3, selectedTheme.PersonalNames, usedPersonalNames);
-		var professionName = GetOrCreateText(_professionNameInput, selectedTheme.Professions);
-		var unusualObjectName = GetOrCreateText(_unusualObjectInput, selectedTheme.UnusualObjects);
-		var placeName = GetOrCreateText(_placeNameInput, selectedTheme.PlaceNames);
-		var extraName1 = GetOrCreateText(_extraNameInput1, selectedTheme.ExtraNames, usedExtraNames);
-		var extraName2 = GetOrCreateText(_extraNameInput2, selectedTheme.ExtraNames, usedExtraNames);
-		var extraName3 = GetOrCreateText(_extraNameInput3, selectedTheme.ExtraNames, usedExtraNames);
+			// Populate fields for preview without saving to DB
+			_personalNameInput1.Text = GetOrCreateText(_personalNameInput1, selectedTheme.PersonalNames, usedPersonalNames);
+			_personalNameInput2.Text = GetOrCreateText(_personalNameInput2, selectedTheme.PersonalNames, usedPersonalNames);
+			_personalNameInput3.Text = GetOrCreateText(_personalNameInput3, selectedTheme.PersonalNames, usedPersonalNames);
+			_professionNameInput.Text = GetOrCreateText(_professionNameInput, selectedTheme.Professions);
+			_unusualObjectInput.Text = GetOrCreateText(_unusualObjectInput, selectedTheme.UnusualObjects);
+			_placeNameInput.Text = GetOrCreateText(_placeNameInput, selectedTheme.PlaceNames);
+			_extraNameInput1.Text = GetOrCreateText(_extraNameInput1, selectedTheme.ExtraNames, usedExtraNames);
+			_extraNameInput2.Text = GetOrCreateText(_extraNameInput2, selectedTheme.ExtraNames, usedExtraNames);
+			_extraNameInput3.Text = GetOrCreateText(_extraNameInput3, selectedTheme.ExtraNames, usedExtraNames);
+
+			_hasPreviewed = true;
+			if (_validateButton != null)
+			{
+				_validateButton.Text = "Enregistrer";
+			}
+			return;
+		}
+
+		// Second press: persist current field values and continue
+		string personalName1 = _personalNameInput1.Text.Trim();
+		string personalName2 = _personalNameInput2.Text.Trim();
+		string personalName3 = _personalNameInput3.Text.Trim();
+		string professionName = _professionNameInput.Text.Trim();
+		string unusualObjectName = _unusualObjectInput.Text.Trim();
+		string placeName = _placeNameInput.Text.Trim();
+		string extraName1 = _extraNameInput1.Text.Trim();
+		string extraName2 = _extraNameInput2.Text.Trim();
+		string extraName3 = _extraNameInput3.Text.Trim();
 
 		SaveIfNew(personalName1, "PersonalName");
 		SaveIfNew(personalName2, "PersonalName");

@@ -1,12 +1,18 @@
-[gd_scene load_steps=24 format=3 uid="uid://de4m404jqprds"]
+[gd_scene load_steps=26 format=3 uid="uid://de4m404jqprds"]
 
 [ext_resource type="Script" uid="uid://d23fyg8p3nk8f" path="res://Scripts/Npc.cs" id="1_4ty3i"]
 [ext_resource type="Texture2D" uid="uid://mtfbc6mf06xx" path="res://assets/Sprite/Raiifsprite2d.png" id="1_66o15"]
+[ext_resource type="Script" uid="uid://uhvmivq0grdp" path="res://resources/Dialog/Dialog.cs" id="2_y534w"]
 [ext_resource type="Script" uid="uid://7birhx7blkk3" path="res://Scripts/Camera.cs" id="3_nlh4h"]
 [ext_resource type="PackedScene" uid="uid://dq703u538q0t2" path="res://scenes/dialog/DialogManager.tscn" id="4_6ep16"]
 
+[sub_resource type="Resource" id="Resource_ydbvp"]
+script = ExtResource("2_y534w")
+Dialogs = {}
+metadata/_custom_type_script = "uid://uhvmivq0grdp"
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_c0gm4"]
-radius = 85.276
+radius = 35.0143
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3mvpl"]
 atlas = ExtResource("1_66o15")
@@ -157,12 +163,18 @@ animations = [{
 
 [node name="Raiff" type="CharacterBody2D" groups=["Enemy", "NPC"]]
 script = ExtResource("1_4ty3i")
+npc_name = "Raiff"
+npc_id = "npc_3"
+DialogResource = SubResource("Resource_ydbvp")
+AutoStartOnProximity = true
+StartBattleOnSecondInteract = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_c0gm4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.8, 0.8)
+position = Vector2(3.8147e-06, -5)
+scale = Vector2(0.31875, 0.31875)
 sprite_frames = SubResource("SpriteFrames_fx7ab")
 animation = &"idle"
 

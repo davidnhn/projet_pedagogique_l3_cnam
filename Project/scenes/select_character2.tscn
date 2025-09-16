@@ -1,0 +1,379 @@
+[gd_scene load_steps=15 format=3 uid="uid://w5w5838dvqnj"]
+
+[ext_resource type="Script" uid="uid://xqpd7oaevpa" path="res://Scripts/SelectCharacter.cs" id="1_nnbm3"]
+[ext_resource type="Texture2D" uid="uid://ea66kuxk7j0v" path="res://assets/images/background.png" id="2_nnbm3"]
+[ext_resource type="StyleBox" uid="uid://5isis2tv5svt" path="res://assets/images/box_black_flat.tres" id="4_dt1ds"]
+[ext_resource type="FontFile" uid="uid://b42spf2nlovg6" path="res://assets/fonts/BLOODFONT/Blood Thirst.ttf" id="4_nnbm3"]
+[ext_resource type="AudioStream" uid="uid://d25ypu3bip7qr" path="res://Music/Music_2.mp3" id="5_nnbm3"]
+[ext_resource type="Texture2D" uid="uid://bkao6v0fu3oy4" path="res://assets/images/Indien.png" id="5_oeraq"]
+[ext_resource type="Texture2D" uid="uid://nhrwtllifjc1" path="res://assets/images/VoleurCalculette.png" id="6_kxm83"]
+[ext_resource type="Texture2D" uid="uid://biqfp01dyc304" path="res://assets/images/Campeur.png" id="7_28l0d"]
+[ext_resource type="Texture2D" uid="uid://ddqdte46lkfj7" path="res://assets/images/ProfesseurMath.png" id="8_ygfxk"]
+[ext_resource type="Texture2D" uid="uid://dv14qvh47fcaq" path="res://assets/images/Soldat.png" id="9_8jr2u"]
+[ext_resource type="Texture2D" uid="uid://dsfgveh6x8spy" path="res://assets/images/HotesseAir.png" id="10_xo6pa"]
+[ext_resource type="FontFile" uid="uid://blbo32hiv4abk" path="res://assets/fonts/Kenney Future.ttf" id="11_kenney"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5s77y"]
+texture = ExtResource("2_nnbm3")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_trwbv"]
+
+[node name="Select_Character" type="Control"]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nnbm3")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 1
+offset_right = 1920.0
+offset_bottom = 1080.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_5s77y")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.557
+anchor_top = -0.099
+anchor_right = 0.557
+anchor_bottom = -0.099
+offset_left = -960.44
+offset_top = 165.92
+offset_right = 779.56
+offset_bottom = 347.92
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.415686, 0.0588235, 0.0431373, 1)
+theme_override_colors/font_shadow_color = Color(0.889113, 0.17515, 0.128462, 1)
+theme_override_colors/font_outline_color = Color(0.462745, 0, 0, 1)
+theme_override_constants/shadow_offset_y = -10
+theme_override_fonts/font = ExtResource("4_nnbm3")
+theme_override_font_sizes/font_size = 150
+text = "CHOSE your character"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureContainer" type="GridContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -510.0
+offset_top = -328.0
+offset_right = 631.0
+offset_bottom = 488.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 3
+
+[node name="ContainerBollywoodActor" type="PanelContainer" parent="Panel/TextureContainer"]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_styles/panel = ExtResource("4_dt1ds")
+
+[node name="BollywoodActor" type="TextureRect" parent="Panel/TextureContainer/ContainerBollywoodActor"]
+custom_minimum_size = Vector2(280, 400)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("5_oeraq")
+expand_mode = 3
+
+[node name="Margin" type="MarginContainer" parent="Panel/TextureContainer/ContainerBollywoodActor"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 300
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel/TextureContainer/ContainerBollywoodActor/Margin"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/TextureContainer/ContainerBollywoodActor/Margin/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TextureRect" type="TextureRect" parent="Panel/TextureContainer/ContainerBollywoodActor/Margin/CenterContainer/VBoxContainer"]
+layout_mode = 2
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Panel/TextureContainer/ContainerBollywoodActor/Margin/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.647059, 0.933333, 0.733333, 1)
+theme_override_colors/font_shadow_color = Color(0.701961, 0.12549, 0, 1)
+theme_override_fonts/font = ExtResource("11_kenney")
+theme_override_font_sizes/font_size = 40
+text = "Acteur 
+Bollywood"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonBollywoodActor" type="Button" parent="Panel/TextureContainer/ContainerBollywoodActor"]
+custom_minimum_size = Vector2(315, 400)
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.219608, 0, 0, 0.733333)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_trwbv")
+
+[node name="ContainerCalculatorThief" type="PanelContainer" parent="Panel/TextureContainer"]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_styles/panel = ExtResource("4_dt1ds")
+
+[node name="CalculatorThief" type="TextureRect" parent="Panel/TextureContainer/ContainerCalculatorThief"]
+custom_minimum_size = Vector2(280, 400)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("6_kxm83")
+expand_mode = 3
+
+[node name="Margin" type="MarginContainer" parent="Panel/TextureContainer/ContainerCalculatorThief"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 300
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel/TextureContainer/ContainerCalculatorThief/Margin"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/TextureContainer/ContainerCalculatorThief/Margin/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TextureRect" type="TextureRect" parent="Panel/TextureContainer/ContainerCalculatorThief/Margin/CenterContainer/VBoxContainer"]
+layout_mode = 2
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Panel/TextureContainer/ContainerCalculatorThief/Margin/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.647059, 0.933333, 0.733333, 1)
+theme_override_colors/font_shadow_color = Color(0.701961, 0.12549, 0, 1)
+theme_override_fonts/font = ExtResource("11_kenney")
+theme_override_font_sizes/font_size = 32
+text = "Voleur de
+calculatrice"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonCalculatorThief" type="Button" parent="Panel/TextureContainer/ContainerCalculatorThief"]
+custom_minimum_size = Vector2(315, 400)
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.219608, 0, 0, 0.733333)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_trwbv")
+
+[node name="ContainerNudiste" type="PanelContainer" parent="Panel/TextureContainer"]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_styles/panel = ExtResource("4_dt1ds")
+
+[node name="Nudiste" type="TextureRect" parent="Panel/TextureContainer/ContainerNudiste"]
+custom_minimum_size = Vector2(280, 400)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("7_28l0d")
+expand_mode = 3
+
+[node name="Margin" type="MarginContainer" parent="Panel/TextureContainer/ContainerNudiste"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 350
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel/TextureContainer/ContainerNudiste/Margin"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/TextureContainer/ContainerNudiste/Margin/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TextureRect" type="TextureRect" parent="Panel/TextureContainer/ContainerNudiste/Margin/CenterContainer/VBoxContainer"]
+layout_mode = 2
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Panel/TextureContainer/ContainerNudiste/Margin/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.648006, 0.932193, 0.733045, 1)
+theme_override_colors/font_shadow_color = Color(0.701961, 0.12549, 0, 1)
+theme_override_fonts/font = ExtResource("11_kenney")
+theme_override_font_sizes/font_size = 40
+text = "Nudiste"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonNudist" type="Button" parent="Panel/TextureContainer/ContainerNudiste"]
+custom_minimum_size = Vector2(315, 400)
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.219608, 0, 0, 0.733333)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_trwbv")
+
+[node name="ContainerMathTeacher" type="PanelContainer" parent="Panel/TextureContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_styles/panel = ExtResource("4_dt1ds")
+
+[node name="MathTeacher" type="TextureRect" parent="Panel/TextureContainer/ContainerMathTeacher"]
+custom_minimum_size = Vector2(280, 400)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("8_ygfxk")
+expand_mode = 3
+
+[node name="Margin" type="MarginContainer" parent="Panel/TextureContainer/ContainerMathTeacher"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 325
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel/TextureContainer/ContainerMathTeacher/Margin"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/TextureContainer/ContainerMathTeacher/Margin/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TextureRect" type="TextureRect" parent="Panel/TextureContainer/ContainerMathTeacher/Margin/CenterContainer/VBoxContainer"]
+layout_mode = 2
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Panel/TextureContainer/ContainerMathTeacher/Margin/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.647059, 0.933333, 0.733333, 1)
+theme_override_colors/font_shadow_color = Color(0.701961, 0.12549, 0, 1)
+theme_override_fonts/font = ExtResource("11_kenney")
+theme_override_font_sizes/font_size = 37
+text = "Professeur de 
+mathématique	"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonMathTeacher" type="Button" parent="Panel/TextureContainer/ContainerMathTeacher"]
+custom_minimum_size = Vector2(315, 400)
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.219608, 0, 0, 0.733333)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_trwbv")
+
+[node name="ContainerMilitaryGirl" type="PanelContainer" parent="Panel/TextureContainer"]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_styles/panel = ExtResource("4_dt1ds")
+
+[node name="MilitaryGirl" type="TextureRect" parent="Panel/TextureContainer/ContainerMilitaryGirl"]
+custom_minimum_size = Vector2(280, 400)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("9_8jr2u")
+expand_mode = 3
+
+[node name="Margin" type="MarginContainer" parent="Panel/TextureContainer/ContainerMilitaryGirl"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 375
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel/TextureContainer/ContainerMilitaryGirl/Margin"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/TextureContainer/ContainerMilitaryGirl/Margin/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TextureRect" type="TextureRect" parent="Panel/TextureContainer/ContainerMilitaryGirl/Margin/CenterContainer/VBoxContainer"]
+layout_mode = 2
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Panel/TextureContainer/ContainerMilitaryGirl/Margin/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.647059, 0.933333, 0.733333, 1)
+theme_override_colors/font_shadow_color = Color(0.701961, 0.12549, 0, 1)
+theme_override_fonts/font = ExtResource("11_kenney")
+theme_override_font_sizes/font_size = 40
+text = "Militaire"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonMilitaryGirl" type="Button" parent="Panel/TextureContainer/ContainerMilitaryGirl"]
+custom_minimum_size = Vector2(315, 400)
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.219608, 0, 0, 0.733333)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_trwbv")
+
+[node name="ContainerStewardess" type="PanelContainer" parent="Panel/TextureContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_styles/panel = ExtResource("4_dt1ds")
+
+[node name="Stewardess" type="TextureRect" parent="Panel/TextureContainer/ContainerStewardess"]
+custom_minimum_size = Vector2(280, 400)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("10_xo6pa")
+expand_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="Panel/TextureContainer/ContainerStewardess"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 325
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel/TextureContainer/ContainerStewardess/Margin"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/TextureContainer/ContainerStewardess/Margin/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TextureRect" type="TextureRect" parent="Panel/TextureContainer/ContainerStewardess/Margin/CenterContainer/VBoxContainer"]
+layout_mode = 2
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Panel/TextureContainer/ContainerStewardess/Margin/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.647059, 0.933333, 0.733333, 1)
+theme_override_colors/font_shadow_color = Color(0.701961, 0.12549, 0, 1)
+theme_override_fonts/font = ExtResource("11_kenney")
+theme_override_font_sizes/font_size = 38
+text = "Hotesse
+de l'air"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonStewardess" type="Button" parent="Panel/TextureContainer/ContainerStewardess"]
+custom_minimum_size = Vector2(315, 400)
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.219608, 0, 0, 0.733333)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_trwbv")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_nnbm3")
+autoplay = true

@@ -15,6 +15,9 @@ public partial class GameData : Node
     // Position du joueur pour le chargement de sauvegarde
     public Vector2 PlayerPosition { get; set; } = Vector2.Zero;
     
+    // Compteur des combats lancés pour savoir si c'est le premier
+    public int BattlesStartedCount { get; set; } = 0;
+    
     // Propriété pour accéder au nom du joueur
     public string PlayerName
     {

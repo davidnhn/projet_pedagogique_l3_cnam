@@ -19,6 +19,7 @@ shape = SubResource("CircleShape2D_if6sh")
 [node name="Animation" parent="." instance=ExtResource("2_smcha")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
 limit_smoothed = true
 position_smoothing_enabled = true
 script = ExtResource("3_7166c")
@@ -27,6 +28,7 @@ script = ExtResource("3_7166c")
 collide_with_areas = true
 
 [node name="HUD" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Coins" type="ColorRect" parent="HUD"]
 anchors_preset = 1
